@@ -423,6 +423,12 @@ int main(int argc, char ** argv)
   const auto grasp_z = getOrDeclare<double>(node, "grasp_z", 0.10);
   const auto pre_grasp_offset = getOrDeclare<double>(node, "pre_grasp_offset", 0.06);
   const auto lift_z = getOrDeclare<double>(node, "lift_z", 0.23);
+    // Place 测试位置，均为 base_link 坐标系下 tool0 的目标位置
+  const auto place_x = getOrDeclare<double>(node, "place_x", 0.30);
+  const auto place_y = getOrDeclare<double>(node, "place_y", -0.20);
+  const auto place_z = getOrDeclare<double>(node, "place_z", grasp_z);
+  const auto place_pre_z = getOrDeclare<double>(node, "place_pre_z", lift_z);
+
   const auto velocity_scale = getOrDeclare<double>(node, "velocity_scale", 0.1);
   const auto wait_timeout_s = getOrDeclare<double>(node, "wait_object_timeout", 30.0);
   // goal displacement guard 阈值（ROS 参数，非硬编码永久限制）
@@ -633,8 +639,215 @@ int main(int argc, char ** argv)
       rclcpp::shutdown(); spinner.join(); return 1;
     }
   }
+  // 5) 携带物体移动到 place_pre_pose
+  if (!checkStateValid(node, arm, validity_client, "after lift")) {
+    RCLCPP_ERROR(node->get_logger(), "aborting: invalid state at after lift");
+    rclcpp::shutdown(); spinner.join(); return 1;
+  }
 
-  RCLCPP_INFO(node->get_logger(), "Grasp demo (candidate evaluator) finished.");
+  // 继续使用现有多采样选择器，从当前位置选择最小动作、安全的放置构型
+  const PreGrasp place_pg = selectBestPreGrasp(
+    node, arm, jmg, var_names, lower, upper, validity_client,
+    place_x, place_y, place_pre_z,
+    max_j1_delta, max_motion_cost, samples_per_group, sampling_rounds);
+
+  if (!place_pg.ok) {
+    RCLCPP_ERROR(
+      node->get_logger(),
+      "No safe place-pre pose found. Aborting while object remains attached.");
+    rclcpp::shutdown(); spinner.join(); return 1;
+  }
+
+  {
+    arm.setJointValueTarget(place_pg.joints);
+
+    const auto current = arm.getCurrentJointValues();
+    const std::vector<double> start =
+      current.size() == place_pg.joints.size() ? current : home;
+
+    moveit::planning_interface::MoveGroupInterface::Plan place_plan;
+    bool place_planned = false;
+    std::string place_planner_used;
+
+    // 优先尝试 Pilz PTP
+    arm.setPlanningPipelineId("pilz_industrial_motion_planner");
+    arm.setPlannerId("PTP");
+
+    if (static_cast<bool>(arm.plan(place_plan))) {
+      place_planned = true;
+      place_planner_used = "pilz_industrial_motion_planner/PTP";
+    } else {
+      RCLCPP_WARN(
+        node->get_logger(),
+        "Place-pre Pilz PTP failed, fallback to OMPL RRTConnect");
+
+      arm.setPlanningPipelineId("ompl");
+      arm.setPlannerId("RRTConnect");
+
+      place_planned = static_cast<bool>(arm.plan(place_plan));
+      place_planner_used = "ompl/RRTConnect";
+    }
+
+    if (!place_planned) {
+      RCLCPP_ERROR(
+        node->get_logger(),
+        "place-pre planning failed (Pilz PTP + OMPL)");
+      rclcpp::shutdown(); spinner.join(); return 1;
+    }
+
+    RCLCPP_INFO(
+      node->get_logger(),
+      "place-pre planned with %s",
+      place_planner_used.c_str());
+
+    if (!guardTrajectory(node, place_plan, start, place_pg.joints)) {
+      RCLCPP_ERROR(
+        node->get_logger(),
+        "trajectory guard rejected place-pre");
+      rclcpp::shutdown(); spinner.join(); return 1;
+    }
+
+    const auto result = arm.execute(place_plan);
+    if (result != moveit::core::MoveItErrorCode::SUCCESS) {
+      RCLCPP_ERROR(
+        node->get_logger(),
+        "place-pre execution failed: %d",
+        result.val);
+      rclcpp::shutdown(); spinner.join(); return 1;
+    }
+
+    RCLCPP_INFO(
+      node->get_logger(),
+      "Executed place-pre at x=%.3f, y=%.3f, z=%.3f",
+      place_x, place_y, place_pre_z);
+  }
+
+  if (!checkStateValid(node, arm, validity_client, "at place-pre")) {
+    RCLCPP_ERROR(
+      node->get_logger(),
+      "aborting: invalid state at place-pre");
+    rclcpp::shutdown(); spinner.join(); return 1;
+  }
+  // 6) 携带物体 Cartesian 下降到放置高度
+  if (!checkStateValid(node, arm, validity_client, "before place descend")) {
+    RCLCPP_ERROR(
+      node->get_logger(),
+      "aborting: invalid state before place descend");
+    rclcpp::shutdown(); spinner.join(); return 1;
+  }
+
+  {
+    geometry_msgs::msg::Pose place_pose;
+    place_pose.position.x = place_x;
+    place_pose.position.y = place_y;
+    place_pose.position.z = place_z;
+    place_pose.orientation =
+      quatRPY(M_PI, 0.0, place_pg.yaw_deg * M_PI / 180.0);
+
+    if (!cartesianMove(arm, node, place_pose, "place descend")) {
+      RCLCPP_ERROR(
+        node->get_logger(),
+        "aborting: Cartesian place descend failed");
+      rclcpp::shutdown(); spinner.join(); return 1;
+    }
+  }
+
+  if (!checkStateValid(node, arm, validity_client, "after place descend")) {
+    RCLCPP_ERROR(
+      node->get_logger(),
+      "aborting: invalid state after place descend");
+    rclcpp::shutdown(); spinner.join(); return 1;
+  }
+
+  RCLCPP_INFO(
+    node->get_logger(),
+    "Reached place pose at x=%.3f, y=%.3f, z=%.3f; object still attached",
+    place_x, place_y, place_z);
+  // 7) 在放置位置释放物体：先张开夹爪，再 detach
+  if (!checkStateValid(node, arm, validity_client, "before release")) {
+    RCLCPP_ERROR(
+      node->get_logger(),
+      "aborting: invalid state before release");
+    rclcpp::shutdown(); spinner.join(); return 1;
+  }
+
+  gripper.setStartStateToCurrentState();
+  gripper.setNamedTarget("open");
+
+  if (!planAndExecute(gripper, node, "open gripper at place")) {
+    RCLCPP_ERROR(
+      node->get_logger(),
+      "aborting: failed to open gripper at place");
+    rclcpp::shutdown(); spinner.join(); return 1;
+  }
+
+  std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+  if (!checkStateValid(node, arm, validity_client, "after open at place")) {
+    RCLCPP_ERROR(
+      node->get_logger(),
+      "aborting: invalid state after opening gripper");
+    rclcpp::shutdown(); spinner.join(); return 1;
+  }
+
+  if (!arm.detachObject(obj_name)) {
+    RCLCPP_ERROR(
+      node->get_logger(),
+      "detachObject failed for %s",
+      obj_name.c_str());
+    rclcpp::shutdown(); spinner.join(); return 1;
+  }
+
+  RCLCPP_INFO(
+    node->get_logger(),
+    "Detached object %s at place pose",
+    obj_name.c_str());
+
+  std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+  if (!checkStateValid(node, arm, validity_client, "after detach")) {
+    RCLCPP_ERROR(
+      node->get_logger(),
+      "aborting: invalid state after detach");
+    rclcpp::shutdown(); spinner.join(); return 1;
+  }
+  // 8) 释放物体后，沿 Z 轴 Cartesian 撤离到 place-pre 高度
+  if (!checkStateValid(node, arm, validity_client, "before retreat")) {
+    RCLCPP_ERROR(
+      node->get_logger(),
+      "aborting: invalid state before retreat");
+    rclcpp::shutdown(); spinner.join(); return 1;
+  }
+
+  {
+    geometry_msgs::msg::Pose retreat_pose;
+    retreat_pose.position.x = place_x;
+    retreat_pose.position.y = place_y;
+    retreat_pose.position.z = place_pre_z;
+    retreat_pose.orientation =
+      quatRPY(M_PI, 0.0, place_pg.yaw_deg * M_PI / 180.0);
+
+    if (!cartesianMove(arm, node, retreat_pose, "place retreat")) {
+      RCLCPP_ERROR(
+        node->get_logger(),
+        "aborting: Cartesian place retreat failed");
+      rclcpp::shutdown(); spinner.join(); return 1;
+    }
+  }
+
+  if (!checkStateValid(node, arm, validity_client, "after retreat")) {
+    RCLCPP_ERROR(
+      node->get_logger(),
+      "aborting: invalid state after retreat");
+    rclcpp::shutdown(); spinner.join(); return 1;
+  }
+
+  RCLCPP_INFO(
+    node->get_logger(),
+    "Pick & Place completed successfully; object released at place pose.");
+
+  RCLCPP_INFO(node->get_logger(), "Pick & Place demo finished.");
+
   rclcpp::shutdown();
   spinner.join();
   return 0;
