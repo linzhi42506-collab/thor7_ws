@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: thor7v3_description
+    relative_path: urdf/thor7v3_robot.urdf
+  srdf:
+    relative_path: config/thor7v3.srdf
+  package_settings:
+    author_name: linzhi
+    author_email: 3512303833@qq.com
+    generated_timestamp: 1785903465
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity

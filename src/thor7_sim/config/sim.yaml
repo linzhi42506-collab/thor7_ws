@@ -1,0 +1,26 @@
+# thor7_sim 参数：测试物体位姿与抓取演示目标
+
+spawn_test_object:
+  ros__parameters:
+    frame_id: base_link
+    object_name: test_box
+    object_x: 0.35
+    object_y: 0.0
+    object_z: 0.10
+    object_size: 0.05
+    retries: 10
+
+grasp_demo:
+  ros__parameters:
+    object_name: test_box
+    object_x: 0.35
+    object_y: 0.0
+    object_z: 0.10
+    # tool0（指尖中心）下降到的抓取高度；预抓取高度 = grasp_z + pre_grasp_offset
+    # 物体 50mm 立方体中心 z=0.10 → grasp_z=0.10 让指尖对齐物体中部（真实抓取）
+    grasp_z: 0.10
+    pre_grasp_offset: 0.06
+    lift_z: 0.23
+    # 注意：夹爪开/合不再用这里的参数，改用 SRDF 命名姿态 open(-0.65)/closed(0.0)
+    velocity_scale: 0.1
+    wait_object_timeout: 30.0

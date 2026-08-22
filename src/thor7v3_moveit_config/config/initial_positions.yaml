@@ -1,0 +1,11 @@
+# Default initial positions for thor7v3's ros2_control fake system
+
+initial_positions:
+  joint1: 0
+  joint2: 0
+  joint3: 0
+  joint4: 0
+  joint5: 0
+  joint6: 0
+  # AG-145 夹爪初始位置：OPEN（-0.65 rad，指尖间距 165mm，FK 实测）
+  ag145_gripper_finger1_joint: -0.65

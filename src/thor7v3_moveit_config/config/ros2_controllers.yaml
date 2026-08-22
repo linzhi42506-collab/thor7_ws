@@ -1,0 +1,41 @@
+# This config file is used by ros2_control (FakeSystem 仿真)
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    thor7_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    # AG-145 夹爪控制器（只控制主控关节 ag145_gripper_finger1_joint，
+    # mimic 关节由 thor7_sim/gripper_state_publisher 计算发布）
+    gripper_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+thor7_arm_controller:
+  ros__parameters:
+    joints:
+      - joint1
+      - joint2
+      - joint3
+      - joint4
+      - joint5
+      - joint6
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+gripper_controller:
+  ros__parameters:
+    joints:
+      - ag145_gripper_finger1_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    allow_partial_joints_goal: true

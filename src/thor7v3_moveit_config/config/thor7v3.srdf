@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="thor7v3">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+
+    <!-- 6-DOF 机械臂规划组（含 tool0：指尖工具系，固定在 link6 下方，
+         用于以 tool0 位姿为目标做抓取规划） -->
+    <group name="thor7_arm">
+        <chain base_link="base_link" tip_link="link6"/>
+        <link name="tool0"/>
+    </group>
+
+    <!-- AG-145 夹爪规划组：主控关节 ag145_gripper_finger1_joint，
+         其余关节均为 <mimic> 跟随（标记为 passive），tool0 为指尖工具系 -->
+    <group name="gripper">
+        <link name="ag145_gripper_base_link"/>
+        <link name="ag145_gripper_finger1_knuckle_link"/>
+        <link name="ag145_gripper_finger1_finger_link"/>
+        <link name="ag145_gripper_finger1_inner_knuckle_link"/>
+        <link name="ag145_gripper_finger1_finger_tip_link"/>
+        <link name="ag145_gripper_finger2_knuckle_link"/>
+        <link name="ag145_gripper_finger2_finger_link"/>
+        <link name="ag145_gripper_finger2_inner_knuckle_link"/>
+        <link name="ag145_gripper_finger2_finger_tip_link"/>
+        <link name="tool0"/>
+        <joint name="ag145_gripper_base_joint"/>
+        <joint name="ag145_gripper_finger1_joint"/>
+        <joint name="ag145_gripper_finger2_joint"/>
+        <joint name="ag145_gripper_finger1_finger_joint"/>
+        <joint name="ag145_gripper_finger2_finger_joint"/>
+        <joint name="ag145_gripper_finger1_inner_knuckle_joint"/>
+        <joint name="ag145_gripper_finger2_inner_knuckle_joint"/>
+        <joint name="ag145_gripper_finger1_finger_tip_joint"/>
+        <joint name="ag145_gripper_finger2_finger_tip_joint"/>
+        <joint name="tool0_joint"/>
+    </group>
+
+    <!-- 末端执行器声明：夹爪挂在 link6（法兰）上 -->
+    <end_effector name="ag145_gripper" parent_link="link6" parent_group="thor7_arm" group="gripper"/>
+
+    <!--PASSIVE JOINT: 夹爪中跟随 ag145_gripper_finger1_joint 运动的 mimic 关节 -->
+    <passive_joint name="ag145_gripper_finger2_joint"/>
+    <passive_joint name="ag145_gripper_finger1_finger_joint"/>
+    <passive_joint name="ag145_gripper_finger2_finger_joint"/>
+    <passive_joint name="ag145_gripper_finger1_inner_knuckle_joint"/>
+    <passive_joint name="ag145_gripper_finger2_inner_knuckle_joint"/>
+    <passive_joint name="ag145_gripper_finger1_finger_tip_joint"/>
+    <passive_joint name="ag145_gripper_finger2_finger_tip_joint"/>
+
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="home" group="thor7_arm">
+        <joint name="joint1" value="0"/>
+        <joint name="joint2" value="-0.0863"/>
+        <joint name="joint3" value="0"/>
+        <joint name="joint4" value="0"/>
+        <joint name="joint5" value="0"/>
+        <joint name="joint6" value="0"/>
+    </group_state>
+    <!-- 夹爪开/合：已由 collision_diagnostic FK 实测确认
+         finger1 = -0.65 → 指尖间距 165mm（OPEN）
+         finger1 =  0.0  → 指尖间距 15.8mm（CLOSED） -->
+    <group_state name="open" group="gripper">
+        <joint name="ag145_gripper_finger1_joint" value="-0.65"/>
+    </group_state>
+    <group_state name="closed" group="gripper">
+        <joint name="ag145_gripper_finger1_joint" value="0.0"/>
+    </group_state>
+
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <!-- 机械臂自身 -->
+    <disable_collisions link1="base_link" link2="link1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="link2" reason="Never"/>
+    <disable_collisions link1="link1" link2="link2" reason="Adjacent"/>
+    <disable_collisions link1="link1" link2="link3" reason="Never"/>
+    <disable_collisions link1="link2" link2="link3" reason="Adjacent"/>
+    <disable_collisions link1="link3" link2="link4" reason="Adjacent"/>
+    <disable_collisions link1="link3" link2="link5" reason="Never"/>
+    <disable_collisions link1="link3" link2="link6" reason="Never"/>
+    <disable_collisions link1="link4" link2="link5" reason="Adjacent"/>
+    <disable_collisions link1="link4" link2="link6" reason="Never"/>
+    <disable_collisions link1="link5" link2="link6" reason="Adjacent"/>
+
+    <!-- 夹爪与机械臂：link6 与夹爪基座 Adjacent；link5/link6 与夹爪其它部件 Never -->
+    <disable_collisions link1="link5" link2="ag145_gripper_base_link" reason="Never"/>
+    <disable_collisions link1="link5" link2="ag145_gripper_finger1_knuckle_link" reason="Never"/>
+    <disable_collisions link1="link5" link2="ag145_gripper_finger1_finger_link" reason="Never"/>
+    <disable_collisions link1="link5" link2="ag145_gripper_finger1_inner_knuckle_link" reason="Never"/>
+    <disable_collisions link1="link5" link2="ag145_gripper_finger1_finger_tip_link" reason="Never"/>
+    <disable_collisions link1="link5" link2="ag145_gripper_finger2_knuckle_link" reason="Never"/>
+    <disable_collisions link1="link5" link2="ag145_gripper_finger2_finger_link" reason="Never"/>
+    <disable_collisions link1="link5" link2="ag145_gripper_finger2_inner_knuckle_link" reason="Never"/>
+    <disable_collisions link1="link5" link2="ag145_gripper_finger2_finger_tip_link" reason="Never"/>
+    <disable_collisions link1="link6" link2="ag145_gripper_base_link" reason="Adjacent"/>
+    <disable_collisions link1="link6" link2="ag145_gripper_finger1_knuckle_link" reason="Never"/>
+    <disable_collisions link1="link6" link2="ag145_gripper_finger1_finger_link" reason="Never"/>
+    <disable_collisions link1="link6" link2="ag145_gripper_finger1_inner_knuckle_link" reason="Never"/>
+    <disable_collisions link1="link6" link2="ag145_gripper_finger1_finger_tip_link" reason="Never"/>
+    <disable_collisions link1="link6" link2="ag145_gripper_finger2_knuckle_link" reason="Never"/>
+    <disable_collisions link1="link6" link2="ag145_gripper_finger2_finger_link" reason="Never"/>
+    <disable_collisions link1="link6" link2="ag145_gripper_finger2_inner_knuckle_link" reason="Never"/>
+    <disable_collisions link1="link6" link2="ag145_gripper_finger2_finger_tip_link" reason="Never"/>
+    <disable_collisions link1="link6" link2="tool0" reason="Adjacent"/>
+
+    <!-- 夹爪内部：相邻/固定连接的连杆对 -->
+    <disable_collisions link1="ag145_gripper_base_link" link2="ag145_gripper_finger1_finger_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_base_link" link2="ag145_gripper_finger1_finger_tip_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_base_link" link2="ag145_gripper_finger1_inner_knuckle_link" reason="Adjacent"/>
+    <disable_collisions link1="ag145_gripper_base_link" link2="ag145_gripper_finger1_knuckle_link" reason="Adjacent"/>
+    <disable_collisions link1="ag145_gripper_base_link" link2="ag145_gripper_finger2_finger_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_base_link" link2="ag145_gripper_finger2_finger_tip_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_base_link" link2="ag145_gripper_finger2_inner_knuckle_link" reason="Adjacent"/>
+    <disable_collisions link1="ag145_gripper_base_link" link2="ag145_gripper_finger2_knuckle_link" reason="Adjacent"/>
+    <disable_collisions link1="ag145_gripper_base_link" link2="tool0" reason="Adjacent"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_link" link2="ag145_gripper_finger1_finger_tip_link" reason="Default"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_link" link2="ag145_gripper_finger1_inner_knuckle_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_link" link2="ag145_gripper_finger1_knuckle_link" reason="Adjacent"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_link" link2="ag145_gripper_finger2_finger_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_link" link2="ag145_gripper_finger2_finger_tip_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_link" link2="ag145_gripper_finger2_inner_knuckle_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_link" link2="ag145_gripper_finger2_knuckle_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_link" link2="tool0" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_tip_link" link2="ag145_gripper_finger1_inner_knuckle_link" reason="Adjacent"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_tip_link" link2="ag145_gripper_finger1_knuckle_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_tip_link" link2="ag145_gripper_finger2_finger_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_tip_link" link2="ag145_gripper_finger2_finger_tip_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_tip_link" link2="ag145_gripper_finger2_inner_knuckle_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_tip_link" link2="ag145_gripper_finger2_knuckle_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_finger_tip_link" link2="tool0" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_inner_knuckle_link" link2="ag145_gripper_finger1_knuckle_link" reason="Adjacent"/>
+    <disable_collisions link1="ag145_gripper_finger1_inner_knuckle_link" link2="ag145_gripper_finger2_finger_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_inner_knuckle_link" link2="ag145_gripper_finger2_finger_tip_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_inner_knuckle_link" link2="ag145_gripper_finger2_inner_knuckle_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_inner_knuckle_link" link2="ag145_gripper_finger2_knuckle_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_inner_knuckle_link" link2="tool0" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_knuckle_link" link2="ag145_gripper_finger2_finger_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_knuckle_link" link2="ag145_gripper_finger2_finger_tip_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_knuckle_link" link2="ag145_gripper_finger2_inner_knuckle_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_knuckle_link" link2="ag145_gripper_finger2_knuckle_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger1_knuckle_link" link2="tool0" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger2_finger_link" link2="ag145_gripper_finger2_finger_tip_link" reason="Default"/>
+    <disable_collisions link1="ag145_gripper_finger2_finger_link" link2="ag145_gripper_finger2_inner_knuckle_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger2_finger_link" link2="ag145_gripper_finger2_knuckle_link" reason="Adjacent"/>
+    <disable_collisions link1="ag145_gripper_finger2_finger_link" link2="tool0" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger2_finger_tip_link" link2="ag145_gripper_finger2_inner_knuckle_link" reason="Adjacent"/>
+    <disable_collisions link1="ag145_gripper_finger2_finger_tip_link" link2="ag145_gripper_finger2_knuckle_link" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger2_finger_tip_link" link2="tool0" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger2_inner_knuckle_link" link2="ag145_gripper_finger2_knuckle_link" reason="Adjacent"/>
+    <disable_collisions link1="ag145_gripper_finger2_inner_knuckle_link" link2="tool0" reason="Never"/>
+    <disable_collisions link1="ag145_gripper_finger2_knuckle_link" link2="tool0" reason="Never"/>
+</robot>
