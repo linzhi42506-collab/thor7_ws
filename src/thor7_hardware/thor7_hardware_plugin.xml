@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<library path="thor7_system">
+  <class
+    name="thor7_hardware/Thor7SystemHardware"
+    type="thor7_hardware::Thor7SystemHardware"
+    base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Thor7 Diana SDK READ-ONLY ros2_control SystemInterface.
+      Exposes real joint position states only and exports no command interfaces.
+    </description>
+  </class>
+</library>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--
+    Thor7 真机第一阶段 ros2_control 配置
+
+    安全原则：
+      1. 只包含 joint1 ~ joint6
+      2. 只导出 position state_interface
+      3. 不包含任何 command_interface
+      4. 不包含 AG145
+      5. 使用 Thor7SystemHardware READ-ONLY 插件
+  -->
+
+  <xacro:macro
+    name="thor7v3_real_readonly_ros2_control"
+    params="name">
+
+    <ros2_control name="${name}" type="system">
+
+<hardware>
+  <plugin>thor7_hardware/Thor7SystemHardware</plugin>
+  <param name="robot_ip">192.168.10.75</param>
+  <param name="connection_retry_count">3</param>
+  <param name="connection_retry_delay_ms">1000</param>
+</hardware>
+
+
+      <joint name="joint1">
+        <state_interface name="position"/>
+      </joint>
+
+      <joint name="joint2">
+        <state_interface name="position"/>
+      </joint>
+
+      <joint name="joint3">
+        <state_interface name="position"/>
+      </joint>
+
+      <joint name="joint4">
+        <state_interface name="position"/>
+      </joint>
+
+      <joint name="joint5">
+        <state_interface name="position"/>
+      </joint>
+
+      <joint name="joint6">
+        <state_interface name="position"/>
+      </joint>
+
+    </ros2_control>
+
+  </xacro:macro>
+
+</robot>

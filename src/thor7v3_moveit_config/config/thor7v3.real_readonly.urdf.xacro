@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<robot
+  xmlns:xacro="http://www.ros.org/wiki/xacro"
+  name="thor7v3">
+
+  <!--
+    导入 Thor7 + AG145 的机器人几何模型。
+    注意：AG145 只作为机器人模型存在，
+    本阶段不加入 ros2_control 真机控制。
+  -->
+  <xacro:include
+    filename="$(find thor7v3_description)/urdf/thor7v3_robot.urdf" />
+
+  <!-- 导入专门的真机 READ-ONLY ros2_control -->
+  <xacro:include
+    filename="thor7v3.real_readonly.ros2_control.xacro" />
+
+  <!-- 实例化真机只读 Hardware Interface -->
+  <xacro:thor7v3_real_readonly_ros2_control
+    name="Thor7RealReadonly" />
+
+</robot>

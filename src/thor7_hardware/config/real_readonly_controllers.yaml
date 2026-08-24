@@ -1,0 +1,7 @@
+controller_manager:
+  ros__parameters:
+    # 第一阶段真机只读，先使用较低频率
+    update_rate: 10
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster

@@ -1,0 +1,20 @@
+# thor7_hardware 只读配置（第一阶段：真机只读接入验证）
+
+thor7_readonly_probe:
+  ros__parameters:
+    robot_ip: 192.168.10.75
+    publish_rate: 10.0
+    connection_retry_count: 3
+    connection_retry_delay_ms: 1000
+    publish_joint_states: true
+    joint_state_topic: /thor7/readback_joint_states
+
+ag145_readonly_probe:
+  ros__parameters:
+    serial_port: /dev/ttyUSB0
+    baud_rate: 115200
+    slave_id: 1
+    timeout_ms: 200
+    retries: 3
+    publish_rate: 10.0
+    joint_state_topic: /ag145/readback_joint_state
