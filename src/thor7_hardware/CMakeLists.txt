@@ -375,5 +375,21 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
+
+# ------------------------------------------------------------------
+# Thor7 servoJ 独立验证程序
+# ------------------------------------------------------------------
+add_executable(thor7_servoj_test
+  src/thor7_servoj_test.cpp)
+
+target_include_directories(thor7_servoj_test PRIVATE
+  ${DIANA_API_INCLUDE_DIR})
+
+target_link_libraries(thor7_servoj_test
+  thor7_hardware_readonly)
+
+install(TARGETS thor7_servoj_test
+  DESTINATION lib/${PROJECT_NAME})
+
 ament_package()
 

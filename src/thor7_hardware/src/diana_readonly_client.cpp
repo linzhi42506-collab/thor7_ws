@@ -89,7 +89,7 @@ bool DianaReadonlyClient::connect()
     // 5. 读取控制周期（只读）
     double interval = 0.0;
     if (getInterpolaterCycleInterval(interval, ip_.c_str()) == NO_ERROR_CODE) {
-      control_cycle_ms_ = interval;
+      control_cycle_ms_ = interval * 1000.0;
     }
 
     connected_.store(true);
