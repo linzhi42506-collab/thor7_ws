@@ -1,0 +1,5 @@
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+moveit_simple_controller_manager:
+  # PLAN-ONLY: no trajectory controller is exposed to MoveIt.
+  controller_names: []
