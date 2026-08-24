@@ -232,6 +232,58 @@ target_link_libraries(ag145_readonly_probe
   thor7_hardware_readonly
 )
 
+# Thor7 限制参数 probe (新增)
+# ------------------------------------------------------------------
+add_executable(
+  thor7_limits_probe
+  src/thor7_limits_probe.cpp
+)
+
+target_include_directories(
+  thor7_limits_probe
+  PRIVATE
+    ${DIANA_API_INCLUDE_DIR}
+)
+
+target_link_libraries(
+  thor7_limits_probe
+  thor7_hardware_readonly
+  ${DIANA_API_LIBRARY}
+)
+
+# ------------------------------------------------------------------
+# Thor7 第一次真实单关节运动测试
+# 默认 dry-run；只有显式 --execute + 人工输入 MOVE 才调用 moveJToTarget()
+# ------------------------------------------------------------------
+add_executable(
+  thor7_single_joint_test
+  src/thor7_single_joint_test.cpp
+)
+
+target_include_directories(
+  thor7_single_joint_test
+  PRIVATE
+    ${DIANA_API_INCLUDE_DIR}
+)
+
+target_link_libraries(
+  thor7_single_joint_test
+  ${DIANA_API_LIBRARY}
+)
+
+target_link_directories(
+  thor7_single_joint_test
+  PRIVATE
+    ${DIANA_API_ROOT}/bin
+)
+
+set_target_properties(
+  thor7_single_joint_test
+  PROPERTIES
+    BUILD_RPATH "${DIANA_API_ROOT}/lib;${DIANA_API_ROOT}/bin"
+    INSTALL_RPATH "${DIANA_API_ROOT}/lib;${DIANA_API_ROOT}/bin"
+)
+
 # ------------------------------------------------------------------
 # 单元测试
 #
@@ -297,8 +349,11 @@ install(
   TARGETS
     thor7_readonly_probe
     ag145_readonly_probe
+    thor7_limits_probe
+    thor7_single_joint_test
   DESTINATION lib/${PROJECT_NAME}
 )
+
 
 # public headers
 install(
