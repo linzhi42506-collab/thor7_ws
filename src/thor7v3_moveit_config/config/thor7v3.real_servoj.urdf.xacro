@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<robot
+  xmlns:xacro="http://www.ros.org/wiki/xacro"
+  name="thor7v3">
+
+  <xacro:include
+    filename="$(find thor7v3_description)/urdf/thor7v3_robot.urdf" />
+
+  <xacro:include
+    filename="thor7v3.real_servoj.ros2_control.xacro" />
+
+  <xacro:thor7v3_real_servoj_ros2_control
+    name="Thor7RealServoJ" />
+
+</robot>

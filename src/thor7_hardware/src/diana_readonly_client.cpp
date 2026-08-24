@@ -10,8 +10,11 @@
 namespace thor7_hardware {
 
 namespace {
-// 记录 SDK 断线/错误，供节点报告 ERROR，避免发布旧值冒充真实状态。
+// 当前工程明确只允许一个 Diana 真机客户端同时连接。
+// SDK callback 没有 user-data 参数，因此在此锁存异步健康状态。
 std::atomic<bool> g_sdk_alive{false};
+std::atomic<int> g_sdk_callback_error{0};
+std::atomic<int> g_sdk_callback_warning{0};
 }  // namespace
 
 DianaReadonlyClient::DianaReadonlyClient(std::string ip, int retry_count, int retry_delay_ms)
@@ -26,18 +29,17 @@ DianaReadonlyClient::~DianaReadonlyClient()
 
 void DianaReadonlyClient::sErrorCallback(int e, const char * str_ip)
 {
-  // 只保存原子状态，不在 SDK 回调线程做任何阻塞/IO/ROS 操作
+  // callback 线程只做 atomic store。
+  // 一旦出现异步 SDK error，故障锁存到下一次重新 connect()。
+  g_sdk_callback_error.store(e);
   g_sdk_alive.store(false);
-  // 通过全局指针把错误码记录到对应实例（单客户端场景足够安全）
-  // 这里仅记录到全局；实例侧用 lastSdkError() 主动查询 getLastError()。
   (void)str_ip;
-  (void)e;
 }
 
 void DianaReadonlyClient::sWarningCallback(int e, const char * str_ip)
 {
+  g_sdk_callback_warning.store(e);
   (void)str_ip;
-  (void)e;
 }
 
 void DianaReadonlyClient::sStateCallback(StrRobotStateInfo * info, const char * str_ip)
@@ -93,11 +95,44 @@ bool DianaReadonlyClient::connect()
     }
 
     connected_.store(true);
+    g_sdk_callback_error.store(0);
+    g_sdk_callback_warning.store(0);
     g_sdk_alive.store(true);
     last_sdk_error_.store(0);
+    last_sdk_warning_.store(0);
     return true;
   }
   return false;
+}
+
+bool DianaReadonlyClient::isConnected() const
+{
+  return
+    connected_.load() &&
+    g_sdk_alive.load() &&
+    g_sdk_callback_error.load() == 0;
+}
+
+int DianaReadonlyClient::lastSdkError() const
+{
+  const int callback_error = g_sdk_callback_error.load();
+
+  if (callback_error != 0) {
+    return callback_error;
+  }
+
+  return last_sdk_error_.load();
+}
+
+int DianaReadonlyClient::lastSdkWarning() const
+{
+  const int callback_warning = g_sdk_callback_warning.load();
+
+  if (callback_warning != 0) {
+    return callback_warning;
+  }
+
+  return last_sdk_warning_.load();
 }
 
 void DianaReadonlyClient::disconnect()

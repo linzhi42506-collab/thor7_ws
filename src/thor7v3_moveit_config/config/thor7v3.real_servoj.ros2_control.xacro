@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro
+    name="thor7v3_real_servoj_ros2_control"
+    params="name">
+
+    <ros2_control name="${name}" type="system">
+
+      <hardware>
+        <plugin>thor7_hardware/Thor7SystemHardware</plugin>
+
+        <param name="robot_ip">192.168.10.75</param>
+        <param name="connection_retry_count">3</param>
+        <param name="connection_retry_delay_ms">1000</param>
+
+        <!-- Explicitly selects the only mode allowed to call servoJ(). -->
+        <param name="control_mode">real_servoj</param>
+
+        <param name="startup_pose_tolerance_rad">0.0523598776</param>
+        <param name="max_command_delta_rad">0.0174532925</param>
+        <param name="max_safe_deviation_rad">0.0872664626</param>
+
+        <!-- Parameters already validated by independent real-hardware test. -->
+        <param name="servoj_time_sec">0.020</param>
+        <param name="servoj_lookahead_sec">0.100</param>
+        <param name="servoj_gain">300.0</param>
+
+        <!-- Internal stream start/stop guards. -->
+        <param name="servoj_command_epsilon_rad">0.000001</param>
+        <param name="servoj_stop_after_stable_sec">0.5</param>
+
+        <param name="safe_j1_rad">1.876752545</param>
+        <param name="safe_j2_rad">-0.048520153</param>
+        <param name="safe_j3_rad">1.863313509</param>
+        <param name="safe_j4_rad">0.008377580</param>
+        <param name="safe_j5_rad">1.436405974</param>
+        <param name="safe_j6_rad">-0.287979327</param>
+      </hardware>
+
+      <joint name="joint1">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+      </joint>
+
+      <joint name="joint2">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+      </joint>
+
+      <joint name="joint3">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+      </joint>
+
+      <joint name="joint4">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+      </joint>
+
+      <joint name="joint5">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+      </joint>
+
+      <joint name="joint6">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+      </joint>
+
+    </ros2_control>
+
+  </xacro:macro>
+
+</robot>

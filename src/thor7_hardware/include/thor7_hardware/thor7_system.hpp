@@ -14,6 +14,13 @@
 namespace thor7_hardware
 {
 
+enum class Thor7ControlMode
+{
+  READ_ONLY,
+  REAL_DRY_RUN,
+  REAL_SERVOJ
+};
+
 class Thor7SystemHardware : public hardware_interface::SystemInterface
 {
 public:
@@ -43,31 +50,33 @@ public:
 private:
   static constexpr std::size_t kJointCount = 6;
 
+  bool commandModeEnabled() const;
+  bool realServoJMode() const;
+  const char * controlModeName() const;
+
+  void stopServoStream(const char * reason);
+
+  Thor7ControlMode control_mode_{Thor7ControlMode::READ_ONLY};
+
   std::string robot_ip_{"192.168.10.75"};
   int retry_count_{3};
   int retry_delay_ms_{1000};
 
-  // false:
-  //   原来的严格 READ-ONLY 模式，没有 command interface。
-  //
-  // true:
-  //   暴露 position command interface，但 write() 只做安全检查和打印，
-  //   绝不向 Diana SDK 发送运动命令。
-  bool dry_run_command_mode_{false};
-
-  // 启动时真机必须接近指定安全姿态。
-  // 默认 ±3 degrees。
   double startup_pose_tolerance_rad_{0.0523598776};
-
-  // DRY-RUN 中单个命令相对真机当前实际位置最大允许偏差。
-  // 默认 1 degree。
   double max_command_delta_rad_{0.0174532925};
-
-  // DRY-RUN 中允许目标偏离基准安全姿态的最大范围。
-  // 默认 5 degrees。
   double max_safe_deviation_rad_{0.0872664626};
 
-  // 用户指定的 Thor7 基准安全姿态。
+  // 已经通过独立真机测试验证的第一版 servoJ 参数。
+  double servoj_time_sec_{0.020};
+  double servoj_lookahead_sec_{0.100};
+  double servoj_gain_{300.0};
+
+  // 用于判断 JTC 是否真正开始更新 command。
+  double servoj_command_epsilon_rad_{1.0e-6};
+
+  // 轨迹目标稳定后继续保持一段时间，再明确 stop()。
+  double servoj_stop_after_stable_sec_{0.5};
+
   std::array<double, kJointCount> safe_positions_{
     1.876752545,
    -0.048520153,
@@ -77,17 +86,17 @@ private:
    -0.287979327
   };
 
-  // 真机真实反馈。
   std::array<double, kJointCount> hw_positions_{};
-
-  // ros2_control 写入的目标。
-  // DRY-RUN 阶段只读取并验证，不发送给真机。
   std::array<double, kJointCount> hw_commands_{};
 
   std::array<double, kJointCount> last_logged_commands_{};
+  std::array<double, kJointCount> last_servoj_commands_{};
 
   bool startup_pose_ok_{false};
   bool have_logged_command_{false};
+
+  bool servo_stream_active_{false};
+  double servo_stable_time_sec_{0.0};
 
   std::unique_ptr<DianaReadonlyClient> client_;
 };

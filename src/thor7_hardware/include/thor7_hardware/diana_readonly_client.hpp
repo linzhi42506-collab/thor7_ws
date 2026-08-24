@@ -35,7 +35,10 @@ public:
   bool connect();
   void disconnect();
 
-  bool isConnected() const { return connected_.load(); }
+  // connected_ 表示 initSrvV2 已建立；
+  // isConnected() 还会检查 SDK 异步 error callback 的故障锁存。
+  bool isConnected() const;
+
   int jointCount() const { return joint_count_; }
   double controlCycleMs() const { return control_cycle_ms_; }
   const std::string & ip() const { return ip_; }
@@ -47,10 +50,10 @@ public:
   // 只读：机械臂状态（getRobotState 返回 char，0..8 见 README）
   char readRobotState();
 
-  // 最近一次 SDK 错误码（由 error 回调原子记录）
-  int lastSdkError() const { return last_sdk_error_.load(); }
-  // 最近一次 warning 回调错误码
-  int lastSdkWarning() const { return last_sdk_warning_.load(); }
+  // 最近一次 SDK 错误/警告。
+  // 同时包含同步 API 返回值和 SDK 异步 callback 的锁存值。
+  int lastSdkError() const;
+  int lastSdkWarning() const;
 
   // 用 formatError() 把 SDK 错误码转成可读文本
   std::string describeError(int e) const;
