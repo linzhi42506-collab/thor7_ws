@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="thor7v3" >
+
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find thor7v3_description)/urdf/common.gazebo.xacro" />
+
+  <!-- thor7v3 -->
+  <xacro:include filename="$(find thor7v3_description)/urdf/thor7v3.urdf.xacro" />
+
+  <!-- arm -->
+  <xacro:thor7v3_robot prefix="" transmission_hw_interface="$(arg transmission_hw_interface)" />
+
+  <!-- ==================================================================
+       AG-145 两指夹爪（大寰 DH Robotics）
+       - 安装到 link6（法兰面）。
+       - 安装位姿默认法兰直连（xyz/rpy 全 0）；若装了法兰适配器
+         （如 AG-105-145_标准法兰），按实测修改 gripper_mount_*。
+       - 夹爪开口方向：默认 x 轴方向（ag145_gripper_finger1_joint 为
+         主控关节，范围 [-0.65, 0] rad，其余关节全部 <mimic> 跟随）。
+       ================================================================== -->
+  <xacro:include filename="$(find dh_robotics_ag145_description)/urdf/dh_robotics_ag145_gripper.urdf.xacro" />
+
+  <!--
+       Six-axis F/T mechanical mounting chain.
+
+       Confirmed from manufacturer assembly STEP:
+         J6 flange -> AG145 mounting face = 38.700 mm
+
+       Confirmed from link6.STL:
+         link6 Z=0 is the distal flange face
+         link6 +Z points outward toward the tool.
+
+       NOTE:
+       This link is currently a kinematic mounting frame only.
+       Accurate sensor visual/collision/inertial data will be added
+       after the F/T sensor geometry/model is finalized.
+  -->
+  <link name="ft_sensor_mount_link" />
+
+  <joint name="ft_sensor_mount_joint" type="fixed">
+    <parent link="link6" />
+    <child link="ft_sensor_mount_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <xacro:property
+    name="gripper_mount_xyz"
+    value="0.0 0.0 0.0387" />
+
+  <!--
+       Keep the existing rotational mounting assumption for now.
+       Z-axis rotation still requires final CAD/frame confirmation
+       before first MoveIt Execute.
+  -->
+  <xacro:property
+    name="gripper_mount_rpy"
+    value="0.0 0.0 0.0" />
+
+  <xacro:dh_robotics_ag145_gripper
+    prefix="ag145_"
+    parent="ft_sensor_mount_link">
+    <origin xyz="${gripper_mount_xyz}" rpy="${gripper_mount_rpy}" />
+  </xacro:dh_robotics_ag145_gripper>
+
+  <!-- ==================================================================
+       tool0（当前规划工具坐标系）
+       - 相对 ag145_gripper_base_link 的默认位姿为 (0, 0, 0.20)。
+       - 因此当前 link6 -> tool0 的轴向距离约为
+         0.0387 + 0.20 = 0.2387 m。
+       - 0.20 m 目前仍是 TCP 建模值，最终应根据真实夹爪 TCP /
+         示教器工具坐标或标定结果确认。
+       - 必须与真机示教器/控制器里配置的 TCP（setFla2TcpRT / tool0）
+         一致，否则 MoveIt 规划位姿与真实 TCP 对不上。
+       - 装好后用 collect_data.py 标定流程实测替换 tool0_xyz/rpy。
+       ================================================================== -->
+  <xacro:property name="tool0_xyz" value="0.0 0.0 0.20" />
+  <xacro:property name="tool0_rpy" value="0.0 0.0 0.0" />
+
+  <link name="tool0" />
+  <joint name="tool0_joint" type="fixed">
+    <parent link="ag145_gripper_base_link" />
+    <child link="tool0" />
+    <origin xyz="${tool0_xyz}" rpy="${tool0_rpy}" />
+  </joint>
+
+  <link name="world" />
+
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link = "base_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </joint>
+
+</robot>
