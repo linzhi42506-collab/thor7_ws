@@ -33,11 +33,73 @@
          link6 +Z points outward toward the tool.
 
        NOTE:
-       This link is currently a kinematic mounting frame only.
-       Accurate sensor visual/collision/inertial data will be added
-       after the F/T sensor geometry/model is finalized.
+       Conservative F/T sensor collision geometry is now included
+       from the manufacturer total-assembly CAD envelope.
+       Accurate visual, inertial, and measurement-frame definitions
+       remain pending manufacturer sensor documentation.
   -->
-  <link name="ft_sensor_mount_link" />
+  <link name="ft_sensor_mount_link">
+
+    <!--
+      Conservative collision envelope derived from the manufacturer's
+      WF total-assembly STEP.
+
+      Coordinates are expressed directly in the link6 frame because
+      ft_sensor_mount_joint is identity.
+
+      The envelope covers:
+        - 4313S2E2-01 main F/T body
+        - 4313S2E2-02 mounting structure
+        - lateral connector / cable geometry
+
+      Approximately 1 mm safety margin is included.
+
+      IMPORTANT:
+      This is a collision envelope, not the F/T measurement frame.
+      Fx/Fy/Fz and Mx/My/Mz axes still require sensor documentation.
+    -->
+
+    <!-- Main F/T body + mounting structure -->
+    <collision name="ft_sensor_body_collision">
+      <origin
+        xyz="0.000000 -0.003000 0.018150"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.085000 0.091000 0.043100" />
+      </geometry>
+    </collision>
+
+    <!-- Connector / cable, proximal section -->
+    <collision name="ft_sensor_cable_near_collision">
+      <origin
+        xyz="-0.058000 -0.016250 0.015500"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.026000 0.028500 0.018000" />
+      </geometry>
+    </collision>
+
+    <!-- Connector / cable, middle section -->
+    <collision name="ft_sensor_cable_mid_collision">
+      <origin
+        xyz="-0.082500 0.006000 0.016350"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.027000 0.048000 0.019700" />
+      </geometry>
+    </collision>
+
+    <!-- Connector / cable, distal section -->
+    <collision name="ft_sensor_cable_far_collision">
+      <origin
+        xyz="-0.105000 0.009250 0.017750"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.022000 0.054500 0.014500" />
+      </geometry>
+    </collision>
+
+  </link>
 
   <joint name="ft_sensor_mount_joint" type="fixed">
     <parent link="link6" />
@@ -56,7 +118,7 @@
   -->
   <xacro:property
     name="gripper_mount_rpy"
-    value="0.0 0.0 0.0" />
+    value="0.0 0.0 -1.5707963267948966" />
 
   <xacro:dh_robotics_ag145_gripper
     prefix="ag145_"

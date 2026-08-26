@@ -1,0 +1,24 @@
+[WARN] [1787114009.331887469] [grasp_demo]: ===== GRASP DEMO DEBUG BUILD 2026-08-19 A =====
+[INFO] [1787114009.332820001] [grasp_demo]: TEST 1: creating MoveGroupInterface
+[INFO] [1787114009.559581967] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.226534 seconds
+[INFO] [1787114009.559625686] [moveit_robot_model.robot_model]: Loading robot model 'thor7v3'...
+[INFO] [1787114009.559632256] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[WARN] [1787114010.190927664] [moveit_ros.robot_model_loader]: No kinematics plugins defined. Fill and load kinematics.yaml!
+[INFO] [1787114011.322476130] [move_group_interface]: Ready to take commands for planning group thor7_arm.
+[INFO] [1787114011.322522457] [grasp_demo]: TEST 2: MoveGroupInterface created
+[INFO] [1787114011.322541835] [grasp_demo]: TEST 3: waiting for current state
+[INFO] [1787114011.324000763] [moveit_ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[INFO] [1787114011.326221948] [grasp_demo]: TEST 4: current state OK
+[INFO] [1787114011.326271269] [grasp_demo]: TEST 5: setJointValueTarget = true
+[INFO] [1787114011.326281500] [grasp_demo]: TEST 6: before constructMotionPlanRequest
+[INFO] [1787114011.326299428] [grasp_demo]: TEST 7: request constructed, group=thor7_arm goals=1
+[INFO] [1787114011.326305271] [grasp_demo]: TEST 8: BEFORE plan()
+[INFO] [1787114011.326579564] [move_group_interface]: MoveGroup action client/server ready
+[INFO] [1787114011.328737233] [move_group_interface]: Planning request accepted
+[INFO] [1787114011.357219595] [move_group_interface]: Planning request complete!
+[INFO] [1787114011.358171788] [move_group_interface]: time taken to generate plan: 0.017037 seconds
+[INFO] [1787114011.358228343] [grasp_demo]: TEST 9: AFTER plan(), code=1
+[INFO] [1787114011.358266902] [grasp_demo]: TEST 10: executing
+[INFO] [1787114011.359305128] [move_group_interface]: Execute request accepted
+[INFO] [1787114011.996815387] [move_group_interface]: Execute request success!
+[INFO] [1787114011.996953596] [grasp_demo]: TEST 11: execute result=1

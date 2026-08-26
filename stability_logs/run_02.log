@@ -1,0 +1,389 @@
+[INFO] [launch]: All log files can be found below /home/robo/.ros/log/2026-08-22-20-53-24-210599-rob-27320
+[INFO] [launch]: Default logging verbosity is set to INFO
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+[INFO] [robot_state_publisher-1]: process started with pid [27331]
+[INFO] [move_group-2]: process started with pid [27333]
+[INFO] [rviz2-3]: process started with pid [27335]
+[INFO] [ros2_control_node-4]: process started with pid [27337]
+[INFO] [spawner-5]: process started with pid [27339]
+[INFO] [spawner-6]: process started with pid [27341]
+[INFO] [spawner-7]: process started with pid [27343]
+[INFO] [gripper_state_publisher-8]: process started with pid [27345]
+[INFO] [spawn_test_object-9]: process started with pid [27347]
+[gripper_state_publisher-8] [37;1m2026-08-22 20:53:25.714 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7421: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[gripper_state_publisher-8] [37;1m2026-08-22 20:53:25.715 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7427: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[gripper_state_publisher-8] [37;1m2026-08-22 20:53:25.715 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7429: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[gripper_state_publisher-8] [37;1m2026-08-22 20:53:25.715 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7433: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[gripper_state_publisher-8] [37;1m2026-08-22 20:53:25.715 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7437: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[gripper_state_publisher-8] [37;1m2026-08-22 20:53:25.716 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7451: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[gripper_state_publisher-8] [37;1m2026-08-22 20:53:25.716 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7457: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:25.716 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7421: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[gripper_state_publisher-8] [37;1m2026-08-22 20:53:25.716 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7467: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[gripper_state_publisher-8] [37;1m2026-08-22 20:53:25.716 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7469: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:25.716 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7427: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:25.716 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7429: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[gripper_state_publisher-8] [37;1m2026-08-22 20:53:25.716 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7475: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[gripper_state_publisher-8] [37;1m2026-08-22 20:53:25.717 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7479: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[gripper_state_publisher-8] [37;1m2026-08-22 20:53:25.717 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7481: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:25.717 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7433: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:25.717 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7437: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[gripper_state_publisher-8] [37;1m2026-08-22 20:53:25.717 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7493: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:25.718 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7451: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:25.719 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7457: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:25.719 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7467: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:25.720 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7469: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:25.720 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7475: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:25.720 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7479: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:25.721 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7481: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:25.721 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7493: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [37;1m2026-08-22 20:53:25.723 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7421: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [37;1m2026-08-22 20:53:25.724 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7427: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [37;1m2026-08-22 20:53:25.725 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7429: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [37;1m2026-08-22 20:53:25.726 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7433: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [37;1m2026-08-22 20:53:25.729 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7437: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [37;1m2026-08-22 20:53:25.730 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7451: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [37;1m2026-08-22 20:53:25.731 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7457: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [37;1m2026-08-22 20:53:25.732 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7467: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [37;1m2026-08-22 20:53:25.732 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7469: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [37;1m2026-08-22 20:53:25.733 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7475: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [37;1m2026-08-22 20:53:25.733 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7479: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [37;1m2026-08-22 20:53:25.733 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7481: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [37;1m2026-08-22 20:53:25.734 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7493: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:25.736 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7421: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:25.736 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7427: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:25.737 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7429: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:25.737 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7433: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:25.737 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7437: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:25.738 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7451: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:25.739 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7457: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:25.739 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7467: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:25.739 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7469: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:25.740 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7475: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:25.740 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7479: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:25.740 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7481: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:25.741 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7493: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[gripper_state_publisher-8] [INFO] [1787403205.749691752] [gripper_state_publisher]: mimic: ag145_gripper_finger1_finger_joint -> ag145_gripper_finger1_joint * 0.5 + 0
+[gripper_state_publisher-8] [INFO] [1787403205.749897804] [gripper_state_publisher]: mimic: ag145_gripper_finger1_finger_tip_joint -> ag145_gripper_finger1_joint * 1.49 + 0
+[gripper_state_publisher-8] [INFO] [1787403205.749926678] [gripper_state_publisher]: mimic: ag145_gripper_finger1_inner_knuckle_joint -> ag145_gripper_finger1_joint * 1.49 + 0
+[gripper_state_publisher-8] [INFO] [1787403205.749946742] [gripper_state_publisher]: mimic: ag145_gripper_finger2_finger_joint -> ag145_gripper_finger1_joint * 0.5 + 0
+[gripper_state_publisher-8] [INFO] [1787403205.749965734] [gripper_state_publisher]: mimic: ag145_gripper_finger2_finger_tip_joint -> ag145_gripper_finger1_joint * 1.49 + 0
+[gripper_state_publisher-8] [INFO] [1787403205.749983190] [gripper_state_publisher]: mimic: ag145_gripper_finger2_inner_knuckle_joint -> ag145_gripper_finger1_joint * 1.49 + 0
+[gripper_state_publisher-8] [INFO] [1787403205.749999930] [gripper_state_publisher]: mimic: ag145_gripper_finger2_joint -> ag145_gripper_finger1_joint * 1 + 0
+[gripper_state_publisher-8] [INFO] [1787403205.750017054] [gripper_state_publisher]: Loaded 7 mimic joints
+[spawner-5] [37;1m2026-08-22 20:53:25.978 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7421: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-5] [37;1m2026-08-22 20:53:25.978 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7427: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-5] [37;1m2026-08-22 20:53:25.978 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7429: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-5] [37;1m2026-08-22 20:53:25.978 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7433: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-5] [37;1m2026-08-22 20:53:25.979 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7437: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:25.979 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7421: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-5] [37;1m2026-08-22 20:53:25.980 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7451: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:25.980 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7427: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-5] [37;1m2026-08-22 20:53:25.980 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7457: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:25.980 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7429: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:25.980 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7433: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:25.981 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7437: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-5] [37;1m2026-08-22 20:53:25.981 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7467: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-5] [37;1m2026-08-22 20:53:25.981 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7469: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-5] [37;1m2026-08-22 20:53:25.981 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7475: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-5] [37;1m2026-08-22 20:53:25.981 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7479: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:25.981 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7451: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-5] [37;1m2026-08-22 20:53:25.982 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7481: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:25.982 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7457: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-5] [37;1m2026-08-22 20:53:25.982 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7493: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:25.982 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7467: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:25.982 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7469: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:25.983 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7475: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:25.983 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7479: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:25.983 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7481: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:25.984 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7493: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:25.984 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7421: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:25.985 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7427: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:25.985 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7429: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:25.985 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7433: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:25.986 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7437: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:25.986 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7451: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:25.987 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7457: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:25.987 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7467: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:25.987 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7469: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:25.988 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7475: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:25.988 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7479: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:25.988 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7481: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:25.989 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7493: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawn_test_object-9] [37;1m2026-08-22 20:53:26.901 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7511: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:26.903 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7511: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[move_group-2] [37;1m2026-08-22 20:53:26.905 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7515: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-6] [37;1m2026-08-22 20:53:26.912 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7511: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[spawner-7] [37;1m2026-08-22 20:53:26.912 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7511: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[robot_state_publisher-1] [INFO] [1787403206.995776218] [robot_state_publisher]: got segment ag145_gripper_base_link
+[robot_state_publisher-1] [INFO] [1787403206.995912065] [robot_state_publisher]: got segment ag145_gripper_finger1_finger_link
+[robot_state_publisher-1] [INFO] [1787403206.995927319] [robot_state_publisher]: got segment ag145_gripper_finger1_finger_tip_link
+[robot_state_publisher-1] [INFO] [1787403206.995934430] [robot_state_publisher]: got segment ag145_gripper_finger1_inner_knuckle_link
+[robot_state_publisher-1] [INFO] [1787403206.995940946] [robot_state_publisher]: got segment ag145_gripper_finger1_knuckle_link
+[robot_state_publisher-1] [INFO] [1787403206.995947018] [robot_state_publisher]: got segment ag145_gripper_finger2_finger_link
+[robot_state_publisher-1] [INFO] [1787403206.995952551] [robot_state_publisher]: got segment ag145_gripper_finger2_finger_tip_link
+[robot_state_publisher-1] [INFO] [1787403206.995957629] [robot_state_publisher]: got segment ag145_gripper_finger2_inner_knuckle_link
+[robot_state_publisher-1] [INFO] [1787403206.995962999] [robot_state_publisher]: got segment ag145_gripper_finger2_knuckle_link
+[robot_state_publisher-1] [INFO] [1787403206.995968771] [robot_state_publisher]: got segment base_link
+[robot_state_publisher-1] [INFO] [1787403206.995974214] [robot_state_publisher]: got segment link1
+[robot_state_publisher-1] [INFO] [1787403206.995979973] [robot_state_publisher]: got segment link2
+[robot_state_publisher-1] [INFO] [1787403206.995986303] [robot_state_publisher]: got segment link3
+[robot_state_publisher-1] [INFO] [1787403206.995992255] [robot_state_publisher]: got segment link4
+[robot_state_publisher-1] [INFO] [1787403206.995997730] [robot_state_publisher]: got segment link5
+[robot_state_publisher-1] [INFO] [1787403206.996003214] [robot_state_publisher]: got segment link6
+[robot_state_publisher-1] [INFO] [1787403206.996008539] [robot_state_publisher]: got segment tool0
+[robot_state_publisher-1] [INFO] [1787403206.996014659] [robot_state_publisher]: got segment world
+[ros2_control_node-4] [WARN] [1787403207.024979698] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+[ros2_control_node-4] [INFO] [1787403207.025417366] [resource_manager]: Loading hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1787403207.026037171] [resource_manager]: Initialize hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1787403207.026108520] [resource_manager]: Successful initialization of hardware 'FakeSystem'
+[ros2_control_node-4] [INFO] [1787403207.026166070] [resource_manager]: 'configure' hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1787403207.026175548] [resource_manager]: Successful 'configure' of hardware 'FakeSystem'
+[ros2_control_node-4] [INFO] [1787403207.026184567] [resource_manager]: 'activate' hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1787403207.026190945] [resource_manager]: Successful 'activate' of hardware 'FakeSystem'
+[spawn_test_object-9] [INFO] [1787403207.054949726] [spawn_test_object]: Spawn 'test_box' at (0.35, 0.00, 0.10) size 0.05 in frame 'base_link'
+[ros2_control_node-4] [INFO] [1787403207.086845181] [controller_manager]: update rate is 100 Hz
+[ros2_control_node-4] [INFO] [1787403207.086901196] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+[ros2_control_node-4] [WARN] [1787403207.087034493] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+[rviz2-3] [INFO] [1787403207.412455138] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-3] [INFO] [1787403207.412545544] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+[rviz2-3] [INFO] [1787403207.432303122] [rviz2]: Stereo is NOT SUPPORTED
+[spawner-5] [INFO] [1787403209.169153200] [spawner_thor7_arm_controller]: waiting for service /controller_manager/list_controllers to become available...
+[spawner-6] [INFO] [1787403209.193655889] [spawner_gripper_controller]: waiting for service /controller_manager/list_controllers to become available...
+[spawner-7] [INFO] [1787403209.256662466] [spawner_joint_state_broadcaster]: waiting for service /controller_manager/list_controllers to become available...
+[rviz2-3] Warning: class_loader.impl: SEVERE WARNING!!! A namespace collision has occurred with plugin factory for class rviz_default_plugins::displays::InteractiveMarkerDisplay. New factory will OVERWRITE existing one. This situation occurs when libraries containing plugins are directly linked against an executable (the one running right now generating this message). Please separate plugins out into their own library or just don't link against the library and use either class_loader::ClassLoader/MultiLibraryClassLoader to open.
+[rviz2-3]          at line 253 in /opt/ros/humble/include/class_loader/class_loader/class_loader_core.hpp
+[move_group-2] [INFO] [1787403209.373950843] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.00988234 seconds
+[move_group-2] [INFO] [1787403209.374072132] [moveit_robot_model.robot_model]: Loading robot model 'thor7v3'...
+[move_group-2] [INFO] [1787403209.374089149] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[move_group-2] [INFO] [1787403211.637265968] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[move_group-2] [INFO] [1787403211.637454187] [moveit.ros_planning_interface.moveit_cpp]: Listening to 'joint_states' for joint states
+[move_group-2] [INFO] [1787403211.641011111] [moveit_ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[move_group-2] [INFO] [1787403211.644104767] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[move_group-2] [INFO] [1787403211.644125314] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting planning scene monitor
+[move_group-2] [INFO] [1787403211.646348432] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/planning_scene'
+[move_group-2] [INFO] [1787403211.646364987] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[move_group-2] [INFO] [1787403211.648506105] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'collision_object'
+[move_group-2] [INFO] [1787403211.651964953] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[move_group-2] [WARN] [1787403211.652349742] [moveit.ros.occupancy_map_monitor.middleware_handle]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[move_group-2] [ERROR] [1787403211.652364811] [moveit.ros.occupancy_map_monitor.middleware_handle]: No 3D sensor plugin(s) defined for octomap updates
+[rviz2-3] [ERROR] [1787403212.389798549] [moveit_ros_visualization.motion_planning_frame]: Action server: /recognize_objects not available
+[rviz2-3] [INFO] [1787403212.449845124] [moveit_ros_visualization.motion_planning_frame]: MoveGroup namespace changed: / -> . Reloading params.
+[rviz2-3] [INFO] [1787403212.738413429] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.205593 seconds
+[rviz2-3] [INFO] [1787403212.738450440] [moveit_robot_model.robot_model]: Loading robot model 'thor7v3'...
+[rviz2-3] [INFO] [1787403212.738460975] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[move_group-2] [INFO] [1787403213.966109249] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'chomp'
+[move_group-2] [INFO] [1787403213.969017428] [moveit.ros_planning.planning_pipeline]: Using planning interface 'CHOMP'
+[move_group-2] [INFO] [1787403213.971099614] [moveit_ros.add_time_optimal_parameterization]: Param 'chomp.path_tolerance' was not set. Using default value: 0.100000
+[move_group-2] [INFO] [1787403213.971115038] [moveit_ros.add_time_optimal_parameterization]: Param 'chomp.resample_dt' was not set. Using default value: 0.100000
+[move_group-2] [INFO] [1787403213.971119099] [moveit_ros.add_time_optimal_parameterization]: Param 'chomp.min_angle_change' was not set. Using default value: 0.001000
+[move_group-2] [INFO] [1787403213.971137029] [moveit_ros.fix_workspace_bounds]: Param 'chomp.default_workspace_bounds' was not set. Using default value: 10.000000
+[move_group-2] [INFO] [1787403213.971149104] [moveit_ros.fix_start_state_bounds]: Param 'chomp.start_state_max_bounds_error' was set to 0.100000
+[move_group-2] [INFO] [1787403213.971153422] [moveit_ros.fix_start_state_bounds]: Param 'chomp.start_state_max_dt' was not set. Using default value: 0.500000
+[move_group-2] [INFO] [1787403213.971163035] [moveit_ros.fix_start_state_collision]: Param 'chomp.start_state_max_dt' was not set. Using default value: 0.500000
+[move_group-2] [INFO] [1787403213.971166979] [moveit_ros.fix_start_state_collision]: Param 'chomp.jiggle_fraction' was set to 0.050000
+[move_group-2] [INFO] [1787403213.971171102] [moveit_ros.fix_start_state_collision]: Param 'chomp.max_sampling_attempts' was not set. Using default value: 100
+[move_group-2] [INFO] [1787403213.971180194] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Add Time Optimal Parameterization'
+[move_group-2] [INFO] [1787403213.971183373] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Resolve constraint frames to robot links'
+[move_group-2] [INFO] [1787403213.971185908] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Workspace Bounds'
+[move_group-2] [INFO] [1787403213.971188526] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Bounds'
+[move_group-2] [INFO] [1787403213.971190984] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State In Collision'
+[move_group-2] [INFO] [1787403213.971193424] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Path Constraints'
+[move_group-2] [INFO] [1787403213.977805666] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'pilz_industrial_motion_planner'
+[move_group-2] [INFO] [1787403213.979855382] [moveit.pilz_industrial_motion_planner.joint_limits_aggregator]: Reading limits from namespace robot_description_planning
+[move_group-2] [INFO] [1787403214.054132686] [moveit.pilz_industrial_motion_planner]: Available plugins: pilz_industrial_motion_planner/PlanningContextLoaderCIRC pilz_industrial_motion_planner/PlanningContextLoaderLIN pilz_industrial_motion_planner/PlanningContextLoaderPTP 
+[move_group-2] [INFO] [1787403214.054158243] [moveit.pilz_industrial_motion_planner]: About to load: pilz_industrial_motion_planner/PlanningContextLoaderCIRC
+[move_group-2] [INFO] [1787403214.055246284] [moveit.pilz_industrial_motion_planner]: Registered Algorithm [CIRC]
+[move_group-2] [INFO] [1787403214.055258805] [moveit.pilz_industrial_motion_planner]: About to load: pilz_industrial_motion_planner/PlanningContextLoaderLIN
+[move_group-2] [INFO] [1787403214.056059667] [moveit.pilz_industrial_motion_planner]: Registered Algorithm [LIN]
+[move_group-2] [INFO] [1787403214.056067878] [moveit.pilz_industrial_motion_planner]: About to load: pilz_industrial_motion_planner/PlanningContextLoaderPTP
+[move_group-2] [INFO] [1787403214.056770975] [moveit.pilz_industrial_motion_planner]: Registered Algorithm [PTP]
+[move_group-2] [INFO] [1787403214.056780824] [moveit.ros_planning.planning_pipeline]: Using planning interface 'Pilz Industrial Motion Planner'
+[move_group-2] [INFO] [1787403214.061275276] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'ompl'
+[move_group-2] [INFO] [1787403214.071692128] [moveit.ros_planning.planning_pipeline]: Using planning interface 'OMPL'
+[move_group-2] [INFO] [1787403214.073158691] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.path_tolerance' was not set. Using default value: 0.100000
+[move_group-2] [INFO] [1787403214.073170885] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.resample_dt' was not set. Using default value: 0.100000
+[move_group-2] [INFO] [1787403214.073195485] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.min_angle_change' was not set. Using default value: 0.001000
+[move_group-2] [INFO] [1787403214.073215798] [moveit_ros.fix_workspace_bounds]: Param 'ompl.default_workspace_bounds' was not set. Using default value: 10.000000
+[move_group-2] [INFO] [1787403214.073229640] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_bounds_error' was set to 0.100000
+[move_group-2] [INFO] [1787403214.073233845] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_dt' was not set. Using default value: 0.500000
+[move_group-2] [INFO] [1787403214.073244433] [moveit_ros.fix_start_state_collision]: Param 'ompl.start_state_max_dt' was not set. Using default value: 0.500000
+[move_group-2] [INFO] [1787403214.073248563] [moveit_ros.fix_start_state_collision]: Param 'ompl.jiggle_fraction' was set to 0.050000
+[move_group-2] [INFO] [1787403214.073251979] [moveit_ros.fix_start_state_collision]: Param 'ompl.max_sampling_attempts' was not set. Using default value: 100
+[move_group-2] [INFO] [1787403214.073261981] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Add Time Optimal Parameterization'
+[move_group-2] [INFO] [1787403214.073265293] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Resolve constraint frames to robot links'
+[move_group-2] [INFO] [1787403214.073267829] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Workspace Bounds'
+[move_group-2] [INFO] [1787403214.073270434] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Bounds'
+[move_group-2] [INFO] [1787403214.073272925] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State In Collision'
+[move_group-2] [INFO] [1787403214.073275334] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Path Constraints'
+[spawn_test_object-9] [WARN] [1787403214.322014455] [moveit_ros.planning_scene_interface.planning_scene_interface]: service '/get_planning_scene' not advertised yet. Continue waiting...
+[move_group-2] [INFO] [1787403214.552837030] [moveit.plugins.moveit_simple_controller_manager]: Added FollowJointTrajectory controller for thor7_arm_controller
+[move_group-2] [INFO] [1787403214.566854379] [moveit.plugins.moveit_simple_controller_manager]: Added FollowJointTrajectory controller for gripper_controller
+[move_group-2] [INFO] [1787403214.566989582] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787403214.567007453] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787403214.570383077] [moveit_ros.trajectory_execution_manager]: Trajectory execution is managing controllers
+[move_group-2] [INFO] [1787403214.570404195] [move_group.move_group]: MoveGroup debug mode is ON
+[move_group-2] [INFO] [1787403214.651593125] [move_group.move_group]: 
+[move_group-2] 
+[move_group-2] ********************************************************
+[move_group-2] * MoveGroup using: 
+[move_group-2] *     - ApplyPlanningSceneService
+[move_group-2] *     - ClearOctomapService
+[move_group-2] *     - CartesianPathService
+[move_group-2] *     - ExecuteTrajectoryAction
+[move_group-2] *     - GetPlanningSceneService
+[move_group-2] *     - KinematicsService
+[move_group-2] *     - MoveAction
+[move_group-2] *     - MotionPlanService
+[move_group-2] *     - QueryPlannersService
+[move_group-2] *     - StateValidationService
+[move_group-2] ********************************************************
+[move_group-2] 
+[move_group-2] [INFO] [1787403214.651641977] [moveit_move_group_capabilities_base.move_group_context]: MoveGroup context using planning plugin ompl_interface/OMPLPlanner
+[move_group-2] [INFO] [1787403214.651653205] [moveit_move_group_capabilities_base.move_group_context]: MoveGroup context initialization complete
+[move_group-2] [96mLoading 'move_group/ApplyPlanningSceneService'...
+[move_group-2] [0m[96mLoading 'move_group/ClearOctomapService'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupCartesianPathService'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupExecuteTrajectoryAction'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupGetPlanningSceneService'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupKinematicsService'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupMoveAction'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupPlanService'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupQueryPlannersService'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupStateValidationService'...
+[move_group-2] [0m[92m
+[move_group-2] You can start planning now!
+[move_group-2] 
+[rviz2-3] [INFO] [1787403215.038873765] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting planning scene monitor
+[rviz2-3] [INFO] [1787403215.042019185] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/monitored_planning_scene'
+[spawn_test_object-9] [INFO] [1787403215.154076699] [spawn_test_object]: Object 'test_box' is in the planning scene.
+[INFO] [spawn_test_object-9]: process has finished cleanly [pid 27347]
+[INFO] [grasp_demo-10]: process started with pid [27603]
+[rviz2-3] [INFO] [1787403215.770932516] [interactive_marker_display_103902321500048]: Connected on namespace: /rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic
+[rviz2-3] [INFO] [1787403215.787888393] [moveit_ros_robot_interaction.robot_interaction]: No active joints or end effectors found for group 'gripper'. Make sure that kinematics.yaml is loaded in this node's namespace.
+[rviz2-3] [INFO] [1787403215.788651575] [moveit_ros_robot_interaction.robot_interaction]: No active joints or end effectors found for group 'gripper'. Make sure that kinematics.yaml is loaded in this node's namespace.
+[grasp_demo-10] [37;1m2026-08-22 20:53:35.792 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7421: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[grasp_demo-10] [37;1m2026-08-22 20:53:35.793 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7427: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[grasp_demo-10] [37;1m2026-08-22 20:53:35.793 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7429: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[grasp_demo-10] [37;1m2026-08-22 20:53:35.793 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7433: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[grasp_demo-10] [37;1m2026-08-22 20:53:35.794 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7437: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[grasp_demo-10] [37;1m2026-08-22 20:53:35.795 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7451: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[grasp_demo-10] [37;1m2026-08-22 20:53:35.795 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7457: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[grasp_demo-10] [37;1m2026-08-22 20:53:35.796 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7467: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[grasp_demo-10] [37;1m2026-08-22 20:53:35.797 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7469: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[grasp_demo-10] [37;1m2026-08-22 20:53:35.797 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7475: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[grasp_demo-10] [37;1m2026-08-22 20:53:35.798 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7479: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[rviz2-3] [INFO] [1787403215.798612712] [moveit_ros_visualization.motion_planning_frame]: group gripper
+[rviz2-3] [INFO] [1787403215.798634800] [moveit_ros_visualization.motion_planning_frame]: Constructing new MoveGroup connection for group 'gripper' in namespace ''
+[grasp_demo-10] [37;1m2026-08-22 20:53:35.798 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7481: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[grasp_demo-10] [37;1m2026-08-22 20:53:35.801 [31;1m[[37;1mRTPS_TRANSPORT_SHM[31;1m Error] [37mFailed init_port fastrtps_port7509: open_and_lock_file failed[34;1m -> Function [36mopen_port_internal[m
+[grasp_demo-10] [WARN] [1787403215.825793692] [grasp_demo]: ===== GRASP DEMO (candidate evaluator) BUILD 2026-08-19 D =====
+[rviz2-3] [INFO] [1787403215.839495700] [interactive_marker_display_103902321500048]: Sending request for interactive markers
+[rviz2-3] [INFO] [1787403215.870991078] [interactive_marker_display_103902321500048]: Service response received for initialization
+[rviz2-3] [INFO] [1787403215.953783815] [move_group_interface]: Ready to take commands for planning group gripper.
+[rviz2-3] [INFO] [1787403215.954481710] [moveit_ros_visualization.motion_planning_frame]: group gripper
+[grasp_demo-10] [INFO] [1787403215.979567951] [grasp_demo]: Object detected.
+[grasp_demo-10] [INFO] [1787403215.985322913] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.00541708 seconds
+[grasp_demo-10] [INFO] [1787403215.985364249] [moveit_robot_model.robot_model]: Loading robot model 'thor7v3'...
+[grasp_demo-10] [INFO] [1787403215.985372799] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[grasp_demo-10] [INFO] [1787403216.603190113] [move_group_interface]: Ready to take commands for planning group thor7_arm.
+[grasp_demo-10] [INFO] [1787403216.638305844] [move_group_interface]: Ready to take commands for planning group gripper.
+[grasp_demo-10] [INFO] [1787403218.942979591] [move_group_interface]: MoveGroup action client/server ready
+[move_group-2] [INFO] [1787403218.944037678] [moveit_move_group_default_capabilities.move_action_capability]: Received request
+[move_group-2] [INFO] [1787403218.944463007] [moveit_move_group_default_capabilities.move_action_capability]: executing..
+[grasp_demo-10] [INFO] [1787403218.966863397] [move_group_interface]: Planning request accepted
+[spawner-5] [WARN] [1787403219.423591517] [spawner_thor7_arm_controller]: Failed getting a result from calling /controller_manager/list_controllers in 10.0. (Attempt 1 of 3.)
+[spawner-6] [WARN] [1787403219.445458158] [spawner_gripper_controller]: Failed getting a result from calling /controller_manager/list_controllers in 10.0. (Attempt 1 of 3.)
+[spawner-7] [WARN] [1787403219.508280345] [spawner_joint_state_broadcaster]: Failed getting a result from calling /controller_manager/list_controllers in 10.0. (Attempt 1 of 3.)
+[move_group-2] [INFO] [1787403219.944677926] [moveit_ros.current_state_monitor]: Didn't receive robot state (joint angles) with recent timestamp within 1.000000 seconds. Requested time 1787403218.944572, but latest received state has time 0.000000.
+[move_group-2] Check clock synchronization if your are running ROS across multiple machines!
+[move_group-2] [WARN] [1787403219.944747936] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Failed to fetch current robot state.
+[move_group-2] [INFO] [1787403219.944830426] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-2] [INFO] [1787403219.946326398] [moveit.ompl_planning.model_based_planning_context]: Planner configuration 'thor7_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-2] [WARN] [1787403219.961055019] [moveit_trajectory_processing.time_optimal_trajectory_generation]: Joint acceleration limits are not defined. Using the default 1 rad/s^2. You can define acceleration limits in the URDF or joint_limits.yaml.
+[move_group-2] [INFO] [1787403219.961761737] [moveit_move_group_default_capabilities.move_action_capability]: Motion plan was computed successfully.
+[grasp_demo-10] [INFO] [1787403219.962164946] [move_group_interface]: Planning request complete!
+[grasp_demo-10] [INFO] [1787403219.962707060] [move_group_interface]: time taken to generate plan: 0.0143728 seconds
+[move_group-2] [INFO] [1787403219.963300619] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Received goal request
+[move_group-2] [INFO] [1787403219.963421459] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution request received
+[move_group-2] [INFO] [1787403219.963461829] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[grasp_demo-10] [INFO] [1787403219.963443900] [move_group_interface]: Execute request accepted
+[move_group-2] [INFO] [1787403219.963494989] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787403219.963599501] [moveit_ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[move_group-2] [INFO] [1787403220.963734245] [moveit_ros.current_state_monitor]: Didn't receive robot state (joint angles) with recent timestamp within 1.000000 seconds. Requested time 1787403219.963616, but latest received state has time 0.000000.
+[move_group-2] Check clock synchronization if your are running ROS across multiple machines!
+[move_group-2] [WARN] [1787403220.963801948] [moveit_ros.trajectory_execution_manager]: Failed to validate trajectory: couldn't receive full current joint state within 1s
+[move_group-2] [INFO] [1787403220.963843911] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution completed: ABORTED
+[grasp_demo-10] [INFO] [1787403220.964211473] [move_group_interface]: Execute request aborted
+[grasp_demo-10] [ERROR] [1787403220.965237654] [move_group_interface]: MoveGroupInterface::execute() failed or timeout reached
+[grasp_demo-10] [INFO] [1787403221.365628797] [move_group_interface]: MoveGroup action client/server ready
+[move_group-2] [INFO] [1787403221.366064188] [moveit_move_group_default_capabilities.move_action_capability]: Received request
+[move_group-2] [INFO] [1787403221.366223304] [moveit_move_group_default_capabilities.move_action_capability]: executing..
+[grasp_demo-10] [INFO] [1787403221.366399084] [move_group_interface]: Planning request accepted
+[move_group-2] [INFO] [1787403222.366347600] [moveit_ros.current_state_monitor]: Didn't receive robot state (joint angles) with recent timestamp within 1.000000 seconds. Requested time 1787403221.366272, but latest received state has time 0.000000.
+[move_group-2] Check clock synchronization if your are running ROS across multiple machines!
+[move_group-2] [WARN] [1787403222.366414990] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Failed to fetch current robot state.
+[move_group-2] [INFO] [1787403222.366470244] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-2] [INFO] [1787403222.367284463] [moveit.ompl_planning.model_based_planning_context]: Planner configuration 'thor7_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-2] [INFO] [1787403222.382298082] [moveit_move_group_default_capabilities.move_action_capability]: Motion plan was computed successfully.
+[grasp_demo-10] [INFO] [1787403222.382651681] [move_group_interface]: Planning request complete!
+[grasp_demo-10] [INFO] [1787403222.383568226] [move_group_interface]: time taken to generate plan: 0.0144747 seconds
+[move_group-2] [INFO] [1787403222.383984609] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Received goal request
+[move_group-2] [INFO] [1787403222.384043724] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution request received
+[move_group-2] [INFO] [1787403222.384058227] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787403222.384071298] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787403222.384105359] [moveit_ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[grasp_demo-10] [INFO] [1787403222.384082546] [move_group_interface]: Execute request accepted
+[move_group-2] [INFO] [1787403223.384180483] [moveit_ros.current_state_monitor]: Didn't receive robot state (joint angles) with recent timestamp within 1.000000 seconds. Requested time 1787403222.384112, but latest received state has time 0.000000.
+[move_group-2] Check clock synchronization if your are running ROS across multiple machines!
+[move_group-2] [WARN] [1787403223.384217828] [moveit_ros.trajectory_execution_manager]: Failed to validate trajectory: couldn't receive full current joint state within 1s
+[move_group-2] [INFO] [1787403223.384236175] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution completed: ABORTED
+[grasp_demo-10] [INFO] [1787403223.384501188] [move_group_interface]: Execute request aborted
+[grasp_demo-10] [ERROR] [1787403223.385167105] [move_group_interface]: MoveGroupInterface::execute() failed or timeout reached
+[grasp_demo-10] [INFO] [1787403223.785517741] [move_group_interface]: MoveGroup action client/server ready
+[move_group-2] [INFO] [1787403223.785833919] [moveit_move_group_default_capabilities.move_action_capability]: Received request
+[move_group-2] [INFO] [1787403223.786099837] [moveit_move_group_default_capabilities.move_action_capability]: executing..
+[grasp_demo-10] [INFO] [1787403223.786216536] [move_group_interface]: Planning request accepted
+[move_group-2] [INFO] [1787403224.786241950] [moveit_ros.current_state_monitor]: Didn't receive robot state (joint angles) with recent timestamp within 1.000000 seconds. Requested time 1787403223.786152, but latest received state has time 0.000000.
+[move_group-2] Check clock synchronization if your are running ROS across multiple machines!
+[move_group-2] [WARN] [1787403224.786312886] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Failed to fetch current robot state.
+[move_group-2] [INFO] [1787403224.786363724] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-2] [INFO] [1787403224.787023815] [moveit.ompl_planning.model_based_planning_context]: Planner configuration 'thor7_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-2] [INFO] [1787403224.804606657] [moveit_move_group_default_capabilities.move_action_capability]: Motion plan was computed successfully.
+[grasp_demo-10] [INFO] [1787403224.805117070] [move_group_interface]: Planning request complete!
+[grasp_demo-10] [INFO] [1787403224.805814809] [move_group_interface]: time taken to generate plan: 0.0166153 seconds
+[move_group-2] [INFO] [1787403224.806293772] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Received goal request
+[move_group-2] [INFO] [1787403224.806354189] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution request received
+[move_group-2] [INFO] [1787403224.806370559] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787403224.806382418] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787403224.806421386] [moveit_ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[grasp_demo-10] [INFO] [1787403224.806406553] [move_group_interface]: Execute request accepted
+[move_group-2] [INFO] [1787403225.806502836] [moveit_ros.current_state_monitor]: Didn't receive robot state (joint angles) with recent timestamp within 1.000000 seconds. Requested time 1787403224.806428, but latest received state has time 0.000000.
+[move_group-2] Check clock synchronization if your are running ROS across multiple machines!
+[move_group-2] [WARN] [1787403225.806553592] [moveit_ros.trajectory_execution_manager]: Failed to validate trajectory: couldn't receive full current joint state within 1s
+[move_group-2] [INFO] [1787403225.806579499] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution completed: ABORTED
+[grasp_demo-10] [INFO] [1787403225.806840185] [move_group_interface]: Execute request aborted
+[grasp_demo-10] [ERROR] [1787403225.806885611] [move_group_interface]: MoveGroupInterface::execute() failed or timeout reached
+[grasp_demo-10] [ERROR] [1787403226.207004889] [grasp_demo]: planAndExecute gave up: move to home
+[ERROR] [grasp_demo-10]: process has died [pid 27603, exit code 1, cmd '/home/robo/thor7_ws/install/thor7_sim/lib/thor7_sim/grasp_demo --ros-args -r __node:=grasp_demo --params-file /tmp/launch_params_m4_r1ahj --params-file /tmp/launch_params__7aph97p --params-file /tmp/launch_params_prai_sg2 --params-file /tmp/launch_params_2k_e4cj3 --params-file /home/robo/thor7_ws/install/thor7_sim/share/thor7_sim/config/sim.yaml'].
+[spawner-5] [WARN] [1787403229.424683817] [spawner_thor7_arm_controller]: Failed getting a result from calling /controller_manager/list_controllers in 10.0. (Attempt 2 of 3.)
+[spawner-6] [WARN] [1787403229.446602521] [spawner_gripper_controller]: Failed getting a result from calling /controller_manager/list_controllers in 10.0. (Attempt 2 of 3.)
+[spawner-7] [WARN] [1787403229.509398671] [spawner_joint_state_broadcaster]: Failed getting a result from calling /controller_manager/list_controllers in 10.0. (Attempt 2 of 3.)

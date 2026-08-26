@@ -1,0 +1,156 @@
+[INFO] [1787239077.752723037] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.00510803 seconds
+[INFO] [1787239077.752804692] [moveit_robot_model.robot_model]: Loading robot model 'thor7v3'...
+[INFO] [1787239077.752813001] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[INFO] [1787239079.925524374] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[INFO] [1787239079.925689771] [moveit.ros_planning_interface.moveit_cpp]: Listening to 'joint_states' for joint states
+[INFO] [1787239079.926493594] [moveit_ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[INFO] [1787239079.926825365] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[INFO] [1787239079.926845359] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting planning scene monitor
+[INFO] [1787239079.927016952] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/planning_scene'
+[INFO] [1787239079.927026140] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[INFO] [1787239079.927188650] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'collision_object'
+[INFO] [1787239079.927338436] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[WARN] [1787239079.927671128] [moveit.ros.occupancy_map_monitor.middleware_handle]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[ERROR] [1787239079.927681201] [moveit.ros.occupancy_map_monitor.middleware_handle]: No 3D sensor plugin(s) defined for octomap updates
+[INFO] [1787239082.178248821] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'chomp'
+[INFO] [1787239082.183156512] [moveit.ros_planning.planning_pipeline]: Using planning interface 'CHOMP'
+[INFO] [1787239082.185632713] [moveit_ros.add_time_optimal_parameterization]: Param 'chomp.path_tolerance' was not set. Using default value: 0.100000
+[INFO] [1787239082.185646344] [moveit_ros.add_time_optimal_parameterization]: Param 'chomp.resample_dt' was not set. Using default value: 0.100000
+[INFO] [1787239082.185650373] [moveit_ros.add_time_optimal_parameterization]: Param 'chomp.min_angle_change' was not set. Using default value: 0.001000
+[INFO] [1787239082.185668959] [moveit_ros.fix_workspace_bounds]: Param 'chomp.default_workspace_bounds' was not set. Using default value: 10.000000
+[INFO] [1787239082.185681158] [moveit_ros.fix_start_state_bounds]: Param 'chomp.start_state_max_bounds_error' was set to 0.100000
+[INFO] [1787239082.185685461] [moveit_ros.fix_start_state_bounds]: Param 'chomp.start_state_max_dt' was not set. Using default value: 0.500000
+[INFO] [1787239082.185694915] [moveit_ros.fix_start_state_collision]: Param 'chomp.start_state_max_dt' was not set. Using default value: 0.500000
+[INFO] [1787239082.185698678] [moveit_ros.fix_start_state_collision]: Param 'chomp.jiggle_fraction' was set to 0.050000
+[INFO] [1787239082.185702662] [moveit_ros.fix_start_state_collision]: Param 'chomp.max_sampling_attempts' was not set. Using default value: 100
+[INFO] [1787239082.185711844] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Add Time Optimal Parameterization'
+[INFO] [1787239082.185715069] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Resolve constraint frames to robot links'
+[INFO] [1787239082.185717646] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Workspace Bounds'
+[INFO] [1787239082.185720217] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Bounds'
+[INFO] [1787239082.185722860] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State In Collision'
+[INFO] [1787239082.185725500] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Path Constraints'
+[INFO] [1787239082.187399547] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'pilz_industrial_motion_planner'
+[INFO] [1787239082.190744187] [moveit.pilz_industrial_motion_planner.joint_limits_aggregator]: Reading limits from namespace robot_description_planning
+[INFO] [1787239082.193973785] [moveit.pilz_industrial_motion_planner]: Available plugins: pilz_industrial_motion_planner/PlanningContextLoaderCIRC pilz_industrial_motion_planner/PlanningContextLoaderLIN pilz_industrial_motion_planner/PlanningContextLoaderPTP 
+[INFO] [1787239082.193989427] [moveit.pilz_industrial_motion_planner]: About to load: pilz_industrial_motion_planner/PlanningContextLoaderCIRC
+[INFO] [1787239082.196177843] [moveit.pilz_industrial_motion_planner]: Registered Algorithm [CIRC]
+[INFO] [1787239082.196192797] [moveit.pilz_industrial_motion_planner]: About to load: pilz_industrial_motion_planner/PlanningContextLoaderLIN
+[INFO] [1787239082.197320732] [moveit.pilz_industrial_motion_planner]: Registered Algorithm [LIN]
+[INFO] [1787239082.197331702] [moveit.pilz_industrial_motion_planner]: About to load: pilz_industrial_motion_planner/PlanningContextLoaderPTP
+[INFO] [1787239082.198497344] [moveit.pilz_industrial_motion_planner]: Registered Algorithm [PTP]
+[INFO] [1787239082.198508192] [moveit.ros_planning.planning_pipeline]: Using planning interface 'Pilz Industrial Motion Planner'
+[INFO] [1787239082.198974362] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'ompl'
+[INFO] [1787239082.214230455] [moveit.ros_planning.planning_pipeline]: Using planning interface 'OMPL'
+[INFO] [1787239082.215531946] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.path_tolerance' was not set. Using default value: 0.100000
+[INFO] [1787239082.215541950] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.resample_dt' was not set. Using default value: 0.100000
+[INFO] [1787239082.215565093] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.min_angle_change' was not set. Using default value: 0.001000
+[INFO] [1787239082.215586050] [moveit_ros.fix_workspace_bounds]: Param 'ompl.default_workspace_bounds' was not set. Using default value: 10.000000
+[INFO] [1787239082.215600055] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_bounds_error' was set to 0.100000
+[INFO] [1787239082.215604151] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_dt' was not set. Using default value: 0.500000
+[INFO] [1787239082.215614446] [moveit_ros.fix_start_state_collision]: Param 'ompl.start_state_max_dt' was not set. Using default value: 0.500000
+[INFO] [1787239082.215618176] [moveit_ros.fix_start_state_collision]: Param 'ompl.jiggle_fraction' was set to 0.050000
+[INFO] [1787239082.215621574] [moveit_ros.fix_start_state_collision]: Param 'ompl.max_sampling_attempts' was not set. Using default value: 100
+[INFO] [1787239082.215631052] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Add Time Optimal Parameterization'
+[INFO] [1787239082.215634023] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Resolve constraint frames to robot links'
+[INFO] [1787239082.215636541] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Workspace Bounds'
+[INFO] [1787239082.215639071] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Bounds'
+[INFO] [1787239082.215641505] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State In Collision'
+[INFO] [1787239082.215643883] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Path Constraints'
+[INFO] [1787239082.237358111] [moveit.plugins.moveit_simple_controller_manager]: Added FollowJointTrajectory controller for thor7_arm_controller
+[INFO] [1787239082.238272482] [moveit.plugins.moveit_simple_controller_manager]: Added FollowJointTrajectory controller for gripper_controller
+[INFO] [1787239082.238393275] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1787239082.238410375] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1787239082.238656550] [moveit_ros.trajectory_execution_manager]: Trajectory execution is managing controllers
+[INFO] [1787239082.238669645] [move_group.move_group]: MoveGroup debug mode is ON
+[INFO] [1787239082.249526812] [move_group.move_group]: 
+
+********************************************************
+* MoveGroup using: 
+*     - ApplyPlanningSceneService
+*     - ClearOctomapService
+*     - CartesianPathService
+*     - ExecuteTrajectoryAction
+*     - GetPlanningSceneService
+*     - KinematicsService
+*     - MoveAction
+*     - MotionPlanService
+*     - QueryPlannersService
+*     - StateValidationService
+********************************************************
+
+[INFO] [1787239082.249563078] [moveit_move_group_capabilities_base.move_group_context]: MoveGroup context using planning plugin ompl_interface/OMPLPlanner
+[INFO] [1787239082.249571205] [moveit_move_group_capabilities_base.move_group_context]: MoveGroup context initialization complete
+[INFO] [1787239088.872876743] [moveit_move_group_default_capabilities.move_action_capability]: Received request
+[INFO] [1787239088.873188909] [moveit_move_group_default_capabilities.move_action_capability]: executing..
+[INFO] [1787239088.873661177] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1787239088.876807749] [moveit.ompl_planning.model_based_planning_context]: Planner configuration 'thor7_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[WARN] [1787239088.893266542] [moveit_trajectory_processing.time_optimal_trajectory_generation]: Joint acceleration limits are not defined. Using the default 1 rad/s^2. You can define acceleration limits in the URDF or joint_limits.yaml.
+[INFO] [1787239088.893866210] [moveit_move_group_default_capabilities.move_action_capability]: Motion plan was computed successfully.
+[INFO] [1787239088.895138361] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Received goal request
+[INFO] [1787239088.895266446] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution request received
+[INFO] [1787239088.895307321] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1787239088.895339044] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1787239088.895451201] [moveit_ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[INFO] [1787239088.903925783] [moveit_ros.trajectory_execution_manager]: Starting trajectory execution ...
+[INFO] [1787239088.903995141] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1787239088.904011112] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[INFO] [1787239088.904114935] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to thor7_arm_controller
+[INFO] [1787239088.904863403] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: thor7_arm_controller started execution
+[INFO] [1787239088.904885281] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[INFO] [1787239089.505177874] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'thor7_arm_controller' successfully finished
+[INFO] [1787239089.533662363] [moveit_ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[INFO] [1787239089.533737533] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution completed: SUCCEEDED
+[INFO] [1787239089.535525970] [moveit_move_group_default_capabilities.move_action_capability]: Received request
+[INFO] [1787239089.535649937] [moveit_move_group_default_capabilities.move_action_capability]: executing..
+[INFO] [1787239089.543652053] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1787239089.544358469] [moveit.ompl_planning.model_based_planning_context]: Planner configuration 'thor7_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1787239089.559588393] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint1', actual value: -3.330680, desired value: -3.330766, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239089.559619079] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint2', actual value: -2.179377, desired value: -2.179375, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239089.559624246] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint3', actual value: 2.179388, desired value: 2.179375, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239089.559646902] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint4', actual value: -1.004261, desired value: -1.004307, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239089.559651027] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint5', actual value: 3.141572, desired value: 3.141593, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239089.559654735] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint6', actual value: -1.193556, desired value: -1.193480, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239089.559667576] [moveit_collision_detection_fcl.collision_common]: Found a contact between 'test_box' (type 'Object') and 'link2' (type 'Robot link'), which constitutes a collision. Contact information is not stored.
+[INFO] [1787239089.559673655] [moveit_collision_detection_fcl.collision_common]: Collision checking is considered complete (collision was found and 0 contacts are stored)
+[ERROR] [1787239089.564921030] [ompl]: ./src/ompl/geometric/planners/rrt/src/RRTConnect.cpp:265 - thor7_arm/thor7_arm: Unable to sample any valid states for goal tree
+[ERROR] [1787239089.565044337] [ompl]: ./src/ompl/geometric/planners/rrt/src/RRTConnect.cpp:265 - thor7_arm/thor7_arm: Unable to sample any valid states for goal tree
+[ERROR] [1787239089.565139677] [ompl]: ./src/ompl/geometric/planners/rrt/src/RRTConnect.cpp:265 - thor7_arm/thor7_arm: Unable to sample any valid states for goal tree
+[WARN] [1787239089.565256841] [ompl]: ./src/ompl/tools/multiplan/src/ParallelPlan.cpp:138 - ParallelPlan::solve(): Unable to find solution by any of the threads in 0.020710 seconds
+[INFO] [1787239089.565285416] [moveit.ompl_planning.model_based_planning_context]: Unable to solve the planning problem
+[INFO] [1787239089.565313197] [moveit_move_group_default_capabilities.move_action_capability]: Catastrophic failure
+[INFO] [1787239089.966740061] [moveit_move_group_default_capabilities.move_action_capability]: Received request
+[INFO] [1787239089.966825312] [moveit_move_group_default_capabilities.move_action_capability]: executing..
+[INFO] [1787239089.973729997] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1787239089.974171360] [moveit.ompl_planning.model_based_planning_context]: Planner configuration 'thor7_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1787239089.991116748] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint1', actual value: -3.330742, desired value: -3.330766, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239089.991153103] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint2', actual value: -2.179347, desired value: -2.179375, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239089.991157660] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint3', actual value: 2.179443, desired value: 2.179375, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239089.991161301] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint4', actual value: -1.004208, desired value: -1.004307, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239089.991164900] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint5', actual value: 3.141607, desired value: 3.141593, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239089.991168500] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint6', actual value: -1.193496, desired value: -1.193480, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239089.991179116] [moveit_collision_detection_fcl.collision_common]: Found a contact between 'test_box' (type 'Object') and 'link2' (type 'Robot link'), which constitutes a collision. Contact information is not stored.
+[INFO] [1787239089.991185111] [moveit_collision_detection_fcl.collision_common]: Collision checking is considered complete (collision was found and 0 contacts are stored)
+[ERROR] [1787239090.004849116] [ompl]: ./src/ompl/geometric/planners/rrt/src/RRTConnect.cpp:265 - thor7_arm/thor7_arm: Unable to sample any valid states for goal tree
+[ERROR] [1787239090.004980752] [ompl]: ./src/ompl/geometric/planners/rrt/src/RRTConnect.cpp:265 - thor7_arm/thor7_arm: Unable to sample any valid states for goal tree
+[ERROR] [1787239090.005021570] [ompl]: ./src/ompl/geometric/planners/rrt/src/RRTConnect.cpp:265 - thor7_arm/thor7_arm: Unable to sample any valid states for goal tree
+[WARN] [1787239090.005117329] [ompl]: ./src/ompl/tools/multiplan/src/ParallelPlan.cpp:138 - ParallelPlan::solve(): Unable to find solution by any of the threads in 0.030808 seconds
+[INFO] [1787239090.005142561] [moveit.ompl_planning.model_based_planning_context]: Unable to solve the planning problem
+[INFO] [1787239090.005164030] [moveit_move_group_default_capabilities.move_action_capability]: Catastrophic failure
+[INFO] [1787239090.406472235] [moveit_move_group_default_capabilities.move_action_capability]: Received request
+[INFO] [1787239090.406556959] [moveit_move_group_default_capabilities.move_action_capability]: executing..
+[INFO] [1787239090.413891062] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1787239090.414270764] [moveit.ompl_planning.model_based_planning_context]: Planner configuration 'thor7_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1787239090.420635534] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint1', actual value: -3.330866, desired value: -3.330766, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239090.420665170] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint2', actual value: -2.179459, desired value: -2.179375, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239090.420670508] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint3', actual value: 2.179344, desired value: 2.179375, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239090.420674508] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint4', actual value: -1.004352, desired value: -1.004307, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239090.420678199] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint5', actual value: 3.141574, desired value: 3.141593, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239090.420681885] [moveit_kinematic_constraints.kinematic_constraints]: Constraint satisfied:: Joint name: 'joint6', actual value: -1.193492, desired value: -1.193480, tolerance_above: 0.000100, tolerance_below: 0.000100
+[INFO] [1787239090.420693187] [moveit_collision_detection_fcl.collision_common]: Found a contact between 'test_box' (type 'Object') and 'link2' (type 'Robot link'), which constitutes a collision. Contact information is not stored.
+[INFO] [1787239090.420703068] [moveit_collision_detection_fcl.collision_common]: Collision checking is considered complete (collision was found and 0 contacts are stored)
+[ERROR] [1787239090.424664830] [ompl]: ./src/ompl/geometric/planners/rrt/src/RRTConnect.cpp:265 - thor7_arm/thor7_arm: Unable to sample any valid states for goal tree
+[ERROR] [1787239090.424742425] [ompl]: ./src/ompl/geometric/planners/rrt/src/RRTConnect.cpp:265 - thor7_arm/thor7_arm: Unable to sample any valid states for goal tree
+[ERROR] [1787239090.424804547] [ompl]: ./src/ompl/geometric/planners/rrt/src/RRTConnect.cpp:265 - thor7_arm/thor7_arm: Unable to sample any valid states for goal tree
+[WARN] [1787239090.424954145] [ompl]: ./src/ompl/tools/multiplan/src/ParallelPlan.cpp:138 - ParallelPlan::solve(): Unable to find solution by any of the threads in 0.010545 seconds
+[INFO] [1787239090.424977735] [moveit.ompl_planning.model_based_planning_context]: Unable to solve the planning problem
+[INFO] [1787239090.424994085] [moveit_move_group_default_capabilities.move_action_capability]: Catastrophic failure

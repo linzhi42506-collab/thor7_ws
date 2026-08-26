@@ -1,0 +1,37 @@
+[WARN] [1787115223.633668040] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+[INFO] [1787115223.634169016] [resource_manager]: Loading hardware 'FakeSystem' 
+[INFO] [1787115223.652090308] [resource_manager]: Initialize hardware 'FakeSystem' 
+[INFO] [1787115223.652201404] [resource_manager]: Successful initialization of hardware 'FakeSystem'
+[INFO] [1787115223.659874905] [resource_manager]: 'configure' hardware 'FakeSystem' 
+[INFO] [1787115223.675598331] [resource_manager]: Successful 'configure' of hardware 'FakeSystem'
+[INFO] [1787115223.675626798] [resource_manager]: 'activate' hardware 'FakeSystem' 
+[INFO] [1787115223.675635648] [resource_manager]: Successful 'activate' of hardware 'FakeSystem'
+[INFO] [1787115223.975372944] [controller_manager]: update rate is 100 Hz
+[INFO] [1787115223.975674343] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+[WARN] [1787115223.976523769] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+[INFO] [1787115225.069873325] [controller_manager]: Loading controller 'thor7_arm_controller'
+[WARN] [1787115225.444388170] [thor7_arm_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+[INFO] [1787115225.900327089] [controller_manager]: Configuring controller 'thor7_arm_controller'
+[INFO] [1787115225.900746178] [thor7_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[INFO] [1787115225.900797305] [thor7_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[INFO] [1787115225.900844174] [thor7_arm_controller]: Using 'splines' interpolation method.
+[INFO] [1787115225.910044496] [thor7_arm_controller]: Controller state will be published at 50.00 Hz.
+[INFO] [1787115225.920391740] [thor7_arm_controller]: Action status changes will be monitored at 20.00 Hz.
+[INFO] [1787115225.986962571] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[INFO] [1787115226.094199887] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+[INFO] [1787115226.094332726] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[INFO] [1787115226.374765759] [controller_manager]: Loading controller 'gripper_controller'
+[WARN] [1787115226.463202799] [gripper_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+[INFO] [1787115226.475115775] [controller_manager]: Configuring controller 'gripper_controller'
+[INFO] [1787115226.475325242] [gripper_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[INFO] [1787115226.475369919] [gripper_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[INFO] [1787115226.475394572] [gripper_controller]: Using 'splines' interpolation method.
+[INFO] [1787115226.481046542] [gripper_controller]: Controller state will be published at 50.00 Hz.
+[INFO] [1787115226.491892633] [gripper_controller]: Goals with partial set of joints are allowed
+[INFO] [1787115226.491949984] [gripper_controller]: Action status changes will be monitored at 20.00 Hz.
+[INFO] [1787115239.260886163] [thor7_arm_controller]: Received new action goal
+[INFO] [1787115239.260984060] [thor7_arm_controller]: Accepted new action goal
+[INFO] [1787115239.856699475] [thor7_arm_controller]: Goal reached, success!
+[INFO] [1787115239.958464507] [thor7_arm_controller]: Received new action goal
+[INFO] [1787115239.958520707] [thor7_arm_controller]: Accepted new action goal
+[INFO] [1787115248.346702154] [thor7_arm_controller]: Goal reached, success!

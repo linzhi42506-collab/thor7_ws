@@ -1,0 +1,487 @@
+[INFO] [launch]: All log files can be found below /home/robo/.ros/log/2026-08-22-10-48-27-015129-rob-6575
+[INFO] [launch]: Default logging verbosity is set to INFO
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+warning: Using load_yaml() directly is deprecated. Use xacro.load_yaml() instead.
+[INFO] [robot_state_publisher-1]: process started with pid [6577]
+[INFO] [move_group-2]: process started with pid [6579]
+[INFO] [rviz2-3]: process started with pid [6581]
+[INFO] [ros2_control_node-4]: process started with pid [6583]
+[INFO] [spawner-5]: process started with pid [6585]
+[INFO] [spawner-6]: process started with pid [6587]
+[INFO] [spawner-7]: process started with pid [6589]
+[INFO] [gripper_state_publisher-8]: process started with pid [6591]
+[INFO] [spawn_test_object-9]: process started with pid [6593]
+[robot_state_publisher-1] [INFO] [1787366908.503249834] [robot_state_publisher]: got segment ag145_gripper_base_link
+[robot_state_publisher-1] [INFO] [1787366908.503349226] [robot_state_publisher]: got segment ag145_gripper_finger1_finger_link
+[robot_state_publisher-1] [INFO] [1787366908.503356342] [robot_state_publisher]: got segment ag145_gripper_finger1_finger_tip_link
+[robot_state_publisher-1] [INFO] [1787366908.503360785] [robot_state_publisher]: got segment ag145_gripper_finger1_inner_knuckle_link
+[robot_state_publisher-1] [INFO] [1787366908.503364526] [robot_state_publisher]: got segment ag145_gripper_finger1_knuckle_link
+[robot_state_publisher-1] [INFO] [1787366908.503368189] [robot_state_publisher]: got segment ag145_gripper_finger2_finger_link
+[robot_state_publisher-1] [INFO] [1787366908.503371868] [robot_state_publisher]: got segment ag145_gripper_finger2_finger_tip_link
+[robot_state_publisher-1] [INFO] [1787366908.503375506] [robot_state_publisher]: got segment ag145_gripper_finger2_inner_knuckle_link
+[robot_state_publisher-1] [INFO] [1787366908.503378965] [robot_state_publisher]: got segment ag145_gripper_finger2_knuckle_link
+[robot_state_publisher-1] [INFO] [1787366908.503382448] [robot_state_publisher]: got segment base_link
+[robot_state_publisher-1] [INFO] [1787366908.503386156] [robot_state_publisher]: got segment link1
+[robot_state_publisher-1] [INFO] [1787366908.503389756] [robot_state_publisher]: got segment link2
+[robot_state_publisher-1] [INFO] [1787366908.503393096] [robot_state_publisher]: got segment link3
+[robot_state_publisher-1] [INFO] [1787366908.503396638] [robot_state_publisher]: got segment link4
+[robot_state_publisher-1] [INFO] [1787366908.503399924] [robot_state_publisher]: got segment link5
+[robot_state_publisher-1] [INFO] [1787366908.503403216] [robot_state_publisher]: got segment link6
+[robot_state_publisher-1] [INFO] [1787366908.503406504] [robot_state_publisher]: got segment tool0
+[robot_state_publisher-1] [INFO] [1787366908.503409751] [robot_state_publisher]: got segment world
+[spawn_test_object-9] [INFO] [1787366908.504315236] [spawn_test_object]: Spawn 'test_box' at (0.35, 0.00, 0.10) size 0.05 in frame 'base_link'
+[gripper_state_publisher-8] [INFO] [1787366908.518389724] [gripper_state_publisher]: mimic: ag145_gripper_finger1_finger_joint -> ag145_gripper_finger1_joint * 0.5 + 0
+[gripper_state_publisher-8] [INFO] [1787366908.518491504] [gripper_state_publisher]: mimic: ag145_gripper_finger1_finger_tip_joint -> ag145_gripper_finger1_joint * 1.49 + 0
+[gripper_state_publisher-8] [INFO] [1787366908.518500943] [gripper_state_publisher]: mimic: ag145_gripper_finger1_inner_knuckle_joint -> ag145_gripper_finger1_joint * 1.49 + 0
+[gripper_state_publisher-8] [INFO] [1787366908.518507001] [gripper_state_publisher]: mimic: ag145_gripper_finger2_finger_joint -> ag145_gripper_finger1_joint * 0.5 + 0
+[gripper_state_publisher-8] [INFO] [1787366908.518512601] [gripper_state_publisher]: mimic: ag145_gripper_finger2_finger_tip_joint -> ag145_gripper_finger1_joint * 1.49 + 0
+[gripper_state_publisher-8] [INFO] [1787366908.518517604] [gripper_state_publisher]: mimic: ag145_gripper_finger2_inner_knuckle_joint -> ag145_gripper_finger1_joint * 1.49 + 0
+[gripper_state_publisher-8] [INFO] [1787366908.518523118] [gripper_state_publisher]: mimic: ag145_gripper_finger2_joint -> ag145_gripper_finger1_joint * 1 + 0
+[gripper_state_publisher-8] [INFO] [1787366908.518528803] [gripper_state_publisher]: Loaded 7 mimic joints
+[ros2_control_node-4] [WARN] [1787366908.525257730] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+[ros2_control_node-4] [INFO] [1787366908.525708578] [resource_manager]: Loading hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1787366908.526291247] [resource_manager]: Initialize hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1787366908.526359443] [resource_manager]: Successful initialization of hardware 'FakeSystem'
+[ros2_control_node-4] [INFO] [1787366908.526419826] [resource_manager]: 'configure' hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1787366908.526429336] [resource_manager]: Successful 'configure' of hardware 'FakeSystem'
+[ros2_control_node-4] [INFO] [1787366908.526438293] [resource_manager]: 'activate' hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1787366908.526445181] [resource_manager]: Successful 'activate' of hardware 'FakeSystem'
+[ros2_control_node-4] [INFO] [1787366908.530041469] [controller_manager]: update rate is 100 Hz
+[ros2_control_node-4] [INFO] [1787366908.530073555] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+[ros2_control_node-4] [WARN] [1787366908.530188563] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+[move_group-2] [INFO] [1787366908.530725883] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.00370079 seconds
+[move_group-2] [INFO] [1787366908.530781991] [moveit_robot_model.robot_model]: Loading robot model 'thor7v3'...
+[move_group-2] [INFO] [1787366908.530789027] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[ros2_control_node-4] [INFO] [1787366908.841585216] [controller_manager]: Loading controller 'thor7_arm_controller'
+[ros2_control_node-4] [WARN] [1787366908.851991315] [thor7_arm_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+[ros2_control_node-4] [INFO] [1787366908.861752905] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[ros2_control_node-4] [INFO] [1787366908.874883057] [controller_manager]: Loading controller 'gripper_controller'
+[spawner-5] [INFO] [1787366908.875734805] [spawner_thor7_arm_controller]: [94mLoaded [1mthor7_arm_controller[0m
+[ros2_control_node-4] [WARN] [1787366908.880454949] [gripper_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+[spawner-7] [INFO] [1787366908.888893984] [spawner_joint_state_broadcaster]: [94mLoaded [1mjoint_state_broadcaster[0m
+[ros2_control_node-4] [INFO] [1787366908.890705608] [controller_manager]: Configuring controller 'thor7_arm_controller'
+[ros2_control_node-4] [INFO] [1787366908.891045896] [thor7_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[ros2_control_node-4] [INFO] [1787366908.891091022] [thor7_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[ros2_control_node-4] [INFO] [1787366908.891128942] [thor7_arm_controller]: Using 'splines' interpolation method.
+[ros2_control_node-4] [INFO] [1787366908.893495406] [thor7_arm_controller]: Controller state will be published at 50.00 Hz.
+[ros2_control_node-4] [INFO] [1787366908.897672707] [thor7_arm_controller]: Action status changes will be monitored at 20.00 Hz.
+[spawner-6] [INFO] [1787366908.904530858] [spawner_gripper_controller]: [94mLoaded [1mgripper_controller[0m
+[ros2_control_node-4] [INFO] [1787366908.910719536] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+[ros2_control_node-4] [INFO] [1787366908.910780850] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[ros2_control_node-4] [INFO] [1787366908.920657161] [controller_manager]: Configuring controller 'gripper_controller'
+[ros2_control_node-4] [INFO] [1787366908.920745404] [gripper_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[ros2_control_node-4] [INFO] [1787366908.920759011] [gripper_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[ros2_control_node-4] [INFO] [1787366908.920767537] [gripper_controller]: Using 'splines' interpolation method.
+[ros2_control_node-4] [INFO] [1787366908.921097379] [gripper_controller]: Controller state will be published at 50.00 Hz.
+[ros2_control_node-4] [INFO] [1787366908.922164678] [gripper_controller]: Goals with partial set of joints are allowed
+[ros2_control_node-4] [INFO] [1787366908.922190020] [gripper_controller]: Action status changes will be monitored at 20.00 Hz.
+[spawner-5] [INFO] [1787366908.951539161] [spawner_thor7_arm_controller]: [92mConfigured and activated [1mthor7_arm_controller[0m
+[spawner-7] [INFO] [1787366908.971609613] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mjoint_state_broadcaster[0m
+[spawner-6] [INFO] [1787366908.991722686] [spawner_gripper_controller]: [92mConfigured and activated [1mgripper_controller[0m
+[rviz2-3] [INFO] [1787366909.007184463] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-3] [INFO] [1787366909.007286508] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+[rviz2-3] [INFO] [1787366909.052279325] [rviz2]: Stereo is NOT SUPPORTED
+[INFO] [spawner-5]: process has finished cleanly [pid 6585]
+[rviz2-3] Warning: class_loader.impl: SEVERE WARNING!!! A namespace collision has occurred with plugin factory for class rviz_default_plugins::displays::InteractiveMarkerDisplay. New factory will OVERWRITE existing one. This situation occurs when libraries containing plugins are directly linked against an executable (the one running right now generating this message). Please separate plugins out into their own library or just don't link against the library and use either class_loader::ClassLoader/MultiLibraryClassLoader to open.
+[rviz2-3]          at line 253 in /opt/ros/humble/include/class_loader/class_loader/class_loader_core.hpp
+[INFO] [spawner-7]: process has finished cleanly [pid 6589]
+[INFO] [spawner-6]: process has finished cleanly [pid 6587]
+[move_group-2] [INFO] [1787366910.657697270] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[move_group-2] [INFO] [1787366910.657879438] [moveit.ros_planning_interface.moveit_cpp]: Listening to 'joint_states' for joint states
+[move_group-2] [INFO] [1787366910.658732699] [moveit_ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[move_group-2] [INFO] [1787366910.659167180] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[move_group-2] [INFO] [1787366910.659191418] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting planning scene monitor
+[move_group-2] [INFO] [1787366910.659544759] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/planning_scene'
+[move_group-2] [INFO] [1787366910.659566509] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[move_group-2] [INFO] [1787366910.659925763] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'collision_object'
+[move_group-2] [INFO] [1787366910.660275777] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[move_group-2] [WARN] [1787366910.660502002] [moveit.ros.occupancy_map_monitor.middleware_handle]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[move_group-2] [ERROR] [1787366910.660514917] [moveit.ros.occupancy_map_monitor.middleware_handle]: No 3D sensor plugin(s) defined for octomap updates
+[rviz2-3] [ERROR] [1787366912.137278479] [moveit_ros_visualization.motion_planning_frame]: Action server: /recognize_objects not available
+[rviz2-3] [INFO] [1787366912.146994706] [moveit_ros_visualization.motion_planning_frame]: MoveGroup namespace changed: / -> . Reloading params.
+[rviz2-3] [INFO] [1787366912.224932901] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.0399633 seconds
+[rviz2-3] [INFO] [1787366912.224997847] [moveit_robot_model.robot_model]: Loading robot model 'thor7v3'...
+[rviz2-3] [INFO] [1787366912.225019225] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[move_group-2] [INFO] [1787366912.921578538] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'chomp'
+[move_group-2] [INFO] [1787366912.924654669] [moveit.ros_planning.planning_pipeline]: Using planning interface 'CHOMP'
+[move_group-2] [INFO] [1787366912.926983670] [moveit_ros.add_time_optimal_parameterization]: Param 'chomp.path_tolerance' was not set. Using default value: 0.100000
+[move_group-2] [INFO] [1787366912.927002412] [moveit_ros.add_time_optimal_parameterization]: Param 'chomp.resample_dt' was not set. Using default value: 0.100000
+[move_group-2] [INFO] [1787366912.927007595] [moveit_ros.add_time_optimal_parameterization]: Param 'chomp.min_angle_change' was not set. Using default value: 0.001000
+[move_group-2] [INFO] [1787366912.927031759] [moveit_ros.fix_workspace_bounds]: Param 'chomp.default_workspace_bounds' was not set. Using default value: 10.000000
+[move_group-2] [INFO] [1787366912.927048460] [moveit_ros.fix_start_state_bounds]: Param 'chomp.start_state_max_bounds_error' was set to 0.100000
+[move_group-2] [INFO] [1787366912.927054685] [moveit_ros.fix_start_state_bounds]: Param 'chomp.start_state_max_dt' was not set. Using default value: 0.500000
+[move_group-2] [INFO] [1787366912.927069253] [moveit_ros.fix_start_state_collision]: Param 'chomp.start_state_max_dt' was not set. Using default value: 0.500000
+[move_group-2] [INFO] [1787366912.927074772] [moveit_ros.fix_start_state_collision]: Param 'chomp.jiggle_fraction' was set to 0.050000
+[move_group-2] [INFO] [1787366912.927080722] [moveit_ros.fix_start_state_collision]: Param 'chomp.max_sampling_attempts' was not set. Using default value: 100
+[move_group-2] [INFO] [1787366912.927094840] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Add Time Optimal Parameterization'
+[move_group-2] [INFO] [1787366912.927099353] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Resolve constraint frames to robot links'
+[move_group-2] [INFO] [1787366912.927103751] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Workspace Bounds'
+[move_group-2] [INFO] [1787366912.927108172] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Bounds'
+[move_group-2] [INFO] [1787366912.927112760] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State In Collision'
+[move_group-2] [INFO] [1787366912.927117180] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Path Constraints'
+[move_group-2] [INFO] [1787366912.930100439] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'pilz_industrial_motion_planner'
+[move_group-2] [INFO] [1787366912.932914657] [moveit.pilz_industrial_motion_planner.joint_limits_aggregator]: Reading limits from namespace robot_description_planning
+[move_group-2] [INFO] [1787366912.938198330] [moveit.pilz_industrial_motion_planner]: Available plugins: pilz_industrial_motion_planner/PlanningContextLoaderCIRC pilz_industrial_motion_planner/PlanningContextLoaderLIN pilz_industrial_motion_planner/PlanningContextLoaderPTP 
+[move_group-2] [INFO] [1787366912.938225399] [moveit.pilz_industrial_motion_planner]: About to load: pilz_industrial_motion_planner/PlanningContextLoaderCIRC
+[move_group-2] [INFO] [1787366912.940140830] [moveit.pilz_industrial_motion_planner]: Registered Algorithm [CIRC]
+[move_group-2] [INFO] [1787366912.940163907] [moveit.pilz_industrial_motion_planner]: About to load: pilz_industrial_motion_planner/PlanningContextLoaderLIN
+[move_group-2] [INFO] [1787366912.941573802] [moveit.pilz_industrial_motion_planner]: Registered Algorithm [LIN]
+[move_group-2] [INFO] [1787366912.941593979] [moveit.pilz_industrial_motion_planner]: About to load: pilz_industrial_motion_planner/PlanningContextLoaderPTP
+[move_group-2] [INFO] [1787366912.942901870] [moveit.pilz_industrial_motion_planner]: Registered Algorithm [PTP]
+[move_group-2] [INFO] [1787366912.942923853] [moveit.ros_planning.planning_pipeline]: Using planning interface 'Pilz Industrial Motion Planner'
+[move_group-2] [INFO] [1787366912.943694004] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'ompl'
+[move_group-2] [INFO] [1787366912.953190506] [moveit.ros_planning.planning_pipeline]: Using planning interface 'OMPL'
+[move_group-2] [INFO] [1787366912.954424320] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.path_tolerance' was not set. Using default value: 0.100000
+[move_group-2] [INFO] [1787366912.954432596] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.resample_dt' was not set. Using default value: 0.100000
+[move_group-2] [INFO] [1787366912.954456724] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.min_angle_change' was not set. Using default value: 0.001000
+[move_group-2] [INFO] [1787366912.954502489] [moveit_ros.fix_workspace_bounds]: Param 'ompl.default_workspace_bounds' was not set. Using default value: 10.000000
+[move_group-2] [INFO] [1787366912.954517872] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_bounds_error' was set to 0.100000
+[move_group-2] [INFO] [1787366912.954522170] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_dt' was not set. Using default value: 0.500000
+[move_group-2] [INFO] [1787366912.954532359] [moveit_ros.fix_start_state_collision]: Param 'ompl.start_state_max_dt' was not set. Using default value: 0.500000
+[move_group-2] [INFO] [1787366912.954535937] [moveit_ros.fix_start_state_collision]: Param 'ompl.jiggle_fraction' was set to 0.050000
+[move_group-2] [INFO] [1787366912.954539272] [moveit_ros.fix_start_state_collision]: Param 'ompl.max_sampling_attempts' was not set. Using default value: 100
+[move_group-2] [INFO] [1787366912.954548762] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Add Time Optimal Parameterization'
+[move_group-2] [INFO] [1787366912.954551977] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Resolve constraint frames to robot links'
+[move_group-2] [INFO] [1787366912.954554583] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Workspace Bounds'
+[move_group-2] [INFO] [1787366912.954557196] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Bounds'
+[move_group-2] [INFO] [1787366912.954559630] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State In Collision'
+[move_group-2] [INFO] [1787366912.954562043] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Path Constraints'
+[move_group-2] [INFO] [1787366912.990349585] [moveit.plugins.moveit_simple_controller_manager]: Added FollowJointTrajectory controller for thor7_arm_controller
+[move_group-2] [INFO] [1787366912.992457014] [moveit.plugins.moveit_simple_controller_manager]: Added FollowJointTrajectory controller for gripper_controller
+[move_group-2] [INFO] [1787366912.992635648] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366912.992668428] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366912.993099544] [moveit_ros.trajectory_execution_manager]: Trajectory execution is managing controllers
+[move_group-2] [INFO] [1787366912.993123116] [move_group.move_group]: MoveGroup debug mode is ON
+[move_group-2] [INFO] [1787366913.003773804] [move_group.move_group]: 
+[move_group-2] 
+[move_group-2] ********************************************************
+[move_group-2] * MoveGroup using: 
+[move_group-2] *     - ApplyPlanningSceneService
+[move_group-2] *     - ClearOctomapService
+[move_group-2] *     - CartesianPathService
+[move_group-2] *     - ExecuteTrajectoryAction
+[move_group-2] *     - GetPlanningSceneService
+[move_group-2] *     - KinematicsService
+[move_group-2] *     - MoveAction
+[move_group-2] *     - MotionPlanService
+[move_group-2] *     - QueryPlannersService
+[move_group-2] *     - StateValidationService
+[move_group-2] ********************************************************
+[move_group-2] 
+[move_group-2] [INFO] [1787366913.003814093] [moveit_move_group_capabilities_base.move_group_context]: MoveGroup context using planning plugin ompl_interface/OMPLPlanner
+[move_group-2] [INFO] [1787366913.003822144] [moveit_move_group_capabilities_base.move_group_context]: MoveGroup context initialization complete
+[move_group-2] [96mLoading 'move_group/ApplyPlanningSceneService'...
+[move_group-2] [0m[96mLoading 'move_group/ClearOctomapService'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupCartesianPathService'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupExecuteTrajectoryAction'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupGetPlanningSceneService'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupKinematicsService'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupMoveAction'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupPlanService'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupQueryPlannersService'...
+[move_group-2] [0m[96mLoading 'move_group/MoveGroupStateValidationService'...
+[move_group-2] [0m[92m
+[move_group-2] You can start planning now!
+[move_group-2] 
+[spawn_test_object-9] [INFO] [1787366913.505722120] [spawn_test_object]: Object 'test_box' is in the planning scene.
+[INFO] [spawn_test_object-9]: process has finished cleanly [pid 6593]
+[rviz2-3] [INFO] [1787366914.329372842] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting planning scene monitor
+[rviz2-3] [INFO] [1787366914.329978900] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/monitored_planning_scene'
+[rviz2-3] [INFO] [1787366915.006289559] [interactive_marker_display_99453913363728]: Connected on namespace: /rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic
+[rviz2-3] [INFO] [1787366915.022109314] [moveit_ros_robot_interaction.robot_interaction]: No active joints or end effectors found for group 'gripper'. Make sure that kinematics.yaml is loaded in this node's namespace.
+[rviz2-3] [INFO] [1787366915.022786265] [moveit_ros_robot_interaction.robot_interaction]: No active joints or end effectors found for group 'gripper'. Make sure that kinematics.yaml is loaded in this node's namespace.
+[rviz2-3] [INFO] [1787366915.027047666] [moveit_ros_visualization.motion_planning_frame]: group gripper
+[rviz2-3] [INFO] [1787366915.027065096] [moveit_ros_visualization.motion_planning_frame]: Constructing new MoveGroup connection for group 'gripper' in namespace ''
+[rviz2-3] [INFO] [1787366915.034199286] [move_group_interface]: Ready to take commands for planning group gripper.
+[rviz2-3] [INFO] [1787366915.034683426] [moveit_ros_visualization.motion_planning_frame]: group gripper
+[rviz2-3] [INFO] [1787366915.061530538] [interactive_marker_display_99453913363728]: Sending request for interactive markers
+[rviz2-3] [INFO] [1787366915.096899052] [interactive_marker_display_99453913363728]: Service response received for initialization
+[INFO] [grasp_demo-10]: process started with pid [6808]
+[grasp_demo-10] [WARN] [1787366918.592305618] [grasp_demo]: ===== GRASP DEMO (candidate evaluator) BUILD 2026-08-19 D =====
+[grasp_demo-10] [INFO] [1787366919.656250615] [grasp_demo]: Object detected.
+[grasp_demo-10] [INFO] [1787366919.659132096] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.00265513 seconds
+[grasp_demo-10] [INFO] [1787366919.659156799] [moveit_robot_model.robot_model]: Loading robot model 'thor7v3'...
+[grasp_demo-10] [INFO] [1787366919.659162809] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[grasp_demo-10] [INFO] [1787366920.220346555] [move_group_interface]: Ready to take commands for planning group thor7_arm.
+[grasp_demo-10] [INFO] [1787366920.227311667] [move_group_interface]: Ready to take commands for planning group gripper.
+[grasp_demo-10] [INFO] [1787366920.728620810] [move_group_interface]: MoveGroup action client/server ready
+[move_group-2] [INFO] [1787366920.729320551] [moveit_move_group_default_capabilities.move_action_capability]: Received request
+[move_group-2] [INFO] [1787366920.729480946] [moveit_move_group_default_capabilities.move_action_capability]: executing..
+[grasp_demo-10] [INFO] [1787366920.729712297] [move_group_interface]: Planning request accepted
+[move_group-2] [INFO] [1787366920.730797267] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-2] [INFO] [1787366920.731606123] [moveit.ompl_planning.model_based_planning_context]: Planner configuration 'thor7_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-2] [WARN] [1787366920.735331852] [moveit_trajectory_processing.time_optimal_trajectory_generation]: Joint acceleration limits are not defined. Using the default 1 rad/s^2. You can define acceleration limits in the URDF or joint_limits.yaml.
+[move_group-2] [INFO] [1787366920.735854767] [moveit_move_group_default_capabilities.move_action_capability]: Motion plan was computed successfully.
+[grasp_demo-10] [INFO] [1787366920.736346780] [move_group_interface]: Planning request complete!
+[grasp_demo-10] [INFO] [1787366920.736506055] [move_group_interface]: time taken to generate plan: 0.00349696 seconds
+[move_group-2] [INFO] [1787366920.737005674] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Received goal request
+[move_group-2] [INFO] [1787366920.737078899] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution request received
+[move_group-2] [INFO] [1787366920.737099065] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366920.737113713] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366920.737163176] [moveit_ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[grasp_demo-10] [INFO] [1787366920.737175194] [move_group_interface]: Execute request accepted
+[move_group-2] [INFO] [1787366920.740786165] [moveit_ros.trajectory_execution_manager]: Starting trajectory execution ...
+[move_group-2] [INFO] [1787366920.740835665] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366920.740862314] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366920.741034748] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to thor7_arm_controller
+[ros2_control_node-4] [INFO] [1787366920.741403714] [thor7_arm_controller]: Received new action goal
+[ros2_control_node-4] [INFO] [1787366920.741478147] [thor7_arm_controller]: Accepted new action goal
+[move_group-2] [INFO] [1787366920.741781205] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: thor7_arm_controller started execution
+[move_group-2] [INFO] [1787366920.741810693] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[ros2_control_node-4] [INFO] [1787366921.340404972] [thor7_arm_controller]: Goal reached, success!
+[move_group-2] [INFO] [1787366921.342174729] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'thor7_arm_controller' successfully finished
+[move_group-2] [INFO] [1787366921.370846526] [moveit_ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[move_group-2] [INFO] [1787366921.370990917] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution completed: SUCCEEDED
+[grasp_demo-10] [INFO] [1787366921.371315683] [move_group_interface]: Execute request success!
+[grasp_demo-10] [INFO] [1787366921.372281926] [grasp_demo]: Executed: move to home (attempt 1)
+[grasp_demo-10] [INFO] [1787366921.372488040] [move_group_interface]: MoveGroup action client/server ready
+[move_group-2] [INFO] [1787366921.372832523] [moveit_move_group_default_capabilities.move_action_capability]: Received request
+[move_group-2] [INFO] [1787366921.372904397] [moveit_move_group_default_capabilities.move_action_capability]: executing..
+[grasp_demo-10] [INFO] [1787366921.372965985] [move_group_interface]: Planning request accepted
+[move_group-2] [INFO] [1787366921.380826957] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-2] [INFO] [1787366921.381189957] [moveit.ompl_planning.model_based_planning_context]: Planner configuration 'gripper' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-2] [WARN] [1787366921.391327379] [moveit.ompl_planning.constrained_goal_sampler]: More than 80% of the sampled goal states fail to satisfy the constraints imposed on the goal sampler. Is the constrained sampler working correctly?
+[move_group-2] [INFO] [1787366921.393519501] [moveit_move_group_default_capabilities.move_action_capability]: Motion plan was computed successfully.
+[grasp_demo-10] [INFO] [1787366921.393917444] [move_group_interface]: Planning request complete!
+[grasp_demo-10] [INFO] [1787366921.394863061] [move_group_interface]: time taken to generate plan: 0.0120607 seconds
+[move_group-2] [INFO] [1787366921.395219864] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Received goal request
+[move_group-2] [INFO] [1787366921.395293849] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution request received
+[move_group-2] [INFO] [1787366921.395308550] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366921.395335850] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366921.395359193] [moveit_ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[grasp_demo-10] [INFO] [1787366921.395447455] [move_group_interface]: Execute request accepted
+[move_group-2] [INFO] [1787366921.400758364] [moveit_ros.trajectory_execution_manager]: Starting trajectory execution ...
+[move_group-2] [INFO] [1787366921.400803628] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366921.400832060] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366921.400961486] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to gripper_controller
+[ros2_control_node-4] [INFO] [1787366921.401188580] [gripper_controller]: Received new action goal
+[ros2_control_node-4] [INFO] [1787366921.401229318] [gripper_controller]: Accepted new action goal
+[move_group-2] [INFO] [1787366921.401480700] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: gripper_controller started execution
+[move_group-2] [INFO] [1787366921.401500967] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[ros2_control_node-4] [INFO] [1787366921.410445703] [gripper_controller]: Goal reached, success!
+[move_group-2] [INFO] [1787366921.451628212] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'gripper_controller' successfully finished
+[move_group-2] [INFO] [1787366921.480989237] [moveit_ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[move_group-2] [INFO] [1787366921.481089856] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution completed: SUCCEEDED
+[grasp_demo-10] [INFO] [1787366921.481403492] [move_group_interface]: Execute request success!
+[grasp_demo-10] [INFO] [1787366921.481601619] [grasp_demo]: Executed: open gripper (attempt 1)
+[grasp_demo-10] [INFO] [1787366921.482680731] [moveit_ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[grasp_demo-10] [INFO] [1787366921.490784453] [grasp_demo]: IK sampling round 1/3
+[grasp_demo-10] [INFO] [1787366921.549134323] [grasp_demo]:   round 1: collected 42 distinct IK branches
+[grasp_demo-10] [INFO] [1787366921.553015150] [grasp_demo]:   reject yaw_+90/wrist-flip: in collision
+[grasp_demo-10] [INFO] [1787366921.554014554] [grasp_demo]:   reject yaw_-30/wrist-flip: in collision
+[grasp_demo-10] [INFO] [1787366921.554958235] [grasp_demo]:   reject yaw_-15/wrist-flip: in collision
+[grasp_demo-10] [INFO] [1787366921.559431494] [grasp_demo]:   reject yaw_+90/wrist-flip: in collision
+[grasp_demo-10] [INFO] [1787366921.568819038] [grasp_demo]:   reject yaw_+30/wrist-flip: in collision
+[grasp_demo-10] [INFO] [1787366921.576856293] [grasp_demo]:   reject yaw_-30/wrist-flip: in collision
+[grasp_demo-10] [INFO] [1787366921.585382873] [grasp_demo]:   reject yaw_-45/home: in collision
+[grasp_demo-10] [INFO] [1787366921.592108746] [grasp_demo]:   reject yaw_-30/home: in collision
+[grasp_demo-10] [INFO] [1787366921.597231635] [grasp_demo]:   reject yaw_-15/home: in collision
+[grasp_demo-10] [INFO] [1787366921.606070721] [grasp_demo]:   reject yaw_+90/home: in collision
+[grasp_demo-10] [INFO] [1787366921.613550789] [grasp_demo]:   reject yaw_+45/home: in collision
+[grasp_demo-10] [INFO] [1787366921.620799506] [grasp_demo]:   reject yaw_+30/home: in collision
+[grasp_demo-10] [INFO] [1787366921.625205943] [grasp_demo]:   reject yaw_+15/wrist-flip: in collision
+[grasp_demo-10] [INFO] [1787366921.629906782] [grasp_demo]:   reject yaw_0/home: in collision
+[grasp_demo-10] [INFO] [1787366921.632124127] [grasp_demo]:   reject yaw_-30/known-good: in collision
+[grasp_demo-10] [INFO] [1787366921.632633809] [grasp_demo]:   reject yaw_-15/home: in collision
+[grasp_demo-10] [INFO] [1787366921.633267451] [grasp_demo]:   reject yaw_0/known-good: in collision
+[grasp_demo-10] [INFO] [1787366921.636784414] [grasp_demo]:   reject yaw_+15/home: in collision
+[grasp_demo-10] [INFO] [1787366921.641942068] [grasp_demo]:   reject yaw_+30/known-good: in collision
+[grasp_demo-10] [INFO] [1787366921.644855384] [grasp_demo]:   reject yaw_+45/known-good: in collision
+[grasp_demo-10] [INFO] [1787366921.648952088] [grasp_demo]:   reject yaw_+90/known-good: in collision
+[grasp_demo-10] [INFO] [1787366921.653134617] [grasp_demo]:   reject yaw_-45/wrist-flip: in collision
+[grasp_demo-10] [INFO] [1787366921.654449539] [grasp_demo]:   reject yaw_-45/wrist-flip: in collision
+[grasp_demo-10] [INFO] [1787366921.662807499] [grasp_demo]:   reject yaw_+90/wrist-flip: in collision
+[grasp_demo-10] [INFO] [1787366921.672107343] [grasp_demo]:   reject yaw_+15/home: in collision
+[grasp_demo-10] [INFO] [1787366921.678744655] [grasp_demo]:   reject yaw_+45/wrist-flip: in collision
+[grasp_demo-10] [INFO] [1787366921.687460168] [grasp_demo]:   reject yaw_-15/home: in collision
+[grasp_demo-10] [INFO] [1787366921.695272597] [grasp_demo]:   reject yaw_-30/wrist-flip: in collision
+[grasp_demo-10] [INFO] [1787366921.703164117] [grasp_demo]:   reject yaw_-45/wrist-flip: in collision
+[grasp_demo-10] [INFO] [1787366921.708282444] [grasp_demo]:   reject yaw_-15/home: in collision
+[grasp_demo-10] [INFO] [1787366921.712945418] [grasp_demo]:   reject yaw_+15/home: in collision
+[grasp_demo-10] [INFO] [1787366921.713471341] [grasp_demo]:   reject yaw_+90/wrist-flip: |dJ1|=3.14 rad > 1.57
+[grasp_demo-10] [INFO] [1787366921.713980540] [grasp_demo]:   reject yaw_+45/wrist-flip: |dJ1|=3.14 rad > 1.57
+[grasp_demo-10] [INFO] [1787366921.714477773] [grasp_demo]:   reject yaw_0/home: |dJ1|=3.14 rad > 1.57
+[grasp_demo-10] [INFO] [1787366921.714994380] [grasp_demo]:   reject yaw_-45/wrist-flip: |dJ1|=3.14 rad > 1.57
+[grasp_demo-10] [INFO] [1787366921.715429452] [grasp_demo]:   reject yaw_+30/wrist-flip: |dJ1|=3.14 rad > 1.57
+[grasp_demo-10] [INFO] [1787366921.715806311] [grasp_demo]:   reject yaw_0/wrist-flip: |dJ1|=3.14 rad > 1.57
+[grasp_demo-10] [INFO] [1787366921.715842307] [grasp_demo]: Best pre-grasp: yaw=yaw_+15 seed=home sample=4, motion_cost=6.11 rad, margin=0.072
+[grasp_demo-10] [INFO] [1787366921.715886905] [grasp_demo]:   current J1..J6(deg): [0.00,-4.94,-0.00,-0.01,0.00,0.00]
+[grasp_demo-10] [INFO] [1787366921.715902167] [grasp_demo]:   target  J1..J6(deg): [-0.00,0.86,141.10,-0.00,38.04,165.00]
+[grasp_demo-10] [INFO] [1787366921.715915332] [grasp_demo]:   ΔJ1 = -0.000 rad
+[grasp_demo-10] [INFO] [1787366921.715930040] [grasp_demo]:   ΔJ2 = 0.101 rad
+[grasp_demo-10] [INFO] [1787366921.715944101] [grasp_demo]:   ΔJ3 = 2.463 rad
+[grasp_demo-10] [INFO] [1787366921.715957430] [grasp_demo]:   ΔJ4 = 0.000 rad
+[grasp_demo-10] [INFO] [1787366921.715970328] [grasp_demo]:   ΔJ5 = 0.664 rad
+[grasp_demo-10] [INFO] [1787366921.715983020] [grasp_demo]:   ΔJ6 = 2.880 rad
+[grasp_demo-10] [INFO] [1787366921.720695925] [move_group_interface]: MoveGroup action client/server ready
+[move_group-2] [INFO] [1787366921.720912860] [moveit_move_group_default_capabilities.move_action_capability]: Received request
+[move_group-2] [INFO] [1787366921.721017089] [moveit_move_group_default_capabilities.move_action_capability]: executing..
+[grasp_demo-10] [INFO] [1787366921.721158471] [move_group_interface]: Planning request accepted
+[move_group-2] [INFO] [1787366921.730697636] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-2] [INFO] [1787366921.730717395] [moveit_move_group_capabilities_base.move_group_capability]: Using planning pipeline 'pilz_industrial_motion_planner'
+[move_group-2] [ERROR] [1787366921.730957340] [moveit.ros_planning.planning_pipeline]: Exception caught: 'acceleration limit not set for group thor7_arm'
+[move_group-2] [INFO] [1787366921.731019142] [moveit_move_group_default_capabilities.move_action_capability]: Unknown event
+[grasp_demo-10] [INFO] [1787366921.731374124] [move_group_interface]: Planning request aborted
+[grasp_demo-10] [ERROR] [1787366921.731426612] [move_group_interface]: MoveGroupInterface::plan() failed or timeout reached
+[grasp_demo-10] [WARN] [1787366921.731479376] [grasp_demo]: Pilz PTP failed, fallback to OMPL RRTConnect
+[grasp_demo-10] [INFO] [1787366921.731567481] [move_group_interface]: MoveGroup action client/server ready
+[move_group-2] [INFO] [1787366921.731887513] [moveit_move_group_default_capabilities.move_action_capability]: Received request
+[move_group-2] [INFO] [1787366921.731951733] [moveit_move_group_default_capabilities.move_action_capability]: executing..
+[grasp_demo-10] [INFO] [1787366921.732163735] [move_group_interface]: Planning request accepted
+[move_group-2] [INFO] [1787366921.740900620] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-2] [INFO] [1787366921.740926062] [moveit_move_group_capabilities_base.move_group_capability]: Using planning pipeline 'ompl'
+[move_group-2] [WARN] [1787366921.741142700] [moveit.ompl_planning.planning_context_manager]: Cannot find planning configuration for group 'thor7_arm' using planner 'RRTConnect'. Will use defaults instead.
+[move_group-2] [INFO] [1787366921.741392864] [moveit.ompl_planning.model_based_planning_context]: Planner configuration 'thor7_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-2] [INFO] [1787366921.751636876] [moveit_move_group_default_capabilities.move_action_capability]: Motion plan was computed successfully.
+[grasp_demo-10] [INFO] [1787366921.752051122] [move_group_interface]: Planning request complete!
+[grasp_demo-10] [INFO] [1787366921.752140044] [move_group_interface]: time taken to generate plan: 0.0052241 seconds
+[grasp_demo-10] [INFO] [1787366921.752167238] [grasp_demo]: pre-grasp planned with ompl/RRTConnect
+[grasp_demo-10] [INFO] [1787366921.752199510] [grasp_demo]:   J1 start=0.00 goal=-0.00 min=-0.00 max=0.00 exc=0.00 rad
+[grasp_demo-10] [INFO] [1787366921.752223023] [grasp_demo]:   J2 start=-0.09 goal=0.01 min=-0.09 max=0.01 exc=0.10 rad
+[grasp_demo-10] [INFO] [1787366921.752242433] [grasp_demo]:   J3 start=-0.00 goal=2.46 min=-0.00 max=2.46 exc=2.46 rad
+[grasp_demo-10] [INFO] [1787366921.752269079] [grasp_demo]:   J4 start=-0.00 goal=-0.00 min=-0.00 max=0.00 exc=0.00 rad
+[grasp_demo-10] [INFO] [1787366921.752288396] [grasp_demo]:   J5 start=0.00 goal=0.66 min=0.00 max=0.66 exc=0.66 rad
+[grasp_demo-10] [INFO] [1787366921.752307424] [grasp_demo]:   J6 start=0.00 goal=2.88 min=0.00 max=2.88 exc=2.88 rad
+[move_group-2] [INFO] [1787366921.752620077] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Received goal request
+[move_group-2] [INFO] [1787366921.752675729] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution request received
+[move_group-2] [INFO] [1787366921.752689964] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366921.752700609] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366921.752736615] [moveit_ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[grasp_demo-10] [INFO] [1787366921.752860186] [move_group_interface]: Execute request accepted
+[move_group-2] [INFO] [1787366921.760947987] [moveit_ros.trajectory_execution_manager]: Starting trajectory execution ...
+[move_group-2] [INFO] [1787366921.760996257] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366921.761021309] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366921.761154623] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to thor7_arm_controller
+[ros2_control_node-4] [INFO] [1787366921.761491364] [thor7_arm_controller]: Received new action goal
+[ros2_control_node-4] [INFO] [1787366921.761531016] [thor7_arm_controller]: Accepted new action goal
+[move_group-2] [INFO] [1787366921.761794726] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: thor7_arm_controller started execution
+[move_group-2] [INFO] [1787366921.761814927] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[ros2_control_node-4] [INFO] [1787366927.930508049] [thor7_arm_controller]: Goal reached, success!
+[move_group-2] [INFO] [1787366927.962599486] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'thor7_arm_controller' successfully finished
+[move_group-2] [INFO] [1787366927.990845884] [moveit_ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[move_group-2] [INFO] [1787366927.990986240] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution completed: SUCCEEDED
+[grasp_demo-10] [INFO] [1787366927.991373895] [move_group_interface]: Execute request success!
+[grasp_demo-10] [INFO] [1787366927.991925244] [grasp_demo]: pre-grasp execute = 6.240 s, result 1
+[move_group-2] [INFO] [1787366927.992388840] [moveit_move_group_default_capabilities.cartersian_path_service_capability]: Received request to compute Cartesian path
+[move_group-2] [INFO] [1787366927.992507025] [moveit_move_group_default_capabilities.cartersian_path_service_capability]: Attempting to follow 1 waypoints for link 'tool0' using a step of 0.005000 m and jump threshold 0.000000 (in global reference frame)
+[move_group-2] [INFO] [1787366927.994118358] [moveit_move_group_default_capabilities.cartersian_path_service_capability]: Computed Cartesian path with 14 points (followed 100.000000% of requested trajectory)
+[grasp_demo-10] [INFO] [1787366927.994501146] [grasp_demo]: Cartesian descend fraction = 1.000
+[grasp_demo-10] [INFO] [1787366927.994547953] [grasp_demo]: [descend] J1 min=-0.000 max=-0.000 exc=0.000 max_step=0.000 rad
+[grasp_demo-10] [INFO] [1787366927.994571229] [grasp_demo]: [descend] J2 min=0.015 max=0.194 exc=0.179 max_step=0.035 rad
+[grasp_demo-10] [INFO] [1787366927.994589039] [grasp_demo]: [descend] J3 min=2.463 max=2.512 exc=0.050 max_step=0.010 rad
+[grasp_demo-10] [INFO] [1787366927.994606132] [grasp_demo]: [descend] J4 min=0.000 max=0.000 exc=0.000 max_step=0.000 rad
+[grasp_demo-10] [INFO] [1787366927.994622926] [grasp_demo]: [descend] J5 min=0.435 max=0.664 exc=0.229 max_step=0.045 rad
+[grasp_demo-10] [INFO] [1787366927.994639262] [grasp_demo]: [descend] J6 min=2.880 max=2.880 exc=0.000 max_step=0.000 rad
+[move_group-2] [INFO] [1787366927.995042262] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Received goal request
+[move_group-2] [INFO] [1787366927.995103068] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution request received
+[move_group-2] [INFO] [1787366927.995116316] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366927.995126992] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366927.995153937] [moveit_ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[grasp_demo-10] [INFO] [1787366927.995217310] [move_group_interface]: Execute request accepted
+[move_group-2] [INFO] [1787366928.000858125] [moveit_ros.trajectory_execution_manager]: Starting trajectory execution ...
+[move_group-2] [INFO] [1787366928.000914256] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366928.000940774] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366928.001075286] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to thor7_arm_controller
+[ros2_control_node-4] [INFO] [1787366928.001356603] [thor7_arm_controller]: Received new action goal
+[ros2_control_node-4] [INFO] [1787366928.001399349] [thor7_arm_controller]: Accepted new action goal
+[move_group-2] [INFO] [1787366928.001647008] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: thor7_arm_controller started execution
+[move_group-2] [INFO] [1787366928.001661940] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[ros2_control_node-4] [INFO] [1787366928.970388007] [thor7_arm_controller]: Goal reached, success!
+[move_group-2] [INFO] [1787366929.001945959] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'thor7_arm_controller' successfully finished
+[move_group-2] [INFO] [1787366929.030818189] [moveit_ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[move_group-2] [INFO] [1787366929.030946241] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution completed: SUCCEEDED
+[grasp_demo-10] [INFO] [1787366929.031293397] [move_group_interface]: Execute request success!
+[grasp_demo-10] [INFO] [1787366929.031988441] [grasp_demo]: Cartesian executed: descend
+[grasp_demo-10] [INFO] [1787366929.041519313] [grasp_demo]: [after descend] full-robot VALID
+[grasp_demo-10] [INFO] [1787366929.041633026] [grasp_demo]: === attach detail ===
+[grasp_demo-10] [INFO] [1787366929.041640183] [grasp_demo]:   attached object : test_box
+[grasp_demo-10] [INFO] [1787366929.041644853] [grasp_demo]:   attach link     : ag145_gripper_base_link
+[grasp_demo-10] [INFO] [1787366929.041649130] [grasp_demo]:   touch_link[0]  : ag145_gripper_finger1_finger_link
+[grasp_demo-10] [INFO] [1787366929.041654066] [grasp_demo]:   touch_link[1]  : ag145_gripper_finger2_finger_link
+[grasp_demo-10] [INFO] [1787366929.041658514] [grasp_demo]:   touch_link[2]  : ag145_gripper_finger1_finger_tip_link
+[grasp_demo-10] [INFO] [1787366929.041662697] [grasp_demo]:   touch_link[3]  : ag145_gripper_finger2_finger_tip_link
+[grasp_demo-10] [INFO] [1787366929.041666389] [grasp_demo]:   touch_link[4]  : ag145_gripper_finger1_inner_knuckle_link
+[grasp_demo-10] [INFO] [1787366929.041670204] [grasp_demo]:   touch_link[5]  : ag145_gripper_finger2_inner_knuckle_link
+[grasp_demo-10] [INFO] [1787366929.551631839] [grasp_demo]: [after attach] full-robot VALID
+[grasp_demo-10] [INFO] [1787366929.561395956] [grasp_demo]: [before close] full-robot VALID
+[grasp_demo-10] [INFO] [1787366929.561528184] [move_group_interface]: MoveGroup action client/server ready
+[move_group-2] [INFO] [1787366929.561686138] [moveit_move_group_default_capabilities.move_action_capability]: Received request
+[move_group-2] [INFO] [1787366929.561750919] [moveit_move_group_default_capabilities.move_action_capability]: executing..
+[grasp_demo-10] [INFO] [1787366929.562046405] [move_group_interface]: Planning request accepted
+[move_group-2] [INFO] [1787366929.570758025] [moveit_move_group_default_capabilities.move_action_capability]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-2] [INFO] [1787366929.571192098] [moveit.ompl_planning.model_based_planning_context]: Planner configuration 'gripper' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-2] [INFO] [1787366929.594242828] [moveit_move_group_default_capabilities.move_action_capability]: Motion plan was computed successfully.
+[grasp_demo-10] [INFO] [1787366929.594734650] [move_group_interface]: Planning request complete!
+[grasp_demo-10] [INFO] [1787366929.595537859] [move_group_interface]: time taken to generate plan: 0.0190936 seconds
+[move_group-2] [INFO] [1787366929.595880096] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Received goal request
+[move_group-2] [INFO] [1787366929.595942114] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution request received
+[move_group-2] [INFO] [1787366929.595960605] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366929.595974169] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366929.596002336] [moveit_ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[grasp_demo-10] [INFO] [1787366929.596127768] [move_group_interface]: Execute request accepted
+[move_group-2] [INFO] [1787366929.600839793] [moveit_ros.trajectory_execution_manager]: Starting trajectory execution ...
+[move_group-2] [INFO] [1787366929.600891245] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366929.600916722] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366929.601035425] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to gripper_controller
+[ros2_control_node-4] [INFO] [1787366929.601307582] [gripper_controller]: Received new action goal
+[ros2_control_node-4] [INFO] [1787366929.601356411] [gripper_controller]: Accepted new action goal
+[move_group-2] [INFO] [1787366929.601558961] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: gripper_controller started execution
+[move_group-2] [INFO] [1787366929.601578338] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[ros2_control_node-4] [INFO] [1787366931.580415400] [gripper_controller]: Goal reached, success!
+[move_group-2] [INFO] [1787366931.602058140] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'gripper_controller' successfully finished
+[move_group-2] [INFO] [1787366931.630910575] [moveit_ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[move_group-2] [INFO] [1787366931.630992165] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution completed: SUCCEEDED
+[grasp_demo-10] [INFO] [1787366931.631305241] [move_group_interface]: Execute request success!
+[grasp_demo-10] [INFO] [1787366931.631623536] [grasp_demo]: Executed: close gripper (attempt 1)
+[grasp_demo-10] [INFO] [1787366931.641312829] [grasp_demo]: [after close] full-robot VALID
+[grasp_demo-10] [INFO] [1787366931.651316690] [grasp_demo]: [before lift] full-robot VALID
+[move_group-2] [INFO] [1787366931.651630430] [moveit_move_group_default_capabilities.cartersian_path_service_capability]: Received request to compute Cartesian path
+[move_group-2] [INFO] [1787366931.651755877] [moveit_move_group_default_capabilities.cartersian_path_service_capability]: Attempting to follow 1 waypoints for link 'tool0' using a step of 0.005000 m and jump threshold 0.000000 (in global reference frame)
+[move_group-2] [INFO] [1787366931.657305711] [moveit_move_group_default_capabilities.cartersian_path_service_capability]: Computed Cartesian path with 28 points (followed 100.000000% of requested trajectory)
+[grasp_demo-10] [INFO] [1787366931.657768364] [grasp_demo]: Cartesian lift fraction = 1.000
+[grasp_demo-10] [INFO] [1787366931.657810070] [grasp_demo]: [lift] J1 min=-0.000 max=-0.000 exc=0.000 max_step=0.000 rad
+[grasp_demo-10] [INFO] [1787366931.657833781] [grasp_demo]: [lift] J2 min=-0.144 max=0.194 exc=0.338 max_step=0.047 rad
+[grasp_demo-10] [INFO] [1787366931.657851788] [grasp_demo]: [lift] J3 min=2.376 max=2.512 exc=0.137 max_step=0.019 rad
+[grasp_demo-10] [INFO] [1787366931.657868600] [grasp_demo]: [lift] J4 min=0.000 max=0.000 exc=0.000 max_step=0.000 rad
+[grasp_demo-10] [INFO] [1787366931.657885575] [grasp_demo]: [lift] J5 min=0.435 max=0.910 exc=0.475 max_step=0.065 rad
+[grasp_demo-10] [INFO] [1787366931.657901642] [grasp_demo]: [lift] J6 min=2.880 max=2.880 exc=0.000 max_step=0.000 rad
+[move_group-2] [INFO] [1787366931.658181606] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Received goal request
+[move_group-2] [INFO] [1787366931.658244932] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution request received
+[move_group-2] [INFO] [1787366931.658268542] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366931.658281725] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366931.658313599] [moveit_ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[grasp_demo-10] [INFO] [1787366931.658390052] [move_group_interface]: Execute request accepted
+[move_group-2] [INFO] [1787366931.660772637] [moveit_ros.trajectory_execution_manager]: Starting trajectory execution ...
+[move_group-2] [INFO] [1787366931.660820430] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366931.660845651] [moveit.plugins.moveit_simple_controller_manager]: Returned 2 controllers in list
+[move_group-2] [INFO] [1787366931.660977696] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to thor7_arm_controller
+[ros2_control_node-4] [INFO] [1787366931.661222288] [thor7_arm_controller]: Received new action goal
+[ros2_control_node-4] [INFO] [1787366931.661263069] [thor7_arm_controller]: Accepted new action goal
+[move_group-2] [INFO] [1787366931.661486097] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: thor7_arm_controller started execution
+[move_group-2] [INFO] [1787366931.661506876] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[ros2_control_node-4] [INFO] [1787366933.050401700] [thor7_arm_controller]: Goal reached, success!
+[move_group-2] [INFO] [1787366933.061848215] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'thor7_arm_controller' successfully finished
+[move_group-2] [INFO] [1787366933.090768563] [moveit_ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[move_group-2] [INFO] [1787366933.090913540] [moveit_move_group_default_capabilities.execute_trajectory_action_capability]: Execution completed: SUCCEEDED
+[grasp_demo-10] [INFO] [1787366933.091288386] [move_group_interface]: Execute request success!
+[grasp_demo-10] [INFO] [1787366933.091598461] [grasp_demo]: Cartesian executed: lift
+[grasp_demo-10] [INFO] [1787366933.091654692] [grasp_demo]: Grasp demo (candidate evaluator) finished.
+[INFO] [grasp_demo-10]: process has finished cleanly [pid 6808]

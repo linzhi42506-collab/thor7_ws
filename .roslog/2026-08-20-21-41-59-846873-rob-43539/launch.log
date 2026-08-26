@@ -1,0 +1,46 @@
+1787233319.8478451 [INFO] [launch]: All log files can be found below /home/robo/thor7_ws/.roslog/2026-08-20-21-41-59-846873-rob-43539
+1787233319.8480034 [INFO] [launch]: Default logging verbosity is set to INFO
+1787233321.2607527 [INFO] [robot_state_publisher-1]: process started with pid [43547]
+1787233321.2609816 [INFO] [move_group-2]: process started with pid [43549]
+1787233321.2610905 [INFO] [ros2_control_node-3]: process started with pid [43551]
+1787233321.2611723 [INFO] [spawner-4]: process started with pid [43553]
+1787233321.2612467 [INFO] [spawner-5]: process started with pid [43555]
+1787233321.2613170 [INFO] [spawner-6]: process started with pid [43557]
+1787233321.2613845 [INFO] [gripper_state_publisher-7]: process started with pid [43559]
+1787233321.2614465 [INFO] [spawn_test_object-8]: process started with pid [43561]
+1787233321.3047280 [ros2_control_node-3] [WARN] [1787233321.304463014] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+1787233321.3051407 [ros2_control_node-3] [INFO] [1787233321.304945760] [resource_manager]: Loading hardware 'FakeSystem' 
+1787233321.3056300 [ros2_control_node-3] [INFO] [1787233321.305476303] [resource_manager]: Initialize hardware 'FakeSystem' 
+1787233321.3058918 [ros2_control_node-3] [INFO] [1787233321.305529652] [resource_manager]: Successful initialization of hardware 'FakeSystem'
+1787233321.3059783 [ros2_control_node-3] [INFO] [1787233321.305584977] [resource_manager]: 'configure' hardware 'FakeSystem' 
+1787233321.3060272 [ros2_control_node-3] [INFO] [1787233321.305592885] [resource_manager]: Successful 'configure' of hardware 'FakeSystem'
+1787233321.3060613 [ros2_control_node-3] [INFO] [1787233321.305600782] [resource_manager]: 'activate' hardware 'FakeSystem' 
+1787233321.3060989 [ros2_control_node-3] [INFO] [1787233321.305607051] [resource_manager]: Successful 'activate' of hardware 'FakeSystem'
+1787233321.3148336 [ros2_control_node-3] [INFO] [1787233321.314268353] [controller_manager]: update rate is 100 Hz
+1787233321.3150759 [ros2_control_node-3] [INFO] [1787233321.314458448] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+1787233321.3160877 [ros2_control_node-3] [WARN] [1787233321.315582510] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+1787233321.6198215 [ros2_control_node-3] [INFO] [1787233321.619248430] [controller_manager]: Loading controller 'thor7_arm_controller'
+1787233321.6498158 [ros2_control_node-3] [WARN] [1787233321.649587405] [thor7_arm_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+1787233321.6565301 [ros2_control_node-3] [INFO] [1787233321.656215188] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+1787233321.6569717 [ros2_control_node-3] [ERROR] [1787233321.656293317] [controller_manager]: Could not configure controller with name 'joint_state_broadcaster' because no controller with this name exists
+1787233321.6737773 [ros2_control_node-3] [INFO] [1787233321.673463234] [controller_manager]: Configuring controller 'thor7_arm_controller'
+1787233321.6743152 [ros2_control_node-3] [INFO] [1787233321.673861657] [thor7_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+1787233321.6744568 [ros2_control_node-3] [INFO] [1787233321.673927956] [thor7_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+1787233321.6745579 [ros2_control_node-3] [INFO] [1787233321.673967209] [thor7_arm_controller]: Using 'splines' interpolation method.
+1787233321.6763859 [ros2_control_node-3] [INFO] [1787233321.676179260] [thor7_arm_controller]: Controller state will be published at 50.00 Hz.
+1787233321.6793487 [ros2_control_node-3] [INFO] [1787233321.678990655] [thor7_arm_controller]: Action status changes will be monitored at 20.00 Hz.
+1787233321.8041885 [ERROR] [spawner-6]: process has died [pid 43557, exit code 1, cmd '/opt/ros/humble/lib/controller_manager/spawner joint_state_broadcaster --ros-args'].
+1787233321.8458736 [INFO] [spawner-4]: process has finished cleanly [pid 43553]
+1787233321.8996930 [ros2_control_node-3] [INFO] [1787233321.899389591] [controller_manager]: Loading controller 'gripper_controller'
+1787233321.9085517 [ros2_control_node-3] [WARN] [1787233321.908274848] [gripper_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+1787233321.9176900 [ros2_control_node-3] [INFO] [1787233321.917493001] [controller_manager]: Configuring controller 'gripper_controller'
+1787233321.9181709 [ros2_control_node-3] [INFO] [1787233321.917604934] [gripper_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+1787233321.9183431 [ros2_control_node-3] [INFO] [1787233321.917632390] [gripper_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+1787233321.9184470 [ros2_control_node-3] [INFO] [1787233321.917645487] [gripper_controller]: Using 'splines' interpolation method.
+1787233321.9188430 [ros2_control_node-3] [INFO] [1787233321.918156303] [gripper_controller]: Controller state will be published at 50.00 Hz.
+1787233321.9193547 [ros2_control_node-3] [INFO] [1787233321.919236588] [gripper_controller]: Goals with partial set of joints are allowed
+1787233321.9195652 [ros2_control_node-3] [INFO] [1787233321.919258410] [gripper_controller]: Action status changes will be monitored at 20.00 Hz.
+1787233322.0852654 [INFO] [spawner-5]: process has finished cleanly [pid 43555]
+1787233322.0874844 [INFO] [spawn_test_object-8]: process has finished cleanly [pid 43561]
+1787233331.3216803 [INFO] [cartesian_diagnostic-9]: process started with pid [43738]
+1787233335.6101985 [ERROR] [cartesian_diagnostic-9]: process has died [pid 43738, exit code -11, cmd '/home/robo/thor7_ws/install/thor7_sim/lib/thor7_sim/cartesian_diagnostic --ros-args -r __node:=cartesian_diagnostic --params-file /tmp/launch_params_mjpx4lnf --params-file /tmp/launch_params_oks6c_ys --params-file /tmp/launch_params_gfm9xgwz --params-file /tmp/launch_params_uffud9bc --params-file /home/robo/thor7_ws/install/thor7_sim/share/thor7_sim/config/sim.yaml'].

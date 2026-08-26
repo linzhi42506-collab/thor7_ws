@@ -210,11 +210,21 @@ hardware_interface::CallbackReturn Thor7SystemHardware::on_init(
   }
 
   auto parse_double_parameter =
-    [&](const std::string & name, double & output) -> bool
+    [&](const std::string & name, double & output,
+      const bool required = false) -> bool
     {
       const auto param_it = info_.hardware_parameters.find(name);
 
       if (param_it == info_.hardware_parameters.end()) {
+        if (required) {
+          RCLCPP_ERROR(
+            logger,
+            "Missing required command-safety hardware parameter: %s",
+            name.c_str());
+
+          return false;
+        }
+
         return true;
       }
 
@@ -238,14 +248,13 @@ hardware_interface::CallbackReturn Thor7SystemHardware::on_init(
     };
 
   if (!parse_double_parameter(
-        "startup_pose_tolerance_rad",
-        startup_pose_tolerance_rad_) ||
-      !parse_double_parameter(
         "max_command_delta_rad",
-        max_command_delta_rad_) ||
+        max_command_delta_rad_,
+        commandModeEnabled()) ||
       !parse_double_parameter(
         "max_safe_deviation_rad",
-        max_safe_deviation_rad_) ||
+        max_safe_deviation_rad_,
+        commandModeEnabled()) ||
       !parse_double_parameter(
         "servoj_time_sec",
         servoj_time_sec_) ||
@@ -265,25 +274,19 @@ hardware_interface::CallbackReturn Thor7SystemHardware::on_init(
     return hardware_interface::CallbackReturn::ERROR;
   }
 
-  for (std::size_t i = 0; i < kJointCount; ++i) {
-    const std::string parameter =
-      "safe_j" + std::to_string(i + 1) + "_rad";
-
-    if (!parse_double_parameter(parameter, safe_positions_[i])) {
-      return hardware_interface::CallbackReturn::ERROR;
-    }
-  }
-
-  if (startup_pose_tolerance_rad_ < 0.0 ||
-      max_command_delta_rad_ <= 0.0 ||
-      max_safe_deviation_rad_ <= 0.0)
+  if (commandModeEnabled() &&
+      (max_command_delta_rad_ <= 0.0 ||
+       max_safe_deviation_rad_ <= 0.0))
   {
     RCLCPP_ERROR(
       logger,
-      "Invalid safety tolerance configuration.");
+      "Invalid required command-safety tolerance configuration.");
 
     return hardware_interface::CallbackReturn::ERROR;
   }
+
+  command_safety_parameters_loaded_ =
+    commandModeEnabled();
 
   if (servoj_time_sec_ <= 0.0 ||
       servoj_lookahead_sec_ < 0.03 ||
@@ -477,47 +480,51 @@ hardware_interface::CallbackReturn Thor7SystemHardware::on_activate(
     return hardware_interface::CallbackReturn::SUCCESS;
   }
 
-  // ---------------------------------------------------------------
-  // Startup safe-pose guard for BOTH command-capable modes.
-  // ---------------------------------------------------------------
-  bool pose_ok = true;
-
-  for (std::size_t i = 0; i < kJointCount; ++i) {
-    const double delta =
-      std::abs(hw_positions_[i] - safe_positions_[i]);
-
-    RCLCPP_INFO(
-      logger,
-      "Startup guard J%zu: actual=%.6f safe=%.6f delta=%.6f rad",
-      i + 1,
-      hw_positions_[i],
-      safe_positions_[i],
-      delta);
-
-    if (delta > startup_pose_tolerance_rad_) {
-      pose_ok = false;
-
-      RCLCPP_ERROR(
-        logger,
-        "Startup guard FAILED on J%zu: delta %.6f rad "
-        "> tolerance %.6f rad",
-        i + 1,
-        delta,
-        startup_pose_tolerance_rad_);
-    }
-  }
-
-  if (!pose_ok) {
-    startup_pose_ok_ = false;
-
+  if (!command_safety_parameters_loaded_) {
     RCLCPP_ERROR(
       logger,
-      "%s activation refused: robot is outside safe startup pose.",
+      "%s activation refused: required command-safety "
+      "parameters were not loaded.",
       controlModeName());
 
     client_->disconnect();
 
     return hardware_interface::CallbackReturn::ERROR;
+  }
+
+  // ---------------------------------------------------------------
+  // Startup state validation.
+  //
+  // There is deliberately NO fixed canonical-pose/workspace envelope.
+  // The robot may be activated from its current operator-approved pose.
+  //
+  // Remaining safety properties:
+  //   - measured joint state must be finite
+  //   - Diana robot_state must be idle
+  //   - servoJ timing must be valid
+  //   - command buffers start from measured REAL joint state
+  //   - runtime command-delta/deviation guards remain enabled
+  // ---------------------------------------------------------------
+  for (std::size_t i = 0; i < kJointCount; ++i) {
+    if (!std::isfinite(hw_positions_[i])) {
+      startup_pose_ok_ = false;
+
+      RCLCPP_ERROR(
+        logger,
+        "%s activation refused: non-finite measured position on J%zu",
+        controlModeName(),
+        i + 1);
+
+      client_->disconnect();
+
+      return hardware_interface::CallbackReturn::ERROR;
+    }
+
+    RCLCPP_INFO(
+      logger,
+      "Startup state J%zu: actual=%.6f rad",
+      i + 1,
+      hw_positions_[i]);
   }
 
   if (realServoJMode()) {
@@ -570,13 +577,13 @@ hardware_interface::CallbackReturn Thor7SystemHardware::on_activate(
     RCLCPP_WARN(
       logger,
       "Thor7 REAL DRY-RUN ACTIVATED. "
-      "Startup guard PASS. "
+      "Startup state validation PASS. "
       "NO HARDWARE MOTION COMMAND WILL BE SENT.");
   } else {
     RCLCPP_WARN(
       logger,
       "Thor7 REAL SERVOJ MODE ARMED. "
-      "Startup guard PASS. robot_state=idle. "
+      "Startup state validation PASS. robot_state=idle. "
       "servoJ time=%.3fms lookahead=%.3fms gain=%.1f. "
       "No servoJ command is sent until command values change.",
       servoj_time_sec_ * 1000.0,

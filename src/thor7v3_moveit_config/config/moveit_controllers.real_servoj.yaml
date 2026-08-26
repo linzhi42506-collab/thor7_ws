@@ -1,17 +1,24 @@
 moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
-
 moveit_simple_controller_manager:
   controller_names:
-    - thor7_arm_controller
-
+  - thor7_arm_controller
+  - ag145_gripper_controller
   thor7_arm_controller:
     type: FollowJointTrajectory
     action_ns: follow_joint_trajectory
     default: true
     joints:
-      - joint1
-      - joint2
-      - joint3
-      - joint4
-      - joint5
-      - joint6
+    - joint1
+    - joint2
+    - joint3
+    - joint4
+    - joint5
+    - joint6
+  ag145_gripper_controller:
+    type: GripperCommand
+    action_ns: gripper_cmd
+    default: true
+    joints:
+    - ag145_gripper_finger1_joint
+    command_joint: ag145_gripper_finger1_joint
+    max_effort: 0.0

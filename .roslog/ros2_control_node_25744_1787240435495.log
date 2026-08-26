@@ -1,0 +1,36 @@
+[WARN] [1787240435.524252426] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+[INFO] [1787240435.524724373] [resource_manager]: Loading hardware 'FakeSystem' 
+[INFO] [1787240435.525332308] [resource_manager]: Initialize hardware 'FakeSystem' 
+[INFO] [1787240435.525390903] [resource_manager]: Successful initialization of hardware 'FakeSystem'
+[INFO] [1787240435.525446668] [resource_manager]: 'configure' hardware 'FakeSystem' 
+[INFO] [1787240435.525455548] [resource_manager]: Successful 'configure' of hardware 'FakeSystem'
+[INFO] [1787240435.525464549] [resource_manager]: 'activate' hardware 'FakeSystem' 
+[INFO] [1787240435.525471556] [resource_manager]: Successful 'activate' of hardware 'FakeSystem'
+[INFO] [1787240435.540265748] [controller_manager]: update rate is 100 Hz
+[INFO] [1787240435.540304105] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+[WARN] [1787240435.540401798] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+[INFO] [1787240436.721802440] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[INFO] [1787240436.744135093] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+[INFO] [1787240436.744291196] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[INFO] [1787240436.924715037] [controller_manager]: Configuring controller 'gripper_controller'
+[ERROR] [1787240436.924770611] [controller_manager]: Could not configure controller with name 'gripper_controller' because no controller with this name exists
+[INFO] [1787240436.948727544] [controller_manager]: Loading controller 'thor7_arm_controller'
+[WARN] [1787240436.976290425] [thor7_arm_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+[INFO] [1787240436.995022638] [controller_manager]: Configuring controller 'thor7_arm_controller'
+[INFO] [1787240436.995320419] [thor7_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[INFO] [1787240436.995364757] [thor7_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[INFO] [1787240436.995400721] [thor7_arm_controller]: Using 'splines' interpolation method.
+[INFO] [1787240436.996971421] [thor7_arm_controller]: Controller state will be published at 50.00 Hz.
+[INFO] [1787240436.999837428] [thor7_arm_controller]: Action status changes will be monitored at 20.00 Hz.
+[INFO] [1787240450.811505630] [thor7_arm_controller]: Received new action goal
+[INFO] [1787240450.811564943] [thor7_arm_controller]: Accepted new action goal
+[INFO] [1787240451.410644191] [thor7_arm_controller]: Goal reached, success!
+[INFO] [1787240451.571455137] [thor7_arm_controller]: Received new action goal
+[INFO] [1787240451.571499572] [thor7_arm_controller]: Accepted new action goal
+[INFO] [1787240457.670592796] [thor7_arm_controller]: Goal reached, success!
+[INFO] [1787240457.711342435] [thor7_arm_controller]: Received new action goal
+[INFO] [1787240457.711406204] [thor7_arm_controller]: Accepted new action goal
+[INFO] [1787240458.670579611] [thor7_arm_controller]: Goal reached, success!
+[INFO] [1787240458.751495892] [thor7_arm_controller]: Received new action goal
+[INFO] [1787240458.751536646] [thor7_arm_controller]: Accepted new action goal
+[INFO] [1787240459.960564880] [thor7_arm_controller]: Goal reached, success!

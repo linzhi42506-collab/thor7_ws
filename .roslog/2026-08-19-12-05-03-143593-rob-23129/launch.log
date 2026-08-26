@@ -1,0 +1,45 @@
+1787112303.1445079 [INFO] [launch]: All log files can be found below /home/robo/thor7_ws/.roslog/2026-08-19-12-05-03-143593-rob-23129
+1787112303.1446350 [INFO] [launch]: Default logging verbosity is set to INFO
+1787112304.6038299 [INFO] [robot_state_publisher-1]: process started with pid [23143]
+1787112304.6041200 [INFO] [move_group-2]: process started with pid [23145]
+1787112304.6042869 [INFO] [ros2_control_node-3]: process started with pid [23147]
+1787112304.6044178 [INFO] [spawner-4]: process started with pid [23149]
+1787112304.6045408 [INFO] [spawner-5]: process started with pid [23151]
+1787112304.6046546 [INFO] [spawner-6]: process started with pid [23153]
+1787112304.6047692 [INFO] [gripper_state_publisher-7]: process started with pid [23155]
+1787112304.6048799 [INFO] [spawn_test_object-8]: process started with pid [23157]
+1787112304.6049902 [INFO] [grasp_demo-9]: process started with pid [23159]
+1787112304.7002721 [ros2_control_node-3] [WARN] [1787112304.697805233] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+1787112304.7004497 [ros2_control_node-3] [INFO] [1787112304.698293116] [resource_manager]: Loading hardware 'FakeSystem' 
+1787112304.7008405 [ros2_control_node-3] [INFO] [1787112304.700267492] [resource_manager]: Initialize hardware 'FakeSystem' 
+1787112304.7009556 [ros2_control_node-3] [INFO] [1787112304.700345454] [resource_manager]: Successful initialization of hardware 'FakeSystem'
+1787112304.7010572 [ros2_control_node-3] [INFO] [1787112304.700427188] [resource_manager]: 'configure' hardware 'FakeSystem' 
+1787112304.7013617 [ros2_control_node-3] [INFO] [1787112304.700440152] [resource_manager]: Successful 'configure' of hardware 'FakeSystem'
+1787112304.7014301 [ros2_control_node-3] [INFO] [1787112304.700448783] [resource_manager]: 'activate' hardware 'FakeSystem' 
+1787112304.7014799 [ros2_control_node-3] [INFO] [1787112304.700454965] [resource_manager]: Successful 'activate' of hardware 'FakeSystem'
+1787112304.7568793 [ros2_control_node-3] [INFO] [1787112304.755730467] [controller_manager]: update rate is 100 Hz
+1787112304.7570894 [ros2_control_node-3] [INFO] [1787112304.755781110] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+1787112304.7572007 [ros2_control_node-3] [WARN] [1787112304.756008738] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+1787112305.3942013 [ros2_control_node-3] [INFO] [1787112305.393819748] [controller_manager]: Loading controller 'thor7_arm_controller'
+1787112305.4210649 [ros2_control_node-3] [WARN] [1787112305.420758448] [thor7_arm_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+1787112305.4295959 [ros2_control_node-3] [INFO] [1787112305.429232595] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+1787112305.4299183 [ros2_control_node-3] [ERROR] [1787112305.429290381] [controller_manager]: Could not configure controller with name 'joint_state_broadcaster' because no controller with this name exists
+1787112305.4516852 [ros2_control_node-3] [INFO] [1787112305.451441201] [controller_manager]: Configuring controller 'thor7_arm_controller'
+1787112305.4520020 [ros2_control_node-3] [INFO] [1787112305.451724176] [thor7_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+1787112305.4520638 [ros2_control_node-3] [INFO] [1787112305.451756520] [thor7_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+1787112305.4521022 [ros2_control_node-3] [INFO] [1787112305.451782358] [thor7_arm_controller]: Using 'splines' interpolation method.
+1787112305.4548204 [ros2_control_node-3] [INFO] [1787112305.454481032] [thor7_arm_controller]: Controller state will be published at 50.00 Hz.
+1787112305.4604599 [ros2_control_node-3] [INFO] [1787112305.460087475] [thor7_arm_controller]: Action status changes will be monitored at 20.00 Hz.
+1787112305.4971223 [ros2_control_node-3] [INFO] [1787112305.496680464] [controller_manager]: Loading controller 'gripper_controller'
+1787112305.5181081 [ros2_control_node-3] [WARN] [1787112305.517818540] [gripper_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+1787112305.5294776 [ros2_control_node-3] [INFO] [1787112305.529118211] [controller_manager]: Configuring controller 'gripper_controller'
+1787112305.5300531 [ros2_control_node-3] [INFO] [1787112305.529304896] [gripper_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+1787112305.5302007 [ros2_control_node-3] [INFO] [1787112305.529329608] [gripper_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+1787112305.5302954 [ros2_control_node-3] [INFO] [1787112305.529338958] [gripper_controller]: Using 'splines' interpolation method.
+1787112305.5306485 [ros2_control_node-3] [INFO] [1787112305.530072117] [gripper_controller]: Controller state will be published at 50.00 Hz.
+1787112305.5327158 [ros2_control_node-3] [INFO] [1787112305.532427154] [gripper_controller]: Goals with partial set of joints are allowed
+1787112305.5328932 [ros2_control_node-3] [INFO] [1787112305.532472221] [gripper_controller]: Action status changes will be monitored at 20.00 Hz.
+1787112305.5835695 [ERROR] [spawner-6]: process has died [pid 23153, exit code 1, cmd '/opt/ros/humble/lib/controller_manager/spawner joint_state_broadcaster --ros-args'].
+1787112305.6546025 [INFO] [spawner-4]: process has finished cleanly [pid 23149]
+1787112305.7139177 [INFO] [spawner-5]: process has finished cleanly [pid 23151]
+1787112305.8075912 [INFO] [spawn_test_object-8]: process has finished cleanly [pid 23157]

@@ -1,0 +1,18 @@
+[WARN] [1787276762.789821445] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+[INFO] [1787276762.791631364] [resource_manager]: Loading hardware 'FakeSystem' 
+[INFO] [1787276762.796448380] [resource_manager]: Initialize hardware 'FakeSystem' 
+[INFO] [1787276762.796527651] [resource_manager]: Successful initialization of hardware 'FakeSystem'
+[INFO] [1787276762.796590434] [resource_manager]: 'configure' hardware 'FakeSystem' 
+[INFO] [1787276762.796600284] [resource_manager]: Successful 'configure' of hardware 'FakeSystem'
+[INFO] [1787276762.796608456] [resource_manager]: 'activate' hardware 'FakeSystem' 
+[INFO] [1787276762.796615730] [resource_manager]: Successful 'activate' of hardware 'FakeSystem'
+[INFO] [1787276762.820251757] [controller_manager]: update rate is 100 Hz
+[INFO] [1787276762.820367843] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+[WARN] [1787276762.820559763] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+[INFO] [1787276763.287861235] [controller_manager]: Configuring controller 'gripper_controller'
+[ERROR] [1787276763.288160940] [controller_manager]: Could not configure controller with name 'gripper_controller' because no controller with this name exists
+[INFO] [1787276763.297414923] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[INFO] [1787276763.337140957] [controller_manager]: Loading controller 'thor7_arm_controller'
+[WARN] [1787276763.383333204] [thor7_arm_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+[INFO] [1787276763.433733589] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+[INFO] [1787276763.433936396] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published

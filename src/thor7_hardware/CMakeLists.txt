@@ -57,6 +57,8 @@ message(STATUS "DIANA_API_LIBRARY     = ${DIANA_API_LIBRARY}")
 # ------------------------------------------------------------------
 # ROS 2 dependencies
 # ------------------------------------------------------------------
+find_package(control_msgs REQUIRED)
+find_package(rclcpp_action REQUIRED)
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
@@ -390,6 +392,59 @@ target_link_libraries(thor7_servoj_test
 
 install(TARGETS thor7_servoj_test
   DESTINATION lib/${PROJECT_NAME})
+
+
+# ------------------------------------------------------------------
+# AG145 explicit write commissioning tool
+# ------------------------------------------------------------------
+add_executable(
+  ag145_commission_move
+  src/ag145_commission_move.cpp
+)
+
+ament_target_dependencies(
+  ag145_commission_move
+  rclcpp
+)
+
+target_link_libraries(
+  ag145_commission_move
+  thor7_hardware_readonly
+)
+
+install(
+  TARGETS
+    ag145_commission_move
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+
+# ------------------------------------------------------------------
+# AG145 standard GripperCommand action server
+# ------------------------------------------------------------------
+add_executable(
+  ag145_gripper_action_server
+  src/ag145_gripper_action_server.cpp
+)
+
+ament_target_dependencies(
+  ag145_gripper_action_server
+  rclcpp
+  rclcpp_action
+  control_msgs
+  sensor_msgs
+)
+
+target_link_libraries(
+  ag145_gripper_action_server
+  thor7_hardware_readonly
+)
+
+install(
+  TARGETS
+    ag145_gripper_action_server
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 ament_package()
 

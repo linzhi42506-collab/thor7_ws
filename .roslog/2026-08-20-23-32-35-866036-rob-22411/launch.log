@@ -1,0 +1,47 @@
+1787239955.8669670 [INFO] [launch]: All log files can be found below /home/robo/thor7_ws/.roslog/2026-08-20-23-32-35-866036-rob-22411
+1787239955.8671026 [INFO] [launch]: Default logging verbosity is set to INFO
+1787239957.2821186 [INFO] [robot_state_publisher-1]: process started with pid [22420]
+1787239957.2823389 [INFO] [move_group-2]: process started with pid [22422]
+1787239957.2824378 [INFO] [ros2_control_node-3]: process started with pid [22424]
+1787239957.2825162 [INFO] [spawner-4]: process started with pid [22426]
+1787239957.2825878 [INFO] [spawner-5]: process started with pid [22428]
+1787239957.2826555 [INFO] [spawner-6]: process started with pid [22430]
+1787239957.2827172 [INFO] [gripper_state_publisher-7]: process started with pid [22432]
+1787239957.2827895 [INFO] [spawn_test_object-8]: process started with pid [22434]
+1787239957.3707542 [ros2_control_node-3] [WARN] [1787239957.370419373] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+1787239957.3751566 [ros2_control_node-3] [INFO] [1787239957.374212966] [resource_manager]: Loading hardware 'FakeSystem' 
+1787239957.3772602 [ros2_control_node-3] [INFO] [1787239957.376012096] [resource_manager]: Initialize hardware 'FakeSystem' 
+1787239957.3774383 [ros2_control_node-3] [INFO] [1787239957.376107381] [resource_manager]: Successful initialization of hardware 'FakeSystem'
+1787239957.3775411 [ros2_control_node-3] [INFO] [1787239957.376182797] [resource_manager]: 'configure' hardware 'FakeSystem' 
+1787239957.3776329 [ros2_control_node-3] [INFO] [1787239957.376198625] [resource_manager]: Successful 'configure' of hardware 'FakeSystem'
+1787239957.3777194 [ros2_control_node-3] [INFO] [1787239957.376211182] [resource_manager]: 'activate' hardware 'FakeSystem' 
+1787239957.3784719 [ros2_control_node-3] [INFO] [1787239957.376221208] [resource_manager]: Successful 'activate' of hardware 'FakeSystem'
+1787239957.4246862 [ros2_control_node-3] [INFO] [1787239957.422527735] [controller_manager]: update rate is 100 Hz
+1787239957.4260211 [ros2_control_node-3] [INFO] [1787239957.422698588] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+1787239957.4264746 [ros2_control_node-3] [WARN] [1787239957.422838579] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+1787239957.6780403 [ros2_control_node-3] [INFO] [1787239957.677173513] [controller_manager]: Loading controller 'thor7_arm_controller'
+1787239957.7419426 [ros2_control_node-3] [WARN] [1787239957.741537509] [thor7_arm_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+1787239957.7604556 [ros2_control_node-3] [INFO] [1787239957.760152361] [controller_manager]: Configuring controller 'thor7_arm_controller'
+1787239957.7609704 [ros2_control_node-3] [INFO] [1787239957.760360631] [thor7_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+1787239957.7611189 [ros2_control_node-3] [INFO] [1787239957.760378672] [thor7_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+1787239957.7612159 [ros2_control_node-3] [INFO] [1787239957.760397286] [thor7_arm_controller]: Using 'splines' interpolation method.
+1787239957.7654464 [ros2_control_node-3] [INFO] [1787239957.763718474] [thor7_arm_controller]: Controller state will be published at 50.00 Hz.
+1787239957.7706754 [ros2_control_node-3] [INFO] [1787239957.770161062] [thor7_arm_controller]: Action status changes will be monitored at 20.00 Hz.
+1787239957.7837408 [ros2_control_node-3] [INFO] [1787239957.783298195] [controller_manager]: Loading controller 'gripper_controller'
+1787239957.8069992 [ros2_control_node-3] [WARN] [1787239957.806493722] [gripper_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+1787239957.8336153 [ros2_control_node-3] [INFO] [1787239957.833227014] [controller_manager]: Configuring controller 'gripper_controller'
+1787239957.8342755 [ros2_control_node-3] [INFO] [1787239957.833405580] [gripper_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+1787239957.8344324 [ros2_control_node-3] [INFO] [1787239957.833443297] [gripper_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+1787239957.8345354 [ros2_control_node-3] [INFO] [1787239957.833467022] [gripper_controller]: Using 'splines' interpolation method.
+1787239957.8352692 [ros2_control_node-3] [INFO] [1787239957.834588149] [gripper_controller]: Controller state will be published at 50.00 Hz.
+1787239957.8366323 [ros2_control_node-3] [INFO] [1787239957.836449332] [gripper_controller]: Goals with partial set of joints are allowed
+1787239957.8367631 [ros2_control_node-3] [INFO] [1787239957.836481501] [gripper_controller]: Action status changes will be monitored at 20.00 Hz.
+1787239957.9849081 [INFO] [spawner-4]: process has finished cleanly [pid 22426]
+1787239958.0102050 [INFO] [spawner-5]: process has finished cleanly [pid 22428]
+1787239958.0545669 [ros2_control_node-3] [INFO] [1787239958.054267342] [controller_manager]: Loading controller 'joint_state_broadcaster'
+1787239958.0758855 [ros2_control_node-3] [INFO] [1787239958.075634268] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+1787239958.0761919 [ros2_control_node-3] [INFO] [1787239958.075731542] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+1787239958.0861132 [INFO] [spawn_test_object-8]: process has finished cleanly [pid 22434]
+1787239958.2502720 [INFO] [spawner-6]: process has finished cleanly [pid 22430]
+1787239967.3464265 [INFO] [cartesian_diagnostic-9]: process started with pid [22629]
+1787239970.3338711 [INFO] [cartesian_diagnostic-9]: process has finished cleanly [pid 22629]

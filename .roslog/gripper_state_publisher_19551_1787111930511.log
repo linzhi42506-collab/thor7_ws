@@ -1,0 +1,2 @@
+[ERROR] [1787111930.523534664] [gripper_state_publisher]: Failed to read robot_description: robot_description
+[ERROR] [1787111930.523638406] [gripper_state_publisher]: robot_description parameter is empty. Pass the full URDF as 'robot_description'.

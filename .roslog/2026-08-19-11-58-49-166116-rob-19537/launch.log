@@ -1,0 +1,45 @@
+1787111929.1670208 [INFO] [launch]: All log files can be found below /home/robo/thor7_ws/.roslog/2026-08-19-11-58-49-166116-rob-19537
+1787111929.1671457 [INFO] [launch]: Default logging verbosity is set to INFO
+1787111930.5055950 [INFO] [robot_state_publisher-1]: process started with pid [19539]
+1787111930.5058696 [INFO] [move_group-2]: process started with pid [19541]
+1787111930.5060065 [INFO] [ros2_control_node-3]: process started with pid [19543]
+1787111930.5061228 [INFO] [spawner-4]: process started with pid [19545]
+1787111930.5062494 [INFO] [spawner-5]: process started with pid [19547]
+1787111930.5063558 [INFO] [spawner-6]: process started with pid [19549]
+1787111930.5064578 [INFO] [gripper_state_publisher-7]: process started with pid [19551]
+1787111930.5065598 [INFO] [spawn_test_object-8]: process started with pid [19553]
+1787111930.5466120 [ros2_control_node-3] [WARN] [1787111930.546343653] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+1787111930.5469549 [ros2_control_node-3] [INFO] [1787111930.546695879] [resource_manager]: Loading hardware 'FakeSystem' 
+1787111930.5472100 [ros2_control_node-3] [INFO] [1787111930.547091356] [resource_manager]: Initialize hardware 'FakeSystem' 
+1787111930.5474124 [ros2_control_node-3] [INFO] [1787111930.547132563] [resource_manager]: Successful initialization of hardware 'FakeSystem'
+1787111930.5474622 [ros2_control_node-3] [INFO] [1787111930.547188899] [resource_manager]: 'configure' hardware 'FakeSystem' 
+1787111930.5474954 [ros2_control_node-3] [INFO] [1787111930.547196623] [resource_manager]: Successful 'configure' of hardware 'FakeSystem'
+1787111930.5475242 [ros2_control_node-3] [INFO] [1787111930.547202553] [resource_manager]: 'activate' hardware 'FakeSystem' 
+1787111930.5475504 [ros2_control_node-3] [INFO] [1787111930.547206626] [resource_manager]: Successful 'activate' of hardware 'FakeSystem'
+1787111930.5506153 [ros2_control_node-3] [INFO] [1787111930.550444356] [controller_manager]: update rate is 100 Hz
+1787111930.5507052 [ros2_control_node-3] [INFO] [1787111930.550472001] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+1787111930.5508981 [ros2_control_node-3] [WARN] [1787111930.550573708] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+1787111930.8740633 [ros2_control_node-3] [INFO] [1787111930.873774390] [controller_manager]: Loading controller 'joint_state_broadcaster'
+1787111930.8827741 [ros2_control_node-3] [INFO] [1787111930.882618027] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+1787111930.8830616 [ros2_control_node-3] [INFO] [1787111930.882698603] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+1787111930.9131439 [ros2_control_node-3] [INFO] [1787111930.912873611] [controller_manager]: Loading controller 'gripper_controller'
+1787111930.9220989 [ros2_control_node-3] [WARN] [1787111930.921726997] [gripper_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+1787111930.9422617 [ros2_control_node-3] [INFO] [1787111930.941863653] [controller_manager]: Loading controller 'thor7_arm_controller'
+1787111930.9495156 [ros2_control_node-3] [WARN] [1787111930.949280461] [thor7_arm_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+1787111930.9512799 [ros2_control_node-3] [INFO] [1787111930.950941270] [controller_manager]: Configuring controller 'gripper_controller'
+1787111930.9517515 [ros2_control_node-3] [INFO] [1787111930.951035906] [gripper_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+1787111930.9518983 [ros2_control_node-3] [INFO] [1787111930.951051072] [gripper_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+1787111930.9519963 [ros2_control_node-3] [INFO] [1787111930.951066827] [gripper_controller]: Using 'splines' interpolation method.
+1787111930.9524224 [ros2_control_node-3] [INFO] [1787111930.952159591] [gripper_controller]: Controller state will be published at 50.00 Hz.
+1787111930.9542711 [ros2_control_node-3] [INFO] [1787111930.954090933] [gripper_controller]: Goals with partial set of joints are allowed
+1787111930.9543688 [ros2_control_node-3] [INFO] [1787111930.954115392] [gripper_controller]: Action status changes will be monitored at 20.00 Hz.
+1787111930.9814575 [ros2_control_node-3] [INFO] [1787111930.981084053] [controller_manager]: Configuring controller 'thor7_arm_controller'
+1787111930.9820251 [ros2_control_node-3] [INFO] [1787111930.981254471] [thor7_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+1787111930.9821744 [ros2_control_node-3] [INFO] [1787111930.981271737] [thor7_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+1787111930.9822283 [ros2_control_node-3] [INFO] [1787111930.981282701] [thor7_arm_controller]: Using 'splines' interpolation method.
+1787111930.9822657 [ros2_control_node-3] [INFO] [1787111930.981607567] [thor7_arm_controller]: Controller state will be published at 50.00 Hz.
+1787111930.9830894 [ros2_control_node-3] [INFO] [1787111930.982919156] [thor7_arm_controller]: Action status changes will be monitored at 20.00 Hz.
+1787111931.0572577 [INFO] [spawner-6]: process has finished cleanly [pid 19549]
+1787111931.1210761 [INFO] [spawner-5]: process has finished cleanly [pid 19547]
+1787111931.1557426 [INFO] [spawner-4]: process has finished cleanly [pid 19545]
+1787111935.6063128 [INFO] [spawn_test_object-8]: process has finished cleanly [pid 19553]

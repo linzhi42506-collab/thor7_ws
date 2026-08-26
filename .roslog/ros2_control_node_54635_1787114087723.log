@@ -1,0 +1,45 @@
+[WARN] [1787114087.914418184] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+[INFO] [1787114087.914917732] [resource_manager]: Loading hardware 'FakeSystem' 
+[INFO] [1787114087.950404224] [resource_manager]: Initialize hardware 'FakeSystem' 
+[INFO] [1787114087.950498721] [resource_manager]: Successful initialization of hardware 'FakeSystem'
+[INFO] [1787114087.950566253] [resource_manager]: 'configure' hardware 'FakeSystem' 
+[INFO] [1787114087.950576680] [resource_manager]: Successful 'configure' of hardware 'FakeSystem'
+[INFO] [1787114087.950585634] [resource_manager]: 'activate' hardware 'FakeSystem' 
+[INFO] [1787114087.950593088] [resource_manager]: Successful 'activate' of hardware 'FakeSystem'
+[INFO] [1787114088.044402187] [controller_manager]: update rate is 100 Hz
+[INFO] [1787114088.045597339] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+[WARN] [1787114088.048170137] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+[INFO] [1787114089.793753629] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[INFO] [1787114089.843326436] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+[INFO] [1787114089.843516563] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[INFO] [1787114089.859116192] [controller_manager]: Loading controller 'thor7_arm_controller'
+[WARN] [1787114089.924349954] [thor7_arm_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+[INFO] [1787114089.929322652] [controller_manager]: Loading controller 'gripper_controller'
+[WARN] [1787114089.980078610] [gripper_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+[INFO] [1787114089.989136085] [controller_manager]: Configuring controller 'thor7_arm_controller'
+[INFO] [1787114089.989338439] [thor7_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[INFO] [1787114089.989360867] [thor7_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[INFO] [1787114089.989384317] [thor7_arm_controller]: Using 'splines' interpolation method.
+[INFO] [1787114089.991418183] [thor7_arm_controller]: Controller state will be published at 50.00 Hz.
+[INFO] [1787114089.996103216] [thor7_arm_controller]: Action status changes will be monitored at 20.00 Hz.
+[INFO] [1787114090.019316020] [controller_manager]: Configuring controller 'gripper_controller'
+[INFO] [1787114090.019445766] [gripper_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[INFO] [1787114090.019465948] [gripper_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[INFO] [1787114090.019479255] [gripper_controller]: Using 'splines' interpolation method.
+[INFO] [1787114090.023168446] [gripper_controller]: Controller state will be published at 50.00 Hz.
+[INFO] [1787114090.031348378] [gripper_controller]: Goals with partial set of joints are allowed
+[INFO] [1787114090.031565080] [gripper_controller]: Action status changes will be monitored at 20.00 Hz.
+[INFO] [1787114175.230255515] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [1787114175.230396647] [controller_manager]: Shutdown request received....
+[INFO] [1787114175.230488971] [controller_manager]: Shutting down all controllers in the controller manager.
+[INFO] [1787114175.230513669] [controller_manager]: Deactivating controller 'joint_state_broadcaster'
+[INFO] [1787114175.230547937] [controller_manager]: Shutting down controller 'joint_state_broadcaster'
+[INFO] [1787114175.230624911] [controller_manager]: Deactivating controller 'thor7_arm_controller'
+[INFO] [1787114175.230650655] [controller_manager]: Shutting down controller 'thor7_arm_controller'
+[INFO] [1787114175.230664725] [controller_manager]: Deactivating controller 'gripper_controller'
+[INFO] [1787114175.230680334] [controller_manager]: Shutting down controller 'gripper_controller'
+[INFO] [1787114175.230701638] [resource_manager]: 'deactivate' hardware 'FakeSystem' 
+[INFO] [1787114175.230713781] [resource_manager]: Successful 'deactivate' of hardware 'FakeSystem'
+[INFO] [1787114175.230717850] [resource_manager]: 'shutdown' hardware 'FakeSystem' 
+[INFO] [1787114175.230723416] [resource_manager]: Successful 'shutdown' of hardware 'FakeSystem'
+[INFO] [1787114175.230727998] [controller_manager]: Shutting down the controller manager.

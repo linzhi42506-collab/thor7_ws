@@ -2,6 +2,18 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <!--
+    Canonical safety data. Do not duplicate numeric safe-pose values
+    in this file; edit config/thor7_safety.yaml instead.
+  -->
+  <xacro:property
+    name="thor7_safety_file"
+    value="$(find thor7v3_moveit_config)/config/thor7_safety.yaml" />
+
+  <xacro:property
+    name="thor7_safety"
+    value="${xacro.load_yaml(thor7_safety_file)}" />
+
   <xacro:macro
     name="thor7v3_real_servoj_ros2_control"
     params="name">
@@ -18,9 +30,9 @@
         <!-- Explicitly selects the only mode allowed to call servoJ(). -->
         <param name="control_mode">real_servoj</param>
 
-        <param name="startup_pose_tolerance_rad">0.0523598776</param>
-        <param name="max_command_delta_rad">0.0174532925</param>
-        <param name="max_safe_deviation_rad">0.0872664626</param>
+        <param name="startup_pose_tolerance_rad">${thor7_safety['startup_pose_tolerance_rad']}</param>
+        <param name="max_command_delta_rad">${thor7_safety['max_command_delta_rad']}</param>
+        <param name="max_safe_deviation_rad">${thor7_safety['max_safe_deviation_rad']}</param>
 
         <!-- Parameters already validated by independent real-hardware test. -->
         <param name="servoj_time_sec">0.020</param>
@@ -31,12 +43,12 @@
         <param name="servoj_command_epsilon_rad">0.000001</param>
         <param name="servoj_stop_after_stable_sec">0.5</param>
 
-        <param name="safe_j1_rad">1.876752545</param>
-        <param name="safe_j2_rad">-0.048520153</param>
-        <param name="safe_j3_rad">1.863313509</param>
-        <param name="safe_j4_rad">0.008377580</param>
-        <param name="safe_j5_rad">1.436405974</param>
-        <param name="safe_j6_rad">-0.287979327</param>
+        <param name="safe_j1_rad">${thor7_safety['safe_pose']['joint1']}</param>
+        <param name="safe_j2_rad">${thor7_safety['safe_pose']['joint2']}</param>
+        <param name="safe_j3_rad">${thor7_safety['safe_pose']['joint3']}</param>
+        <param name="safe_j4_rad">${thor7_safety['safe_pose']['joint4']}</param>
+        <param name="safe_j5_rad">${thor7_safety['safe_pose']['joint5']}</param>
+        <param name="safe_j6_rad">${thor7_safety['safe_pose']['joint6']}</param>
       </hardware>
 
       <joint name="joint1">

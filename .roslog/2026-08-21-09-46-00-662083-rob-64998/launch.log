@@ -1,0 +1,34 @@
+1787276760.6635664 [INFO] [launch]: All log files can be found below /home/robo/thor7_ws/.roslog/2026-08-21-09-46-00-662083-rob-64998
+1787276760.6637783 [INFO] [launch]: Default logging verbosity is set to INFO
+1787276762.6911356 [INFO] [robot_state_publisher-1]: process started with pid [65005]
+1787276762.6914890 [INFO] [move_group-2]: process started with pid [65007]
+1787276762.6917002 [INFO] [ros2_control_node-3]: process started with pid [65009]
+1787276762.6918788 [INFO] [spawner-4]: process started with pid [65011]
+1787276762.6920314 [INFO] [spawner-5]: process started with pid [65013]
+1787276762.6921711 [INFO] [spawner-6]: process started with pid [65015]
+1787276762.6923397 [INFO] [gripper_state_publisher-7]: process started with pid [65017]
+1787276762.6924722 [INFO] [spawn_test_object-8]: process started with pid [65019]
+1787276762.7920744 [ros2_control_node-3] [WARN] [1787276762.789821445] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+1787276762.7994478 [ros2_control_node-3] [INFO] [1787276762.791631364] [resource_manager]: Loading hardware 'FakeSystem' 
+1787276762.8018773 [ros2_control_node-3] [INFO] [1787276762.796448380] [resource_manager]: Initialize hardware 'FakeSystem' 
+1787276762.8026969 [ros2_control_node-3] [INFO] [1787276762.796527651] [resource_manager]: Successful initialization of hardware 'FakeSystem'
+1787276762.8051307 [ros2_control_node-3] [INFO] [1787276762.796590434] [resource_manager]: 'configure' hardware 'FakeSystem' 
+1787276762.8055909 [ros2_control_node-3] [INFO] [1787276762.796600284] [resource_manager]: Successful 'configure' of hardware 'FakeSystem'
+1787276762.8060732 [ros2_control_node-3] [INFO] [1787276762.796608456] [resource_manager]: 'activate' hardware 'FakeSystem' 
+1787276762.8065314 [ros2_control_node-3] [INFO] [1787276762.796615730] [resource_manager]: Successful 'activate' of hardware 'FakeSystem'
+1787276762.8210030 [ros2_control_node-3] [INFO] [1787276762.820251757] [controller_manager]: update rate is 100 Hz
+1787276762.8214746 [ros2_control_node-3] [INFO] [1787276762.820367843] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+1787276762.8217461 [ros2_control_node-3] [WARN] [1787276762.820559763] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+1787276763.2903864 [ros2_control_node-3] [INFO] [1787276763.287861235] [controller_manager]: Configuring controller 'gripper_controller'
+1787276763.2906063 [ros2_control_node-3] [ERROR] [1787276763.288160940] [controller_manager]: Could not configure controller with name 'gripper_controller' because no controller with this name exists
+1787276763.2983096 [ros2_control_node-3] [INFO] [1787276763.297414923] [controller_manager]: Loading controller 'joint_state_broadcaster'
+1787276763.3374774 [ros2_control_node-3] [INFO] [1787276763.337140957] [controller_manager]: Loading controller 'thor7_arm_controller'
+1787276763.3852661 [ros2_control_node-3] [WARN] [1787276763.383333204] [thor7_arm_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+1787276763.4341393 [ros2_control_node-3] [INFO] [1787276763.433733589] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+1787276763.4347348 [ros2_control_node-3] [INFO] [1787276763.433936396] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+1787276763.5173140 [INFO] [spawn_test_object-8]: process has finished cleanly [pid 65019]
+1787276763.5203741 [ERROR] [spawner-5]: process has died [pid 65013, exit code 1, cmd '/opt/ros/humble/lib/controller_manager/spawner gripper_controller --ros-args'].
+1787276763.5651586 [ERROR] [spawner-4]: process has died [pid 65011, exit code 1, cmd '/opt/ros/humble/lib/controller_manager/spawner thor7_arm_controller --ros-args'].
+1787276763.6499326 [INFO] [spawner-6]: process has finished cleanly [pid 65015]
+1787276772.7629423 [INFO] [gripper_test-9]: process started with pid [65213]
+1787276780.3090780 [INFO] [gripper_test-9]: process has finished cleanly [pid 65213]

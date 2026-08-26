@@ -1,0 +1,494 @@
+#!/usr/bin/env python3
+
+import math
+import os
+import time
+from pathlib import Path
+
+import rclpy
+import yaml
+
+from ament_index_python.packages import (
+    get_package_share_directory,
+)
+
+from rclpy.node import Node
+from rclpy.qos import qos_profile_sensor_data
+
+from sensor_msgs.msg import JointState
+
+from moveit_msgs.msg import PlanningSceneComponents
+from moveit_msgs.srv import GetPlanningScene
+from moveit_msgs.srv import GetStateValidity
+
+
+ARM_JOINTS = [
+    "joint1",
+    "joint2",
+    "joint3",
+    "joint4",
+    "joint5",
+    "joint6",
+]
+
+REQUIRED_JOINTS = ARM_JOINTS + [
+    "ag145_gripper_finger1_joint",
+]
+
+CONFIRMATION_TOKEN = "ARM_THOR7"
+
+RAW_STATE_TIMEOUT_SEC = 8.0
+MAX_STATE_AGE_SEC = 1.0
+SERVICE_TIMEOUT_SEC = 5.0
+
+
+class Thor7Preflight(Node):
+
+    def __init__(self):
+        super().__init__("thor7_preflight_gate")
+
+        self.positions = {}
+        self.received_at = {}
+
+        self.create_subscription(
+            JointState,
+            "/joint_states",
+            self.joint_state_callback,
+            qos_profile_sensor_data,
+        )
+
+        self.scene_client = self.create_client(
+            GetPlanningScene,
+            "/get_planning_scene",
+        )
+
+        self.validity_client = self.create_client(
+            GetStateValidity,
+            "/check_state_validity",
+        )
+
+    def joint_state_callback(self, msg):
+        received = time.monotonic()
+
+        for index, name in enumerate(msg.name):
+            if index >= len(msg.position):
+                continue
+
+            self.positions[name] = float(
+                msg.position[index]
+            )
+
+            self.received_at[name] = received
+
+
+def fail(message):
+    print()
+    print("RESULT: FAIL")
+    print(message)
+    raise SystemExit(1)
+
+
+def call_service(node, client, request, name):
+    if not client.wait_for_service(
+        timeout_sec=SERVICE_TIMEOUT_SEC
+    ):
+        fail(f"Service unavailable: {name}")
+
+    future = client.call_async(request)
+
+    rclpy.spin_until_future_complete(
+        node,
+        future,
+        timeout_sec=SERVICE_TIMEOUT_SEC,
+    )
+
+    if not future.done():
+        fail(f"Service timeout: {name}")
+
+    response = future.result()
+
+    if response is None:
+        fail(f"Service returned no response: {name}")
+
+    return response
+
+
+def main():
+    rclpy.init()
+    node = Thor7Preflight()
+
+    try:
+        print("==========================================")
+        print("THOR7 READ-ONLY PRE-FLIGHT")
+        print("==========================================")
+        print()
+        print("This gate does not activate the arm JTC")
+        print("and does not send any motion command.")
+        print()
+
+        share = Path(
+            get_package_share_directory(
+                "thor7v3_moveit_config"
+            )
+        )
+
+        safety_file = (
+            share /
+            "config/thor7_safety.yaml"
+        )
+
+        if not safety_file.is_file():
+            fail(
+                f"Canonical safety file missing: "
+                f"{safety_file}"
+            )
+
+        safety = yaml.safe_load(
+            safety_file.read_text()
+        )
+
+        safe_pose = safety["safe_pose"]
+
+        startup_tolerance = float(
+            safety[
+                "startup_pose_tolerance_rad"
+            ]
+        )
+
+        max_safe_deviation = float(
+            safety[
+                "max_safe_deviation_rad"
+            ]
+        )
+
+        max_command_delta = float(
+            safety[
+                "max_command_delta_rad"
+            ]
+        )
+
+        if (
+            not math.isfinite(startup_tolerance)
+            or startup_tolerance <= 0.0
+            or not math.isfinite(max_safe_deviation)
+            or max_safe_deviation <= 0.0
+            or not math.isfinite(max_command_delta)
+            or max_command_delta <= 0.0
+        ):
+            fail(
+                "Canonical safety configuration "
+                "contains invalid tolerances."
+            )
+
+        print("1. RAW JOINT-STATE FRESHNESS")
+        print("------------------------------------------")
+
+        deadline = (
+            time.monotonic()
+            + RAW_STATE_TIMEOUT_SEC
+        )
+
+        while (
+            rclpy.ok()
+            and time.monotonic() < deadline
+        ):
+            rclpy.spin_once(
+                node,
+                timeout_sec=0.1,
+            )
+
+            if all(
+                name in node.positions
+                for name in REQUIRED_JOINTS
+            ):
+                break
+
+        missing = [
+            name
+            for name in REQUIRED_JOINTS
+            if name not in node.positions
+        ]
+
+        if missing:
+            fail(
+                "Missing live joint state: "
+                + ", ".join(missing)
+            )
+
+        now = time.monotonic()
+
+        stale = [
+            name
+            for name in REQUIRED_JOINTS
+            if (
+                now - node.received_at[name]
+            ) > MAX_STATE_AGE_SEC
+        ]
+
+        if stale:
+            fail(
+                "Stale joint state: "
+                + ", ".join(stale)
+            )
+
+        for name in REQUIRED_JOINTS:
+            position = node.positions[name]
+
+            if not math.isfinite(position):
+                fail(
+                    f"Non-finite joint position: "
+                    f"{name}={position}"
+                )
+
+            print(
+                f"{name:36s} "
+                f"{position:+.9f} rad"
+            )
+
+        print()
+        print("RAW STATE: PASS")
+
+        print()
+        print("2. OPERATOR-APPROVED STARTUP ENVELOPE")
+        print("------------------------------------------")
+
+        envelope_ok = True
+
+        for name in ARM_JOINTS:
+            actual = node.positions[name]
+            reference = float(safe_pose[name])
+            delta = abs(actual - reference)
+
+            passed = (
+                delta <= startup_tolerance
+            )
+
+            envelope_ok = (
+                envelope_ok and passed
+            )
+
+            print(
+                f"{name:8s} "
+                f"actual={actual:+.9f} "
+                f"safe={reference:+.9f} "
+                f"delta={delta:.9f} rad "
+                f"({math.degrees(delta):.3f} deg) "
+                f"{'PASS' if passed else 'FAIL'}"
+            )
+
+        print()
+        print(
+            "startup envelope : "
+            f"{startup_tolerance:.9f} rad "
+            f"({math.degrees(startup_tolerance):.3f} deg)"
+        )
+
+        print(
+            "runtime envelope : "
+            f"{max_safe_deviation:.9f} rad "
+            f"({math.degrees(max_safe_deviation):.3f} deg)"
+        )
+
+        print(
+            "command-current  : "
+            f"{max_command_delta:.9f} rad "
+            f"({math.degrees(max_command_delta):.3f} deg)"
+        )
+
+        print()
+
+        if envelope_ok:
+            print("STARTUP ENVELOPE: PASS")
+        else:
+            print(
+                "STARTUP ENVELOPE: FAIL "
+                "(read-only audit continues; arming disabled)"
+            )
+
+        print()
+        print("3. MOVEIT CURRENT ROBOT STATE")
+        print("------------------------------------------")
+
+        scene_request = GetPlanningScene.Request()
+
+        scene_request.components.components = (
+            PlanningSceneComponents.ROBOT_STATE
+        )
+
+        scene_response = call_service(
+            node,
+            node.scene_client,
+            scene_request,
+            "/get_planning_scene",
+        )
+
+        robot_state = (
+            scene_response.scene.robot_state
+        )
+
+        scene_joint_state = (
+            robot_state.joint_state
+        )
+
+        scene_positions = dict(
+            zip(
+                scene_joint_state.name,
+                scene_joint_state.position,
+            )
+        )
+
+        scene_missing = [
+            name
+            for name in REQUIRED_JOINTS
+            if name not in scene_positions
+        ]
+
+        if scene_missing:
+            fail(
+                "MoveIt current state is incomplete: "
+                + ", ".join(scene_missing)
+            )
+
+        for name in REQUIRED_JOINTS:
+            print(
+                f"{name:36s} "
+                f"{scene_positions[name]:+.9f} rad"
+            )
+
+        print()
+        print("MOVEIT CURRENT STATE: PASS")
+
+        print()
+        print("4. MOVEIT STATE VALIDITY / COLLISION")
+        print("------------------------------------------")
+
+        validity_request = (
+            GetStateValidity.Request()
+        )
+
+        validity_request.robot_state = (
+            robot_state
+        )
+
+        # Empty group requests full-robot state validity,
+        # including the arm, F/T mounting chain and gripper.
+        validity_request.group_name = ""
+
+        validity_response = call_service(
+            node,
+            node.validity_client,
+            validity_request,
+            "/check_state_validity",
+        )
+
+        if not validity_response.valid:
+            print(
+                "MoveIt reports the current "
+                "robot state as invalid."
+            )
+
+            for contact in (
+                validity_response.contacts[:10]
+            ):
+                print(
+                    "collision: "
+                    f"{contact.contact_body_1} <-> "
+                    f"{contact.contact_body_2}"
+                )
+
+            fail(
+                "Current state failed MoveIt "
+                "collision/constraint validity."
+            )
+
+        print("MOVEIT FULL-ROBOT STATE VALIDITY: PASS")
+
+        if not envelope_ok:
+            fail(
+                "Current state is outside the configured "
+                "startup/runtime envelope. "
+                "Manual ARM_THOR7 confirmation remains disabled."
+            )
+
+        print()
+        print("5. MANUAL REAL-HARDWARE CONFIRMATION")
+        print("------------------------------------------")
+        print("Workspace must be clear.")
+        print("Emergency stop must be reachable.")
+        print("Robot must be physically stationary.")
+        print("The next REAL launch still leaves")
+        print("thor7_arm_controller inactive.")
+        print()
+
+        tty_fd = None
+
+        try:
+            tty_fd = os.open(
+                "/dev/tty",
+                os.O_RDWR | os.O_NOCTTY,
+            )
+
+            prompt = (
+                "Type exactly ARM_THOR7 "
+                "to approve the next REAL launch: "
+            )
+
+            os.write(
+                tty_fd,
+                prompt.encode("utf-8"),
+            )
+
+            # /dev/tty is normally in canonical mode, so this read
+            # completes after the operator presses Enter.
+            answer = os.read(
+                tty_fd,
+                256,
+            ).decode(
+                "utf-8",
+                errors="replace",
+            ).strip()
+
+        except OSError as error:
+            fail(
+                "Cannot read manual confirmation "
+                f"from /dev/tty: {error}"
+            )
+
+        finally:
+            if tty_fd is not None:
+                os.close(tty_fd)
+
+        if answer != CONFIRMATION_TOKEN:
+            fail(
+                "Operator confirmation was not granted."
+            )
+
+        print()
+        print("==========================================")
+        print("RESULT: PASS")
+        print("READ-ONLY state, startup envelope,")
+        print("MoveIt current state and collision")
+        print("validity all passed.")
+        print()
+        print("Next:")
+        print("1. Stop the Plan-only launch normally.")
+        print("2. Confirm old controller_manager is gone.")
+        print("3. Launch REAL SERVOJ with:")
+        print()
+        print(
+            "ros2 launch thor7v3_moveit_config "
+            "thor7_real_servoj_moveit_execute.launch.py "
+            "operator_confirmation:=ARM_THOR7"
+        )
+        print()
+        print("Do not activate thor7_arm_controller")
+        print("until the REAL zero-motion checks pass.")
+        print("==========================================")
+
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
+
+
+if __name__ == "__main__":
+    main()

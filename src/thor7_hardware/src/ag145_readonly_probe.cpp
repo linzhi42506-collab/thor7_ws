@@ -88,6 +88,20 @@ private:
       return;
     }
 
+    // 0x0202 position feedback is not trustworthy until the gripper
+    // has completed initialization. Never publish a plausible-looking
+    // but uncalibrated joint state to MoveIt.
+    if (init_fb != 1) {
+      publishDiag(
+        diagnostic_msgs::msg::DiagnosticStatus::STALE,
+        "gripper not initialized",
+        "init_fb=" + std::to_string(init_fb) +
+          " status=" + std::to_string(status) +
+          " raw_device_pos=" + std::to_string(device_pos) +
+          " position_not_published=true");
+      return;
+    }
+
     const double joint_rad = thor7_hardware::devicePositionToJointRad(
       static_cast<int>(device_pos));
     const std::string status_text = thor7_hardware::gripperStatusText(status);

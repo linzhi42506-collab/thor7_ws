@@ -1,0 +1,3 @@
+[INFO] [1787116078.814496367] [spawner_gripper_controller]: waiting for service /controller_manager/list_controllers to become available...
+[WARN] [1787116079.325943696] [spawner_gripper_controller]: [93mController already loaded, skipping load_controller[0m
+[ERROR] [1787116079.352167567] [spawner_gripper_controller]: [91mFailed to configure controller[0m

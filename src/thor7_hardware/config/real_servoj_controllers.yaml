@@ -1,29 +1,42 @@
 controller_manager:
   ros__parameters:
     update_rate: 100
-
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
-
     thor7_arm_controller:
       type: joint_trajectory_controller/JointTrajectoryController
-
-
 thor7_arm_controller:
   ros__parameters:
     joints:
-      - joint1
-      - joint2
-      - joint3
-      - joint4
-      - joint5
-      - joint6
-
+    - joint1
+    - joint2
+    - joint3
+    - joint4
+    - joint5
+    - joint6
     command_interfaces:
-      - position
-
+    - position
     state_interfaces:
-      - position
-
+    - position
     allow_partial_joints_goal: false
     open_loop_control: false
+    constraints:
+      goal_time: 1.0
+      joint1:
+        trajectory: 0.02
+        goal: 0.00175
+      joint2:
+        trajectory: 0.02
+        goal: 0.00175
+      joint3:
+        trajectory: 0.02
+        goal: 0.00175
+      joint4:
+        trajectory: 0.02
+        goal: 0.00175
+      joint5:
+        trajectory: 0.02
+        goal: 0.00175
+      joint6:
+        trajectory: 0.02
+        goal: 0.00175

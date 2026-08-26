@@ -1,6 +1,22 @@
+# ROS 2 / colcon generated files
 build/
 install/
 log/
-test_logs/
-*.log
-*.bak
+
+# Do not upload local YOLO model/project folder
+yolo11n/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
+*~
+
+# Temporary files
+*.tmp
+*.swp

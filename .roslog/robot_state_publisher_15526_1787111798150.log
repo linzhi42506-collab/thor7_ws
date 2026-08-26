@@ -1,0 +1,19 @@
+[INFO] [1787111798.175868264] [robot_state_publisher]: got segment ag145_gripper_base_link
+[INFO] [1787111798.175977906] [robot_state_publisher]: got segment ag145_gripper_finger1_finger_link
+[INFO] [1787111798.175985742] [robot_state_publisher]: got segment ag145_gripper_finger1_finger_tip_link
+[INFO] [1787111798.175990025] [robot_state_publisher]: got segment ag145_gripper_finger1_inner_knuckle_link
+[INFO] [1787111798.175994046] [robot_state_publisher]: got segment ag145_gripper_finger1_knuckle_link
+[INFO] [1787111798.175997732] [robot_state_publisher]: got segment ag145_gripper_finger2_finger_link
+[INFO] [1787111798.176001284] [robot_state_publisher]: got segment ag145_gripper_finger2_finger_tip_link
+[INFO] [1787111798.176005029] [robot_state_publisher]: got segment ag145_gripper_finger2_inner_knuckle_link
+[INFO] [1787111798.176008636] [robot_state_publisher]: got segment ag145_gripper_finger2_knuckle_link
+[INFO] [1787111798.176012099] [robot_state_publisher]: got segment base_link
+[INFO] [1787111798.176016025] [robot_state_publisher]: got segment link1
+[INFO] [1787111798.176019493] [robot_state_publisher]: got segment link2
+[INFO] [1787111798.176022928] [robot_state_publisher]: got segment link3
+[INFO] [1787111798.176026313] [robot_state_publisher]: got segment link4
+[INFO] [1787111798.176029634] [robot_state_publisher]: got segment link5
+[INFO] [1787111798.176033076] [robot_state_publisher]: got segment link6
+[INFO] [1787111798.176036406] [robot_state_publisher]: got segment tool0
+[INFO] [1787111798.176039692] [robot_state_publisher]: got segment world
+[INFO] [1787111921.631464220] [rclcpp]: signal_handler(SIGINT/SIGTERM)

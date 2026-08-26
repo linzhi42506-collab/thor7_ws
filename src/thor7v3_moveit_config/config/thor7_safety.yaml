@@ -1,0 +1,27 @@
+# Canonical Thor7 commissioning safety configuration.
+#
+# This is the single editable source for:
+# - ros2_control startup envelope
+# - runtime command safety envelope
+# - MoveIt SRDF named safe_pose
+#
+# startup_pose_tolerance_rad is now the operator-approved startup
+# envelope, not a requirement to be within 3 degrees at every restart.
+#
+# Collision validity is checked separately by the READ-ONLY preflight.
+
+safe_pose:
+  joint1: 1.876752545
+  joint2: -0.048520153
+  joint3: 1.863313509
+  joint4: 0.008377580
+  joint5: 1.436405974
+  joint6: -0.287979327
+
+# 30 degrees around safe_pose for the current commissioning phase.
+startup_pose_tolerance_rad: 0.5235987756
+max_safe_deviation_rad: 0.5235987756
+
+# Maximum instantaneous target-to-measured-position difference.
+# Keep at 1 degree to reject command jumps.
+max_command_delta_rad: 0.0174532925

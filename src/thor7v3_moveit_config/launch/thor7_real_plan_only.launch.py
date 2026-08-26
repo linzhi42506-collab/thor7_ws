@@ -1,4 +1,7 @@
 from launch import LaunchDescription
+from launch.actions import EmitEvent, LogInfo, RegisterEventHandler
+from launch.event_handlers import OnProcessExit
+from launch.events import Shutdown
 from launch.substitutions import PathJoinSubstitution
 
 from launch_ros.actions import Node
@@ -71,6 +74,30 @@ def generate_launch_description():
         ],
     )
 
+    # Fail closed: if ros2_control/controller_manager exits,
+    # MoveGroup and RViz must not remain alive with stale joint state.
+    shutdown_on_controller_manager_exit = RegisterEventHandler(
+        OnProcessExit(
+            target_action=controller_manager,
+            on_exit=[
+                LogInfo(
+                    msg=(
+                        "[THOR7 SAFETY] controller_manager exited; "
+                        "shutting down the complete Plan-only stack."
+                    )
+                ),
+                EmitEvent(
+                    event=Shutdown(
+                        reason=(
+                            "Thor7 controller_manager exited; "
+                            "stale robot state must not remain visible."
+                        )
+                    )
+                ),
+            ],
+        )
+    )
+
     # Publish only real joint states.
     joint_state_broadcaster_spawner = Node(
         package="controller_manager",
@@ -122,6 +149,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        shutdown_on_controller_manager_exit,
         robot_state_publisher,
         controller_manager,
         joint_state_broadcaster_spawner,

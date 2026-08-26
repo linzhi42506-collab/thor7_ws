@@ -97,7 +97,10 @@
     <disable_collisions link1="link5" link2="ag145_gripper_finger2_finger_link" reason="Never"/>
     <disable_collisions link1="link5" link2="ag145_gripper_finger2_inner_knuckle_link" reason="Never"/>
     <disable_collisions link1="link5" link2="ag145_gripper_finger2_finger_tip_link" reason="Never"/>
-    <disable_collisions link1="link6" link2="ag145_gripper_base_link" reason="Adjacent"/>
+    <!-- Physical mounting chain:
+         link6 -> six-axis F/T sensor -> AG145 -->
+    <disable_collisions link1="link6" link2="ft_sensor_mount_link" reason="Adjacent"/>
+    <disable_collisions link1="ft_sensor_mount_link" link2="ag145_gripper_base_link" reason="Adjacent"/>
     <disable_collisions link1="link6" link2="ag145_gripper_finger1_knuckle_link" reason="Never"/>
     <disable_collisions link1="link6" link2="ag145_gripper_finger1_finger_link" reason="Never"/>
     <disable_collisions link1="link6" link2="ag145_gripper_finger1_inner_knuckle_link" reason="Never"/>
@@ -154,4 +157,15 @@
     <disable_collisions link1="ag145_gripper_finger2_inner_knuckle_link" link2="ag145_gripper_finger2_knuckle_link" reason="Adjacent"/>
     <disable_collisions link1="ag145_gripper_finger2_inner_knuckle_link" link2="tool0" reason="Never"/>
     <disable_collisions link1="ag145_gripper_finger2_knuckle_link" link2="tool0" reason="Never"/>
+
+  <!-- Thor7 commissioning / safe reference pose -->
+  <group_state name="safe_pose" group="thor7_arm">
+    <joint name="joint1" value="1.876752545"/>
+    <joint name="joint2" value="-0.048520153"/>
+    <joint name="joint3" value="1.863313509"/>
+    <joint name="joint4" value="0.008377580"/>
+    <joint name="joint5" value="1.436405974"/>
+    <joint name="joint6" value="-0.287979327"/>
+  </group_state>
+
 </robot>

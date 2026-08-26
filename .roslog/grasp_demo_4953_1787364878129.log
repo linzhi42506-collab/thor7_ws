@@ -1,0 +1,141 @@
+[WARN] [1787364878.141956959] [grasp_demo]: ===== GRASP DEMO (candidate evaluator) BUILD 2026-08-19 D =====
+[INFO] [1787364879.218459482] [grasp_demo]: Object detected.
+[INFO] [1787364879.222616650] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.00382249 seconds
+[INFO] [1787364879.222648229] [moveit_robot_model.robot_model]: Loading robot model 'thor7v3'...
+[INFO] [1787364879.222656165] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[INFO] [1787364879.798711390] [move_group_interface]: Ready to take commands for planning group thor7_arm.
+[INFO] [1787364879.801848931] [move_group_interface]: Ready to take commands for planning group gripper.
+[INFO] [1787364880.302568703] [move_group_interface]: MoveGroup action client/server ready
+[INFO] [1787364880.303526510] [move_group_interface]: Planning request accepted
+[INFO] [1787364880.333276279] [move_group_interface]: Planning request complete!
+[INFO] [1787364880.333595948] [move_group_interface]: time taken to generate plan: 0.0193395 seconds
+[INFO] [1787364880.334336657] [move_group_interface]: Execute request accepted
+[INFO] [1787364880.968047126] [move_group_interface]: Execute request success!
+[INFO] [1787364880.969026884] [grasp_demo]: Executed: move to home (attempt 1)
+[INFO] [1787364880.969204692] [move_group_interface]: MoveGroup action client/server ready
+[INFO] [1787364880.969752910] [move_group_interface]: Planning request accepted
+[INFO] [1787364880.984572493] [move_group_interface]: Planning request complete!
+[INFO] [1787364880.985248403] [move_group_interface]: time taken to generate plan: 0.00530495 seconds
+[INFO] [1787364880.985790312] [move_group_interface]: Execute request accepted
+[INFO] [1787364881.068135008] [move_group_interface]: Execute request success!
+[INFO] [1787364881.069099127] [grasp_demo]: Executed: open gripper (attempt 1)
+[INFO] [1787364881.070168241] [moveit_ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[INFO] [1787364881.077690668] [grasp_demo]: IK sampling round 1/3
+[INFO] [1787364881.126012807] [grasp_demo]:   round 1: collected 50 distinct IK branches
+[INFO] [1787364881.127611967] [grasp_demo]:   reject yaw_-15/wrist-flip: in collision
+[INFO] [1787364881.128224083] [grasp_demo]:   reject yaw_0/wrist-flip: in collision
+[INFO] [1787364881.130562921] [grasp_demo]:   reject yaw_+15/wrist-flip: in collision
+[INFO] [1787364881.135696640] [grasp_demo]:   reject yaw_+30/wrist-flip: in collision
+[INFO] [1787364881.140541912] [grasp_demo]:   reject yaw_+90/wrist-flip: in collision
+[INFO] [1787364881.143543175] [grasp_demo]:   reject yaw_-45/wrist-flip: in collision
+[INFO] [1787364881.149843139] [grasp_demo]:   reject yaw_+45/wrist-flip: in collision
+[INFO] [1787364881.154334697] [grasp_demo]:   reject yaw_+15/home: in collision
+[INFO] [1787364881.154933501] [grasp_demo]:   reject yaw_+15/wrist-flip: |dJ1|=3.14 rad > 1.57
+[INFO] [1787364881.155469688] [grasp_demo]:   reject yaw_+30/wrist-flip: |dJ1|=3.14 rad > 1.57
+[INFO] [1787364881.155806012] [grasp_demo]:   reject yaw_0/home: |dJ1|=3.14 rad > 1.57
+[INFO] [1787364881.156198322] [grasp_demo]:   reject yaw_-15/home: |dJ1|=3.14 rad > 1.57
+[INFO] [1787364881.156534815] [grasp_demo]:   reject yaw_-30/wrist-flip: |dJ1|=3.14 rad > 1.57
+[INFO] [1787364881.156731905] [grasp_demo]:   reject yaw_0/home: |dJ1|=3.14 rad > 1.57
+[INFO] [1787364881.157060660] [grasp_demo]:   reject yaw_+45/wrist-flip: |dJ1|=3.14 rad > 1.57
+[INFO] [1787364881.157370347] [grasp_demo]:   reject yaw_+15/wrist-flip: |dJ1|=3.14 rad > 1.57
+[INFO] [1787364881.166395174] [grasp_demo]:   reject yaw_+90/wrist-flip: in collision
+[INFO] [1787364881.175629019] [grasp_demo]:   reject yaw_+15/home: in collision
+[INFO] [1787364881.183352753] [grasp_demo]:   reject yaw_+30/wrist-flip: in collision
+[INFO] [1787364881.191812749] [grasp_demo]:   reject yaw_-15/home: in collision
+[INFO] [1787364881.199348793] [grasp_demo]:   reject yaw_-45/home: in collision
+[INFO] [1787364881.205800185] [grasp_demo]:   reject yaw_-30/home: in collision
+[INFO] [1787364881.210864732] [grasp_demo]:   reject yaw_-15/wrist-flip: in collision
+[INFO] [1787364881.215348109] [grasp_demo]:   reject yaw_0/wrist-flip: in collision
+[INFO] [1787364881.223349154] [grasp_demo]:   reject yaw_+90/home: in collision
+[INFO] [1787364881.231852043] [grasp_demo]:   reject yaw_+45/home: in collision
+[INFO] [1787364881.238561145] [grasp_demo]:   reject yaw_+30/home: in collision
+[INFO] [1787364881.245102505] [grasp_demo]:   reject yaw_+15/home: in collision
+[INFO] [1787364881.246513120] [grasp_demo]:   reject yaw_-30/known-good: in collision
+[INFO] [1787364881.247223227] [grasp_demo]:   reject yaw_-15/wrist-flip: in collision
+[INFO] [1787364881.247794037] [grasp_demo]:   reject yaw_0/known-good: in collision
+[INFO] [1787364881.250787978] [grasp_demo]:   reject yaw_+15/home: in collision
+[INFO] [1787364881.256110839] [grasp_demo]:   reject yaw_+30/known-good: in collision
+[INFO] [1787364881.258802909] [grasp_demo]:   reject yaw_+45/known-good: in collision
+[INFO] [1787364881.261938141] [grasp_demo]:   reject yaw_+90/wrist-flip: in collision
+[INFO] [1787364881.265426633] [grasp_demo]:   reject yaw_-45/wrist-flip: in collision
+[INFO] [1787364881.266203131] [grasp_demo]:   reject yaw_0/home: in collision
+[INFO] [1787364881.266928839] [grasp_demo]:   reject yaw_-15/wrist-flip: in collision
+[INFO] [1787364881.267888597] [grasp_demo]:   reject yaw_-45/wrist-flip: in collision
+[INFO] [1787364881.275842331] [grasp_demo]:   reject yaw_+30/wrist-flip: in collision
+[INFO] [1787364881.284495501] [grasp_demo]:   reject yaw_-15/home: in collision
+[INFO] [1787364881.292371213] [grasp_demo]:   reject yaw_-30/wrist-flip: in collision
+[INFO] [1787364881.301693898] [grasp_demo]:   reject yaw_-45/wrist-flip: in collision
+[INFO] [1787364881.308265849] [grasp_demo]:   reject yaw_-30/wrist-flip: in collision
+[INFO] [1787364881.313102526] [grasp_demo]:   reject yaw_0/home: in collision
+[INFO] [1787364881.313784774] [grasp_demo]:   reject yaw_-15/home: |dJ1|=3.14 rad > 1.57
+[INFO] [1787364881.314441159] [grasp_demo]:   reject yaw_+45/wrist-flip: |dJ1|=3.14 rad > 1.57
+[INFO] [1787364881.314485075] [grasp_demo]: Best pre-grasp: yaw=yaw_+45 seed=wrist-flip sample=1, motion_cost=5.58 rad, margin=0.072
+[INFO] [1787364881.314539593] [grasp_demo]:   current J1..J6(deg): [-0.00,-4.95,-0.00,-0.00,0.00,-0.00]
+[INFO] [1787364881.314556817] [grasp_demo]:   target  J1..J6(deg): [-0.00,0.86,141.10,0.00,38.04,135.00]
+[INFO] [1787364881.314570568] [grasp_demo]:   ΔJ1 = 0.000 rad
+[INFO] [1787364881.314585762] [grasp_demo]:   ΔJ2 = 0.101 rad
+[INFO] [1787364881.314600054] [grasp_demo]:   ΔJ3 = 2.463 rad
+[INFO] [1787364881.314613680] [grasp_demo]:   ΔJ4 = 0.000 rad
+[INFO] [1787364881.314627393] [grasp_demo]:   ΔJ5 = 0.664 rad
+[INFO] [1787364881.314640730] [grasp_demo]:   ΔJ6 = 2.356 rad
+[INFO] [1787364881.317801170] [move_group_interface]: MoveGroup action client/server ready
+[INFO] [1787364881.318371329] [move_group_interface]: Planning request accepted
+[INFO] [1787364881.328500341] [move_group_interface]: Planning request aborted
+[ERROR] [1787364881.328610327] [move_group_interface]: MoveGroupInterface::plan() failed or timeout reached
+[WARN] [1787364881.328665655] [grasp_demo]: Pilz PTP failed, fallback to OMPL RRTConnect
+[INFO] [1787364881.328764964] [move_group_interface]: MoveGroup action client/server ready
+[INFO] [1787364881.329082346] [move_group_interface]: Planning request accepted
+[INFO] [1787364881.349999543] [move_group_interface]: Planning request complete!
+[INFO] [1787364881.350210070] [move_group_interface]: time taken to generate plan: 0.00674582 seconds
+[INFO] [1787364881.350248582] [grasp_demo]: pre-grasp planned with ompl/RRTConnect
+[INFO] [1787364881.350283951] [grasp_demo]:   J1 start=-0.00 goal=-0.00 min=-0.00 max=-0.00 exc=0.00 rad
+[INFO] [1787364881.350309042] [grasp_demo]:   J2 start=-0.09 goal=0.01 min=-0.09 max=0.01 exc=0.10 rad
+[INFO] [1787364881.350329260] [grasp_demo]:   J3 start=-0.00 goal=2.46 min=-0.00 max=2.46 exc=2.46 rad
+[INFO] [1787364881.350348172] [grasp_demo]:   J4 start=-0.00 goal=0.00 min=-0.00 max=-0.00 exc=0.00 rad
+[INFO] [1787364881.350367468] [grasp_demo]:   J5 start=0.00 goal=0.66 min=0.00 max=0.66 exc=0.66 rad
+[INFO] [1787364881.350385863] [grasp_demo]:   J6 start=-0.00 goal=2.36 min=-0.00 max=2.36 exc=2.36 rad
+[INFO] [1787364881.350981579] [move_group_interface]: Execute request accepted
+[INFO] [1787364887.488108741] [move_group_interface]: Execute request success!
+[INFO] [1787364887.488144645] [grasp_demo]: pre-grasp execute = 6.138 s, result 1
+[INFO] [1787364887.490726647] [grasp_demo]: Cartesian descend fraction = 1.000
+[INFO] [1787364887.490763813] [grasp_demo]: [descend] J1 min=-0.000 max=0.000 exc=0.000 max_step=0.000 rad
+[INFO] [1787364887.490788312] [grasp_demo]: [descend] J2 min=0.015 max=0.194 exc=0.179 max_step=0.035 rad
+[INFO] [1787364887.490807030] [grasp_demo]: [descend] J3 min=2.463 max=2.512 exc=0.049 max_step=0.010 rad
+[INFO] [1787364887.490824660] [grasp_demo]: [descend] J4 min=-0.000 max=-0.000 exc=0.000 max_step=0.000 rad
+[INFO] [1787364887.490842563] [grasp_demo]: [descend] J5 min=0.435 max=0.664 exc=0.229 max_step=0.045 rad
+[INFO] [1787364887.490859653] [grasp_demo]: [descend] J6 min=2.356 max=2.356 exc=0.000 max_step=0.000 rad
+[INFO] [1787364887.491387616] [move_group_interface]: Execute request accepted
+[INFO] [1787364888.528106477] [move_group_interface]: Execute request success!
+[INFO] [1787364888.528564094] [grasp_demo]: Cartesian executed: descend
+[INFO] [1787364888.538120372] [grasp_demo]: [after descend] full-robot VALID
+[INFO] [1787364888.538308299] [grasp_demo]: === attach detail ===
+[INFO] [1787364888.538332094] [grasp_demo]:   attached object : test_box
+[INFO] [1787364888.538346556] [grasp_demo]:   attach link     : ag145_gripper_base_link
+[INFO] [1787364888.538359499] [grasp_demo]:   touch_link[0]  : ag145_gripper_finger1_finger_link
+[INFO] [1787364888.538373436] [grasp_demo]:   touch_link[1]  : ag145_gripper_finger2_finger_link
+[INFO] [1787364888.538386536] [grasp_demo]:   touch_link[2]  : ag145_gripper_finger1_finger_tip_link
+[INFO] [1787364888.538399465] [grasp_demo]:   touch_link[3]  : ag145_gripper_finger2_finger_tip_link
+[INFO] [1787364888.538412208] [grasp_demo]:   touch_link[4]  : ag145_gripper_finger1_inner_knuckle_link
+[INFO] [1787364888.538424717] [grasp_demo]:   touch_link[5]  : ag145_gripper_finger2_inner_knuckle_link
+[INFO] [1787364889.048254834] [grasp_demo]: [after attach] full-robot VALID
+[INFO] [1787364889.058250847] [grasp_demo]: [before close] full-robot VALID
+[INFO] [1787364889.058429831] [move_group_interface]: MoveGroup action client/server ready
+[INFO] [1787364889.058910729] [move_group_interface]: Planning request accepted
+[INFO] [1787364889.111555414] [move_group_interface]: Planning request complete!
+[INFO] [1787364889.112088142] [move_group_interface]: time taken to generate plan: 0.0389229 seconds
+[INFO] [1787364889.112591119] [move_group_interface]: Execute request accepted
+[INFO] [1787364891.148059613] [move_group_interface]: Execute request success!
+[INFO] [1787364891.148823969] [grasp_demo]: Executed: close gripper (attempt 1)
+[INFO] [1787364891.158221307] [grasp_demo]: [after close] full-robot VALID
+[INFO] [1787364891.168070005] [grasp_demo]: [before lift] full-robot VALID
+[INFO] [1787364891.172743960] [grasp_demo]: Cartesian lift fraction = 1.000
+[INFO] [1787364891.172792447] [grasp_demo]: [lift] J1 min=0.000 max=0.000 exc=0.000 max_step=0.000 rad
+[INFO] [1787364891.172817376] [grasp_demo]: [lift] J2 min=-0.144 max=0.194 exc=0.338 max_step=0.047 rad
+[INFO] [1787364891.172836202] [grasp_demo]: [lift] J3 min=2.376 max=2.512 exc=0.137 max_step=0.019 rad
+[INFO] [1787364891.172854828] [grasp_demo]: [lift] J4 min=-0.000 max=-0.000 exc=0.000 max_step=0.000 rad
+[INFO] [1787364891.172872131] [grasp_demo]: [lift] J5 min=0.435 max=0.910 exc=0.475 max_step=0.065 rad
+[INFO] [1787364891.172889223] [grasp_demo]: [lift] J6 min=2.356 max=2.356 exc=0.000 max_step=0.000 rad
+[INFO] [1787364891.173539767] [move_group_interface]: Execute request accepted
+[INFO] [1787364892.608044630] [move_group_interface]: Execute request success!
+[INFO] [1787364892.608974150] [grasp_demo]: Cartesian executed: lift
+[INFO] [1787364892.609017706] [grasp_demo]: Grasp demo (candidate evaluator) finished.

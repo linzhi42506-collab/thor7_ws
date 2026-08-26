@@ -1,0 +1,3 @@
+[INFO] [1787115224.548884630] [spawner_gripper_controller]: waiting for service /controller_manager/list_controllers to become available...
+[INFO] [1787115226.468097663] [spawner_gripper_controller]: [94mLoaded [1mgripper_controller[0m
+[INFO] [1787115226.549317307] [spawner_gripper_controller]: [92mConfigured and activated [1mgripper_controller[0m

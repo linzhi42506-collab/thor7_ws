@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find thor7v3_description)/urdf/thor7v3.transmission.xacro" />
+  <xacro:include filename="$(find thor7v3_description)/urdf/thor7v3.gazebo.xacro" />
+
+  <xacro:macro name="dh_to_origin" params="a d alpha theta">
+    <xacro:property name="r00" scope="parent" value="${cos(theta)}" />
+    <xacro:property name="r10" scope="parent" value="${sin(theta)*cos(alpha)}" />
+    <xacro:property name="r11" scope="parent" value="${cos(theta)*cos(alpha)}" />
+    <xacro:property name="r12" scope="parent" value="${-sin(alpha)}" />
+    <xacro:property name="r20" scope="parent" value="${sin(theta)*sin(alpha)}" />
+    <xacro:property name="r21" scope="parent" value="${cos(theta)*sin(alpha)}" />
+    <xacro:property name="r22" scope="parent" value="${cos(alpha)}" />
+    <xacro:property name="sum" scope="parent" value="${sqrt(r00*r00 + r10*r10)}" />    
+    <xacro:if value="${sum > 1e-15}">
+      <xacro:property name="ry" scope="parent" value="0.0" />
+      <xacro:property name="pitch0" scope="parent" value="${atan2(-r20,sum)}" />
+      <xacro:property name="pitch1" scope="parent" value="${atan2(-r20,-sum)}" />
+      <xacro:if value="${fabs(pitch0 - ry) > fabs(pitch1 - ry)}">
+        <origin rpy="${atan2(-r21,-r22)} ${pitch1} ${atan2(-r10,-r00)}" xyz="${a} ${-sin(alpha)*d} ${cos(alpha)*d}" />
+      </xacro:if>
+      <xacro:unless value="${fabs(pitch0 - ry) > fabs(pitch1 - ry)}">
+        <origin rpy="${atan2(r21,r22)} ${pitch0} ${atan2(r10,r00)}" xyz="${a} ${-sin(alpha)*d} ${cos(alpha)*d}" />
+      </xacro:unless>
+    </xacro:if>
+    <xacro:unless value="${sum > 1e-15}">
+      <origin rpy="${atan2(-r12,r11)} ${atan2(-r20,sum)} 0.0" xyz="${a} ${-sin(alpha)*d} ${cos(alpha)*d}" />
+    </xacro:unless>
+  </xacro:macro>
+  
+  <xacro:macro name="thor7v3_robot" params="prefix  transmission_hw_interface     safety_limits:=false safety_pos_margin:=0.15     safety_k_position:=20 safety_k_velocity:=0.0">
+    <xacro:property name="a" value="${[0.0,0.0,0.47,0.0,0.0,-0.078,0.0]}" />
+    <xacro:property name="alpha" value="${[0.0,-1.5707963267949,0.0,1.5707963267949,-1.5707963267949,1.5707963267949,0.0]}" />
+    <xacro:property name="d" value="${[0.326,0.0,0.0,0.43,0.0,0.0973,0.0]}" />
+    <xacro:property name="theta" value="${[0.0,-1.5707963267949,1.5707963267949,0.0,0.0,0.0,0.0]}" />
+    <xacro:property name="joint_limitU" value="${[6.2831853071,3.1241393611,2.879793266,6.2831853071,6.2831853071,6.2831853071,0.0]}" />
+    <xacro:property name="joint_limitL" value="${[-6.2831853071,-3.1241393611,-2.879793266,-6.2831853071,-6.2831853071,-6.2831853071,0.0]}" />
+    <xacro:property name="joint_vel" value="${[4.1887902048,4.1887902048,4.36332313,5.672320069,7.67944870878,7.67944870878,0.0]}" />
+    <xacro:property name="joint_effort" value="${[411.0,411.0,194.0,91.0,53.0,53.0,0.0]}" />
+    <xacro:property name="link1_rbi" value="${[10.831271,0.000071,-0.019640,-0.085042,0.132522,-4.3e-05,-6.5e-05,0.126405,0.01814,0.038418]}" />
+    <xacro:property name="link2_rbi" value="${[6.300035,0.212264,-0.000006,-0.112699,0.02063,5.5e-05,-0.005449,0.279344,-1e-06,0.277943]}" />
+    <xacro:property name="link3_rbi" value="${[4.040193,-0.000002,-0.051825,-0.020304,0.024072,-2e-06,9e-06,0.009224,0.004387,0.022028]}" />
+    <xacro:property name="link4_rbi" value="${[2.498702,0.000012,0.040386,-0.168450,0.04174,1e-06,-2e-06,0.039726,-0.005811,0.005871]}" />
+    <xacro:property name="link5_rbi" value="${[2.321261,-0.042950,-0.006063,0.009150,0.003488,-0.000515,-0.000933,0.006255,-0.000123,0.00622]}" />
+    <xacro:property name="link6_rbi" value="${[0.656528,-0.000595,0.000101,-0.039045,0.000769,-0.0,6e-06,0.000783,-1e-06,0.000611]}" />
+    <xacro:property name="link7_rbi" value="${[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]}" />
+    <xacro:property name="joint_damp" value="0.0" />
+    <xacro:property name="joint_frict" value="0.1" />
+
+    <link name="base_link">
+      <inertial>
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0" />
+        <mass value="5.0" />
+        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+          <mesh filename="package://thor7v3_description/meshes/base_link.STL" />
+        </geometry>
+        <material name="LightGrey">
+          <color rgba="0.7 0.7 0.7 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+          <mesh filename="package://thor7v3_description/meshes/base_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+    <xacro:macro name="add_joint" params="num a alpha d theta limitU limitL vel effort">
+      <xacro:if value="${num == 1}">
+        <xacro:property name="parent_link" value="base_link" />
+      </xacro:if>
+      <xacro:unless value="${num == 1}">
+        <xacro:property name="parent_link" value="link${num-1}" />
+      </xacro:unless>
+      <joint name="joint${num}" type="revolute">
+        <xacro:dh_to_origin a="${a}" alpha="${alpha}" d="${d}" theta="${theta}" />
+        <parent link="${parent_link}" />
+        <child link="link${num}" />
+        <axis xyz="0 0 1" />
+        <limit effort="${effort}" lower="${limitL}" upper="${limitU}" velocity="${vel}" />
+        <xacro:if value="${safety_limits}">
+          <safety_controller k_position="${safety_k_position}" k_velocity="${safety_k_velocity}" soft_lower_limit="${limitL + safety_pos_margin}" soft_upper_limit="${limitU - safety_pos_margin}" />
+        </xacro:if>
+        <dynamics damping="${joint_damp}" friction="${joint_frict}" />
+      </joint>
+    </xacro:macro>
+    <xacro:add_joint a="${a[0]}" alpha="${alpha[0]}" d="${d[0]}" effort="${joint_effort[0]}" limitL="${joint_limitL[0]}" limitU="${joint_limitU[0]}" num="1" theta="${theta[0]}" vel="${joint_vel[0]}" />
+    <xacro:add_joint a="${a[1]}" alpha="${alpha[1]}" d="${d[1]}" effort="${joint_effort[1]}" limitL="${joint_limitL[1]}" limitU="${joint_limitU[1]}" num="2" theta="${theta[1]}" vel="${joint_vel[1]}" />
+    <xacro:add_joint a="${a[2]}" alpha="${alpha[2]}" d="${d[2]}" effort="${joint_effort[2]}" limitL="${joint_limitL[2]}" limitU="${joint_limitU[2]}" num="3" theta="${theta[2]}" vel="${joint_vel[2]}" />
+    <xacro:add_joint a="${a[3]}" alpha="${alpha[3]}" d="${d[3]}" effort="${joint_effort[3]}" limitL="${joint_limitL[3]}" limitU="${joint_limitU[3]}" num="4" theta="${theta[3]}" vel="${joint_vel[3]}" />
+    <xacro:add_joint a="${a[4]}" alpha="${alpha[4]}" d="${d[4]}" effort="${joint_effort[4]}" limitL="${joint_limitL[4]}" limitU="${joint_limitU[4]}" num="5" theta="${theta[4]}" vel="${joint_vel[4]}" />
+    <xacro:add_joint a="${a[5]}" alpha="${alpha[5]}" d="${d[5]}" effort="${joint_effort[5]}" limitL="${joint_limitL[5]}" limitU="${joint_limitU[5]}" num="6" theta="${theta[5]}" vel="${joint_vel[5]}" />
+
+    <xacro:macro name="add_link" params="num mass x y z ixx ixy ixz iyy iyz izz">
+      <link name="link${num}">
+        <inertial>
+          <origin rpy="0 0 0" xyz="${x} ${y} ${z}" />
+          <mass value="${mass}" />
+          <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
+        </inertial>
+        <visual>
+          <origin rpy="0 0 0" xyz="0 0 0" />
+          <geometry>
+            <mesh filename="package://thor7v3_description/meshes/link${num}.STL" />
+          </geometry>
+          <material name="LightGrey">
+            <color rgba="0.7 0.7 0.7 1" />
+          </material>
+        </visual>
+        <collision>
+          <origin rpy="0 0 0" xyz="0 0 0" />
+          <geometry>
+            <mesh filename="package://thor7v3_description/meshes/link${num}.STL" />
+          </geometry>
+        </collision>
+      </link>
+    </xacro:macro>
+    <xacro:add_link ixx="${link1_rbi[4]}" ixy="${link1_rbi[5]}" ixz="${link1_rbi[6]}" iyy="${link1_rbi[7]}" iyz="${link1_rbi[8]}" izz="${link1_rbi[9]}" mass="${link1_rbi[0]}" num="1" x="${link1_rbi[1]}" y="${link1_rbi[2]}" z="${link1_rbi[3]}" />
+    <xacro:add_link ixx="${link2_rbi[4]}" ixy="${link2_rbi[5]}" ixz="${link2_rbi[6]}" iyy="${link2_rbi[7]}" iyz="${link2_rbi[8]}" izz="${link2_rbi[9]}" mass="${link2_rbi[0]}" num="2" x="${link2_rbi[1]}" y="${link2_rbi[2]}" z="${link2_rbi[3]}" />
+    <xacro:add_link ixx="${link3_rbi[4]}" ixy="${link3_rbi[5]}" ixz="${link3_rbi[6]}" iyy="${link3_rbi[7]}" iyz="${link3_rbi[8]}" izz="${link3_rbi[9]}" mass="${link3_rbi[0]}" num="3" x="${link3_rbi[1]}" y="${link3_rbi[2]}" z="${link3_rbi[3]}" />
+    <xacro:add_link ixx="${link4_rbi[4]}" ixy="${link4_rbi[5]}" ixz="${link4_rbi[6]}" iyy="${link4_rbi[7]}" iyz="${link4_rbi[8]}" izz="${link4_rbi[9]}" mass="${link4_rbi[0]}" num="4" x="${link4_rbi[1]}" y="${link4_rbi[2]}" z="${link4_rbi[3]}" />
+    <xacro:add_link ixx="${link5_rbi[4]}" ixy="${link5_rbi[5]}" ixz="${link5_rbi[6]}" iyy="${link5_rbi[7]}" iyz="${link5_rbi[8]}" izz="${link5_rbi[9]}" mass="${link5_rbi[0]}" num="5" x="${link5_rbi[1]}" y="${link5_rbi[2]}" z="${link5_rbi[3]}" />
+    <xacro:add_link ixx="${link6_rbi[4]}" ixy="${link6_rbi[5]}" ixz="${link6_rbi[6]}" iyy="${link6_rbi[7]}" iyz="${link6_rbi[8]}" izz="${link6_rbi[9]}" mass="${link6_rbi[0]}" num="6" x="${link6_rbi[1]}" y="${link6_rbi[2]}" z="${link6_rbi[3]}" />
+
+    <xacro:thor7v3_arm_transmission hw_interface="${transmission_hw_interface}" prefix="" />
+    <xacro:thor7v3_arm_gazebo prefix="" />
+
+  </xacro:macro>
+</robot>

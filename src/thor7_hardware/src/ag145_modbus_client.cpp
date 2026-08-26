@@ -10,6 +10,11 @@ namespace thor7_hardware {
 
 namespace {
 constexpr uint8_t kReadHoldingRegisters = 0x03;
+constexpr uint8_t kWriteSingleRegister = 0x06;
+
+constexpr uint16_t kRegForce = 0x0101;
+constexpr uint16_t kRegTargetPosition = 0x0103;
+
 constexpr uint16_t kRegInitFeedback = 0x0200;
 constexpr uint16_t kRegStatus = 0x0201;
 constexpr uint16_t kRegPosition = 0x0202;
@@ -71,7 +76,10 @@ bool Ag145ModbusClient::writeFrame(const std::vector<uint8_t> & frame)
 
 bool Ag145ModbusClient::readFrame(std::vector<uint8_t> & out, size_t expected_len)
 {
-  out.clear();
+  // Append until the requested TOTAL frame length is available.
+  // Do not clear here: readHoldingRegister() first collects the
+  // 5-byte minimum/exception frame, then extends the same buffer
+  // to the normal 7-byte response length.
   const auto deadline = std::chrono::steady_clock::now() +
     std::chrono::milliseconds(timeout_ms_);
   while (out.size() < expected_len && std::chrono::steady_clock::now() < deadline) {
@@ -137,6 +145,121 @@ bool Ag145ModbusClient::readHoldingRegister(uint16_t reg, uint16_t & out)
   last_ok_.store(false);
   return false;
 }
+
+bool Ag145ModbusClient::writeSingleRegister(
+  uint16_t reg, uint16_t value)
+{
+  std::lock_guard<std::mutex> lock(comm_mutex_);
+
+  for (int attempt = 0; attempt <= retries_; ++attempt) {
+    // Modbus 0x06:
+    // [slave][06][reg_hi][reg_lo][data_hi][data_lo][crc_lo][crc_hi]
+    std::vector<uint8_t> req = {
+      slave_id_,
+      kWriteSingleRegister,
+      static_cast<uint8_t>(reg >> 8),
+      static_cast<uint8_t>(reg & 0xFF),
+      static_cast<uint8_t>(value >> 8),
+      static_cast<uint8_t>(value & 0xFF),
+    };
+
+    const uint16_t crc = modbusCrc16(req);
+    req.push_back(static_cast<uint8_t>(crc & 0xFF));
+    req.push_back(static_cast<uint8_t>(crc >> 8));
+
+    if (!writeFrame(req)) {
+      continue;
+    }
+
+    std::vector<uint8_t> resp;
+
+    // 异常 Modbus 响应为 5 bytes。
+    if (!readFrame(resp, 5)) {
+      ++timeouts_;
+      continue;
+    }
+
+    if ((resp[1] & 0x80) != 0) {
+      ++timeouts_;
+      continue;
+    }
+
+    // 正常 0x06 响应完整回显请求，共 8 bytes。
+    if (!readFrame(resp, 8)) {
+      ++timeouts_;
+      continue;
+    }
+
+    if (resp.size() != 8 ||
+        resp[0] != slave_id_ ||
+        resp[1] != kWriteSingleRegister)
+    {
+      continue;
+    }
+
+    const uint16_t crc_expected =
+      static_cast<uint16_t>(resp[6]) |
+      (static_cast<uint16_t>(resp[7]) << 8);
+
+    std::vector<uint8_t> body(
+      resp.begin(), resp.begin() + 6);
+
+    if (modbusCrc16(body) != crc_expected) {
+      ++crc_errors_;
+      continue;
+    }
+
+    const uint16_t echoed_reg =
+      (static_cast<uint16_t>(resp[2]) << 8) |
+      resp[3];
+
+    const uint16_t echoed_value =
+      (static_cast<uint16_t>(resp[4]) << 8) |
+      resp[5];
+
+    if (echoed_reg != reg ||
+        echoed_value != value)
+    {
+      continue;
+    }
+
+    last_ok_.store(true);
+    return true;
+  }
+
+  last_ok_.store(false);
+  return false;
+}
+
+
+bool Ag145ModbusClient::readForce(uint16_t & out)
+{
+  return readHoldingRegister(kRegForce, out);
+}
+
+
+bool Ag145ModbusClient::writeForce(uint16_t force)
+{
+  if (force < 20 || force > 100) {
+    return false;
+  }
+
+  return writeSingleRegister(
+    kRegForce, force);
+}
+
+
+bool Ag145ModbusClient::writeTargetPosition(
+  uint16_t target)
+{
+  if (target > 1000) {
+    return false;
+  }
+
+  return writeSingleRegister(
+    kRegTargetPosition, target);
+}
+
 
 bool Ag145ModbusClient::readInitFeedback(uint16_t & out)
 {

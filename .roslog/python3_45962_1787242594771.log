@@ -1,0 +1,3 @@
+[WARN] [1787242604.922390027] [spawner_gripper_controller]: Failed getting a result from calling /controller_manager/list_controllers in 10.0. (Attempt 1 of 3.)
+[INFO] [1787242604.952796736] [spawner_gripper_controller]: [94mLoaded [1mgripper_controller[0m
+[INFO] [1787242604.992467417] [spawner_gripper_controller]: [92mConfigured and activated [1mgripper_controller[0m

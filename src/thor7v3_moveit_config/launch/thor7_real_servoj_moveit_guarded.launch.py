@@ -1,5 +1,17 @@
 from launch import LaunchDescription
-from launch.substitutions import PathJoinSubstitution
+from launch.actions import (
+    DeclareLaunchArgument,
+    EmitEvent,
+    LogInfo,
+    OpaqueFunction,
+    RegisterEventHandler,
+)
+from launch.event_handlers import OnProcessExit
+from launch.events import Shutdown
+from launch.substitutions import (
+    LaunchConfiguration,
+    PathJoinSubstitution,
+)
 
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
@@ -7,7 +19,38 @@ from launch_ros.substitutions import FindPackageShare
 from moveit_configs_utils import MoveItConfigsBuilder
 
 
+CONFIRMATION_TOKEN = "ARM_THOR7"
+
+
+def _require_operator_confirmation(context):
+    actual = LaunchConfiguration(
+        "operator_confirmation"
+    ).perform(context)
+
+    if actual != CONFIRMATION_TOKEN:
+        raise RuntimeError(
+            "REAL SERVOJ launch refused. "
+            "Run the READ-ONLY preflight first, then launch with "
+            "operator_confirmation:=ARM_THOR7"
+        )
+
+    return []
+
+
 def generate_launch_description():
+
+    operator_confirmation_argument = DeclareLaunchArgument(
+        "operator_confirmation",
+        default_value="DENIED",
+        description=(
+            "Explicit real-hardware acknowledgement. "
+            "Required value: ARM_THOR7"
+        ),
+    )
+
+    operator_confirmation_gate = OpaqueFunction(
+        function=_require_operator_confirmation
+    )
 
     moveit_config = (
         MoveItConfigsBuilder(
@@ -53,6 +96,30 @@ def generate_launch_description():
             moveit_config.robot_description,
             real_servoj_controllers_yaml,
         ],
+    )
+
+    # Fail closed: if ros2_control/controller_manager exits,
+    # MoveGroup and RViz must not remain alive with stale joint state.
+    shutdown_on_controller_manager_exit = RegisterEventHandler(
+        OnProcessExit(
+            target_action=controller_manager,
+            on_exit=[
+                LogInfo(
+                    msg=(
+                        "[THOR7 SAFETY] controller_manager exited; "
+                        "shutting down the complete REAL SERVOJ stack."
+                    )
+                ),
+                EmitEvent(
+                    event=Shutdown(
+                        reason=(
+                            "Thor7 controller_manager exited; "
+                            "real-hardware execution is no longer valid."
+                        )
+                    )
+                ),
+            ],
+        )
     )
 
     # Safety gate:
@@ -108,6 +175,9 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        operator_confirmation_argument,
+        operator_confirmation_gate,
+        shutdown_on_controller_manager_exit,
         robot_state_publisher,
         controller_manager,
         joint_state_broadcaster_spawner,
