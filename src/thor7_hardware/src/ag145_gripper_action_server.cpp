@@ -112,8 +112,73 @@ public:
     }
 
     if (init != 1) {
-      throw std::runtime_error(
-        "AG145 is not initialized");
+      RCLCPP_WARN(
+        get_logger(),
+        "AG145 is not initialized. "
+        "Starting automatic initialization; "
+        "THE GRIPPER MAY MOVE.");
+
+      if (!client_->writeInitialize()) {
+        throw std::runtime_error(
+          "Failed to send AG145 initialization command");
+      }
+
+      const auto deadline =
+        std::chrono::steady_clock::now() +
+        std::chrono::seconds(20);
+
+      bool initialized = false;
+
+      while (
+        rclcpp::ok() &&
+        std::chrono::steady_clock::now() < deadline)
+      {
+        std::this_thread::sleep_for(
+          std::chrono::milliseconds(100));
+
+        if (!client_->readInitFeedback(init)) {
+          continue;
+        }
+
+        if (!client_->readStatus(status)) {
+          continue;
+        }
+
+        if (status == 4) {
+          throw std::runtime_error(
+            "AG145 entered ERROR status "
+            "during initialization");
+        }
+
+        if (init == 1) {
+          initialized = true;
+          break;
+        }
+      }
+
+      if (!initialized) {
+        throw std::runtime_error(
+          "AG145 initialization timed out");
+      }
+
+      // Refresh state after initialization because
+      // calibration may have changed the measured position.
+      if (
+        !client_->readStatus(status) ||
+        !client_->readPosition(pos) ||
+        !client_->readForce(force))
+      {
+        throw std::runtime_error(
+          "AG145 post-initialization read failed");
+      }
+
+      RCLCPP_INFO(
+        get_logger(),
+        "AG145 initialization complete: "
+        "pos=%u status=%u force=%u%%",
+        static_cast<unsigned>(pos),
+        static_cast<unsigned>(status),
+        static_cast<unsigned>(force));
     }
 
     if (status == 4) {

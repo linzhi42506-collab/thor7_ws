@@ -238,6 +238,13 @@ bool Ag145ModbusClient::readForce(uint16_t & out)
 }
 
 
+bool Ag145ModbusClient::writeInitialize()
+{
+  return writeSingleRegister(
+    0x0100,
+    0x00A5);
+}
+
 bool Ag145ModbusClient::writeForce(uint16_t force)
 {
   if (force < 20 || force > 100) {

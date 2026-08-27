@@ -46,6 +46,11 @@ public:
   bool readForce(uint16_t & out);
 
   // 显式写操作。调用者必须负责安全门。
+  // AG145 initialization / calibration command.
+  // Register 0x0100 <- 0x00A5.
+  // WARNING: initialization may cause gripper motion.
+  bool writeInitialize();
+
   // force: 20..100 %
   bool writeForce(uint16_t force);
 
