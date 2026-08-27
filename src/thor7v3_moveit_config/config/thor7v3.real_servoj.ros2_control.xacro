@@ -52,32 +52,50 @@
       </hardware>
 
       <joint name="joint1">
-        <command_interface name="position"/>
+        <command_interface name="position">
+        <param name="min">-6.2831853071</param>
+        <param name="max">6.2831853071</param>
+      </command_interface>
         <state_interface name="position"/>
       </joint>
 
       <joint name="joint2">
-        <command_interface name="position"/>
+        <command_interface name="position">
+        <param name="min">-3.1241393611</param>
+        <param name="max">3.1241393611</param>
+      </command_interface>
         <state_interface name="position"/>
       </joint>
 
       <joint name="joint3">
-        <command_interface name="position"/>
+        <command_interface name="position">
+        <param name="min">-2.8797932660</param>
+        <param name="max">2.8797932660</param>
+      </command_interface>
         <state_interface name="position"/>
       </joint>
 
       <joint name="joint4">
-        <command_interface name="position"/>
+        <command_interface name="position">
+        <param name="min">-6.2831853071</param>
+        <param name="max">6.2831853071</param>
+      </command_interface>
         <state_interface name="position"/>
       </joint>
 
       <joint name="joint5">
-        <command_interface name="position"/>
+        <command_interface name="position">
+        <param name="min">-6.2831853071</param>
+        <param name="max">6.2831853071</param>
+      </command_interface>
         <state_interface name="position"/>
       </joint>
 
       <joint name="joint6">
-        <command_interface name="position"/>
+        <command_interface name="position">
+        <param name="min">-6.2831853071</param>
+        <param name="max">6.2831853071</param>
+      </command_interface>
         <state_interface name="position"/>
       </joint>
 

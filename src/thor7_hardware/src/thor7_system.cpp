@@ -274,6 +274,23 @@ hardware_interface::CallbackReturn Thor7SystemHardware::on_init(
     return hardware_interface::CallbackReturn::ERROR;
   }
 
+  // Load the canonical reference positions because the existing
+  // runtime deviation guard still uses safe_positions_.
+  //
+  // NOTE: this does NOT restore the old startup-pose envelope.
+  for (std::size_t i = 0; i < kJointCount; ++i) {
+    const std::string parameter =
+      "safe_j" + std::to_string(i + 1) + "_rad";
+
+    if (!parse_double_parameter(
+          parameter,
+          safe_positions_[i],
+          commandModeEnabled()))
+    {
+      return hardware_interface::CallbackReturn::ERROR;
+    }
+  }
+
   if (commandModeEnabled() &&
       (max_command_delta_rad_ <= 0.0 ||
        max_safe_deviation_rad_ <= 0.0))
@@ -353,6 +370,7 @@ hardware_interface::CallbackReturn Thor7SystemHardware::on_init(
           joint.name.c_str());
 
         return hardware_interface::CallbackReturn::ERROR;
+
       }
     } else {
       if (!joint.command_interfaces.empty()) {
@@ -725,25 +743,6 @@ hardware_interface::return_type Thor7SystemHardware::write(
       return hardware_interface::return_type::ERROR;
     }
 
-    const double from_safe =
-      std::abs(command - safe_positions_[i]);
-
-    if (from_safe > max_safe_deviation_rad_) {
-      if (realServoJMode()) {
-        stopServoStream("command-safe safety limit");
-      }
-
-      RCLCPP_ERROR(
-        logger,
-        "%s command rejected: J%zu target-safe=%.6f rad "
-        "> max_safe_deviation=%.6f rad",
-        controlModeName(),
-        i + 1,
-        from_safe,
-        max_safe_deviation_rad_);
-
-      return hardware_interface::return_type::ERROR;
-    }
   }
 
   bool changed =
