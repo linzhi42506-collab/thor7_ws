@@ -1,3 +1,0 @@
-[INFO] [1787112473.691761736] [spawner_thor7_arm_controller]: waiting for service /controller_manager/list_controllers to become available...
-[INFO] [1787112473.990565626] [spawner_thor7_arm_controller]: [94mLoaded [1mthor7_arm_controller[0m
-[INFO] [1787112474.129825985] [spawner_thor7_arm_controller]: [92mConfigured and activated [1mthor7_arm_controller[0m

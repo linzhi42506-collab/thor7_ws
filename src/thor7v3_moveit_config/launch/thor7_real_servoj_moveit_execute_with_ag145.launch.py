@@ -42,6 +42,7 @@ def generate_launch_description():
         launch_arguments={
             "operator_confirmation":
                 operator_confirmation,
+            "start_arm_controller": "true",
         }.items(),
     )
 
@@ -73,23 +74,6 @@ def generate_launch_description():
         ],
     )
 
-    # Automatically load + activate the arm JTC.
-    #
-    # spawner waits for /controller_manager, then configures and activates
-    # thor7_arm_controller. Hardware activation itself remains responsible
-    # for initializing commands from the current measured robot state.
-    thor7_arm_controller_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=[
-            "thor7_arm_controller",
-            "--controller-manager",
-            "/controller_manager",
-        ],
-        output="screen",
-    )
-
-
     return LaunchDescription(
         [
             DeclareLaunchArgument(
@@ -104,6 +88,5 @@ def generate_launch_description():
 
             base_launch,
             ag145,
-            thor7_arm_controller_spawner,
         ]
     )

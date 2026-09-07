@@ -1,0 +1,140 @@
+format: thor7_robot_world_handeye_v1
+solver: shah
+setup: eye_to_hand
+input_convention:
+  effector_wrt_world: T_base_eef
+  object_wrt_sensor: T_camera_board
+  opencv_virtual_inputs: A=inv(T_camera_board), B=inv(T_base_eef)
+  output: T_base_camera (invert OpenCV R_base2world/T_camera_base)
+parent_frame: base_link
+child_frame: camera_color_optical_frame
+transform_source: 234.launch.py (authoritative)
+transform:
+  translation:
+    x: -0.426692
+    y: 0.961884
+    z: 0.711320
+  rotation_quaternion_xyzw:
+  - -0.304199
+  - 0.888102
+  - -0.326487
+  - 0.110199
+  rotation_rpy_rad:
+  - -2.43800801
+  - -0.00289814
+  - -2.48265246
+  matrix:
+  - - -0.79063825
+    - -0.46836250
+    - 0.39437003
+    - -0.426692
+  - - -0.61227670
+    - 0.60173832
+    - -0.51286278
+    - 0.961884
+  - - 0.00289813
+    - -0.64695251
+    - -0.76252478
+    - 0.711320
+  - - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+diagnostics:
+  sample_count: 13
+  inlier_count: 12
+  outlier_samples_1_based:
+  - 2
+  translation_rms_m: 0.011298588795235202
+  translation_mean_m: 0.010229356978974168
+  rotation_rms_rad: 0.036707026493153216
+  rotation_mean_rad: 0.03261643593796052
+  refinement: 'scipy least_squares: converged'
+  per_sample:
+  - index: 1
+    inlier: true
+    translation_m: 0.009263770545308464
+    rotation_rad: 0.01975544666214382
+    rotation_deg: 1.1319037161366503
+  - index: 2
+    inlier: false
+    translation_m: 0.03853231869203671
+    rotation_rad: 0.04491809950934385
+    rotation_deg: 2.5736175256340563
+  - index: 3
+    inlier: true
+    translation_m: 0.020697145352824232
+    rotation_rad: 0.016487681304621336
+    rotation_deg: 0.9446745527115535
+  - index: 4
+    inlier: true
+    translation_m: 0.004248832246448373
+    rotation_rad: 0.02907756938564262
+    rotation_deg: 1.6660220042961322
+  - index: 5
+    inlier: true
+    translation_m: 0.015052465917237181
+    rotation_rad: 0.0234395311044259
+    rotation_deg: 1.3429862060492215
+  - index: 6
+    inlier: true
+    translation_m: 0.010482214663080459
+    rotation_rad: 0.016131374568004574
+    rotation_deg: 0.9242596804913337
+  - index: 7
+    inlier: true
+    translation_m: 0.014107894971570337
+    rotation_rad: 0.016750880088296297
+    rotation_deg: 0.9597547321891056
+  - index: 8
+    inlier: true
+    translation_m: 0.0070777622814219895
+    rotation_rad: 0.05471864300204453
+    rotation_deg: 3.1351473047002085
+  - index: 9
+    inlier: true
+    translation_m: 0.008691699861466954
+    rotation_rad: 0.037173025134395035
+    rotation_deg: 2.129857451934565
+  - index: 10
+    inlier: true
+    translation_m: 0.005671931382238945
+    rotation_rad: 0.03611523947536685
+    rotation_deg: 2.069250798042786
+  - index: 11
+    inlier: true
+    translation_m: 0.015184686147405537
+    rotation_rad: 0.02270414413994041
+    rotation_deg: 1.3008516366752658
+  - index: 12
+    inlier: true
+    translation_m: 0.005657737672362166
+    rotation_rad: 0.04748928544345565
+    rotation_deg: 2.720935628002065
+  - index: 13
+    inlier: true
+    translation_m: 0.0066161427063253925
+    rotation_rad: 0.07155441094718926
+    rotation_deg: 4.09976575281864
+static_transform_publisher:
+  package: tf2_ros
+  executable: static_transform_publisher
+  arguments:
+  - --x
+  - '-0.426692'
+  - --y
+  - '0.961884'
+  - --z
+  - '0.711320'
+  - --qx
+  - '-0.304199'
+  - --qy
+  - '0.888102'
+  - --qz
+  - '-0.326487'
+  - --qw
+  - '0.110199'
+  - --frame-id
+  - base_link
+  - --child-frame-id
+  - camera_color_optical_frame

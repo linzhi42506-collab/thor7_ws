@@ -1,3 +1,0 @@
-[WARN] [1787240769.282099226] [spawner_thor7_arm_controller]: Failed getting a result from calling /controller_manager/list_controllers in 10.0. (Attempt 1 of 3.)
-[INFO] [1787240769.317392485] [spawner_thor7_arm_controller]: [94mLoaded [1mthor7_arm_controller[0m
-[INFO] [1787240769.357234989] [spawner_thor7_arm_controller]: [92mConfigured and activated [1mthor7_arm_controller[0m

@@ -1,3 +1,0 @@
-[INFO] [1787242409.926248427] [spawn_test_object]: Spawn 'test_box' at (0.35, 0.00, 0.10) size 0.05 in frame 'base_link'
-[WARN] [1787242415.038347721] [moveit_ros.planning_scene_interface.planning_scene_interface]: service '/get_planning_scene' not advertised yet. Continue waiting...
-[INFO] [1787242416.094874527] [spawn_test_object]: Object 'test_box' is in the planning scene.

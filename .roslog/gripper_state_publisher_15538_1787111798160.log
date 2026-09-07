@@ -1,3 +1,0 @@
-[ERROR] [1787111798.179484220] [gripper_state_publisher]: Failed to read robot_description: robot_description
-[ERROR] [1787111798.179673754] [gripper_state_publisher]: robot_description parameter is empty. Pass the full URDF as 'robot_description'.
-[INFO] [1787111921.631513986] [rclcpp]: signal_handler(SIGINT/SIGTERM)

@@ -1,0 +1,176 @@
+format: thor7_robot_world_handeye_v1
+solver: shah
+setup: eye_to_hand
+input_convention:
+  effector_wrt_world: T_base_eef
+  object_wrt_sensor: T_camera_board
+  opencv_virtual_inputs: A=inv(T_camera_board), B=inv(T_base_eef)
+  output: T_base_camera (invert OpenCV R_base2world/T_camera_base)
+parent_frame: base_link
+child_frame: camera_color_optical_frame
+transform_source: 234.launch.py (authoritative)
+transform:
+  translation:
+    x: -0.426692
+    y: 0.961884
+    z: 0.711320
+  rotation_quaternion_xyzw:
+  - -0.304199
+  - 0.888102
+  - -0.326487
+  - 0.110199
+  rotation_rpy_rad:
+  - -2.43800801
+  - -0.00289814
+  - -2.48265246
+  matrix:
+  - - -0.79063825
+    - -0.46836250
+    - 0.39437003
+    - -0.426692
+  - - -0.61227670
+    - 0.60173832
+    - -0.51286278
+    - 0.961884
+  - - 0.00289813
+    - -0.64695251
+    - -0.76252478
+    - 0.711320
+  - - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+diagnostics:
+  sample_count: 20
+  inlier_count: 18
+  outlier_samples_1_based:
+  - 4
+  - 18
+  translation_rms_m: 0.01651530031012248
+  translation_mean_m: 0.014703872797204217
+  rotation_rms_rad: 0.02033525799945576
+  rotation_mean_rad: 0.017623387266079454
+  refinement: 'scipy least_squares: converged'
+  per_sample:
+  - index: 1
+    inlier: true
+    translation_m: 0.02333971841862973
+    rotation_rad: 0.016611756475165305
+    rotation_deg: 0.9517835363260889
+  - index: 2
+    inlier: true
+    translation_m: 0.006170059216309239
+    rotation_rad: 0.014622750393592896
+    rotation_deg: 0.8378218824261363
+  - index: 3
+    inlier: true
+    translation_m: 0.011969825988602271
+    rotation_rad: 0.01880365538886058
+    rotation_deg: 1.0773700932001382
+  - index: 4
+    inlier: false
+    translation_m: 0.04051686628593052
+    rotation_rad: 0.03201488031954489
+    rotation_deg: 1.8343175239263627
+  - index: 5
+    inlier: true
+    translation_m: 0.030632461237598038
+    rotation_rad: 0.017027972006374032
+    rotation_deg: 0.9756309296321446
+  - index: 6
+    inlier: true
+    translation_m: 0.009950305394315845
+    rotation_rad: 0.023731133646960403
+    rotation_deg: 1.3596938010317325
+  - index: 7
+    inlier: true
+    translation_m: 0.006524441646713358
+    rotation_rad: 0.007572647057047652
+    rotation_deg: 0.433880716110994
+  - index: 8
+    inlier: true
+    translation_m: 0.008965536870331837
+    rotation_rad: 0.0033443513760982677
+    rotation_deg: 0.1916172190591998
+  - index: 9
+    inlier: true
+    translation_m: 0.012873041008033022
+    rotation_rad: 0.01681019720003873
+    rotation_deg: 0.963153352344853
+  - index: 10
+    inlier: true
+    translation_m: 0.009436635067316537
+    rotation_rad: 0.013774460484992136
+    rotation_deg: 0.7892184508597744
+  - index: 11
+    inlier: true
+    translation_m: 0.012953096330998413
+    rotation_rad: 0.03858651776667464
+    rotation_deg: 2.210844614137024
+  - index: 12
+    inlier: true
+    translation_m: 0.01404744398355226
+    rotation_rad: 0.01555018530841969
+    rotation_deg: 0.8909599888187866
+  - index: 13
+    inlier: true
+    translation_m: 0.018904241706727783
+    rotation_rad: 0.008148784744768368
+    rotation_deg: 0.4668909740358172
+  - index: 14
+    inlier: true
+    translation_m: 0.011100047842430011
+    rotation_rad: 0.020408416728276195
+    rotation_deg: 1.1693161450744138
+  - index: 15
+    inlier: true
+    translation_m: 0.005044136977200057
+    rotation_rad: 0.005131554593583504
+    rotation_deg: 0.29401642055330524
+  - index: 16
+    inlier: true
+    translation_m: 0.010778639322690407
+    rotation_rad: 0.005180125920611831
+    rotation_deg: 0.29679935259737805
+  - index: 17
+    inlier: true
+    translation_m: 0.02095569220787548
+    rotation_rad: 0.03967304807179117
+    rotation_deg: 2.273098214933263
+  - index: 18
+    inlier: false
+    translation_m: 0.05553119495056074
+    rotation_rad: 0.015960058876857124
+    rotation_deg: 0.9144440144242181
+  - index: 19
+    inlier: true
+    translation_m: 0.02999721295622159
+    rotation_rad: 0.025551061845178108
+    rotation_deg: 1.4639680058064553
+  - index: 20
+    inlier: true
+    translation_m: 0.021027174174130043
+    rotation_rad: 0.026692351780996645
+    rotation_deg: 1.529359102329614
+static_transform_publisher:
+  package: tf2_ros
+  executable: static_transform_publisher
+  arguments:
+  - --x
+  - '-0.426692'
+  - --y
+  - '0.961884'
+  - --z
+  - '0.711320'
+  - --qx
+  - '-0.304199'
+  - --qy
+  - '0.888102'
+  - --qz
+  - '-0.326487'
+  - --qw
+  - '0.110199'
+  - --frame-id
+  - base_link
+  - --child-frame-id
+  - camera_color_optical_frame

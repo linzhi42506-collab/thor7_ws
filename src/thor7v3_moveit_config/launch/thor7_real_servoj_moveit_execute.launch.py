@@ -8,6 +8,7 @@ from launch.actions import (
 )
 from launch.event_handlers import OnProcessExit
 from launch.events import Shutdown
+from launch.conditions import IfCondition, UnlessCondition
 from launch.substitutions import (
     LaunchConfiguration,
     PathJoinSubstitution,
@@ -45,6 +46,16 @@ def generate_launch_description():
         description=(
             "Explicit real-hardware acknowledgement. "
             "Required value: ARM_THOR7"
+        ),
+    )
+
+    start_arm_controller_argument = DeclareLaunchArgument(
+        "start_arm_controller",
+        default_value="false",
+        description=(
+            "Load and activate the arm controller together with the joint "
+            "state broadcaster. Keep false unless a guarded execution "
+            "launcher explicitly enables it."
         ),
     )
 
@@ -134,6 +145,28 @@ def generate_launch_description():
             "/controller_manager",
         ],
         output="screen",
+        condition=UnlessCondition(
+            LaunchConfiguration("start_arm_controller")
+        ),
+    )
+
+    # Use one spawner for both controllers during guarded execution. Separate
+    # spawners can race while controller_manager is starting and leave the arm
+    # controller loaded but unconfigured.
+    execution_controllers_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=[
+            "joint_state_broadcaster",
+            "thor7_arm_controller",
+            "--controller-manager",
+            "/controller_manager",
+            "--activate-as-group",
+        ],
+        output="screen",
+        condition=IfCondition(
+            LaunchConfiguration("start_arm_controller")
+        ),
     )
 
     move_group = Node(
@@ -176,11 +209,13 @@ def generate_launch_description():
 
     return LaunchDescription([
         operator_confirmation_argument,
+        start_arm_controller_argument,
         operator_confirmation_gate,
         shutdown_on_controller_manager_exit,
         robot_state_publisher,
         controller_manager,
         joint_state_broadcaster_spawner,
+        execution_controllers_spawner,
         move_group,
         rviz,
     ])

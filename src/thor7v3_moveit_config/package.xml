@@ -49,4 +49,5 @@
   </export>
   <exec_depend>joint_trajectory_controller</exec_depend>
   <exec_depend>joint_state_broadcaster</exec_depend>
+  <exec_depend>message_filters</exec_depend>
 \n  <!-- Thor7 READ-ONLY preflight runtime dependencies -->\n  <exec_depend>ament_index_python</exec_depend>\n  <exec_depend>moveit_msgs</exec_depend>\n  <exec_depend>rclpy</exec_depend>\n  <exec_depend>sensor_msgs</exec_depend>\n  <exec_depend>python3-yaml</exec_depend>\n</package>

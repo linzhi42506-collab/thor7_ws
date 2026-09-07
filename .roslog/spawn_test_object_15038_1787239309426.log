@@ -1,2 +1,0 @@
-[INFO] [1787239309.441933704] [spawn_test_object]: Spawn 'test_box' at (0.35, 0.00, 0.10) size 0.05 in frame 'base_link'
-[INFO] [1787239309.983707428] [spawn_test_object]: Object 'test_box' is in the planning scene.

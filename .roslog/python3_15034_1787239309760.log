@@ -1,3 +1,0 @@
-[WARN] [1787239309.892077697] [spawner_joint_state_broadcaster]: [93mController already loaded, skipping load_controller[0m
-[WARN] [1787239319.894596720] [spawner_joint_state_broadcaster]: Failed getting a result from calling /controller_manager/configure_controller in 10.0. (Attempt 1 of 3.)
-[ERROR] [1787239319.896020881] [spawner_joint_state_broadcaster]: [91mFailed to configure controller[0m

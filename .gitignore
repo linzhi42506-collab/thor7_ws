@@ -2,6 +2,10 @@
 build/
 install/
 log/
+.roslog/
+stability_logs/
+test_logs/
+DianaApiLog.txt
 
 # Do not upload local YOLO model/project folder
 yolo11n/
@@ -14,6 +18,8 @@ __pycache__/
 # Editor / OS files
 .vscode/
 .idea/
+.agents/
+.codex/
 .DS_Store
 *~
 
@@ -21,3 +27,27 @@ __pycache__/
 *.tmp
 *.swp
 yolo11n.pt
+
+# Local archives and generated manifests
+*.tar.xz
+src/thor7v3_description.zip
+symlink_install_manifest.txt
+
+# Accidental shell-output files
+ag145_force_percent:=20
+operator_confirmation:=ARM_THOR7
+/thor7_real_servoj_moveit_execute_with_ag145.launch.py
+ervoJ 100Hz control"
+tatus --short
+
+# Superseded or duplicate calibration exports. 234.launch.py and the
+# package-local thor7_calibrated_camera.launch.py are authoritative.
+moveit_pose1.launch.py
+movelt pose1.launch.py
+movoelt vi.yaml
+static_camera_tf.launch.py
+static_camera_tf_tool0.launch.py
+
+# Local screenshots not used by the project
+111111111111.png
+222222.png

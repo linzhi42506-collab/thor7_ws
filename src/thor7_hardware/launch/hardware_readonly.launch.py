@@ -27,6 +27,14 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument('start_arm', default_value='true'),
         DeclareLaunchArgument('start_gripper', default_value='true'),
+        DeclareLaunchArgument(
+            'gripper_joint_state_topic',
+            default_value='/ag145/readback_joint_state',
+            description=(
+                'AG145 readback topic. Use /joint_states when MoveIt/preflight '
+                'must consume the gripper feedback.'
+            ),
+        ),
 
         LogInfo(msg='========== READ-ONLY HARDWARE MODE =========='),
         LogInfo(msg='NO MOTION COMMANDS ARE IMPLEMENTED. This launch only READS sensor/joint feedback.'),
@@ -45,7 +53,14 @@ def generate_launch_description():
             executable='ag145_readonly_probe',
             name='ag145_readonly_probe',
             output='screen',
-            parameters=[params_file],
+            parameters=[
+                params_file,
+                {
+                    'joint_state_topic': LaunchConfiguration(
+                        'gripper_joint_state_topic'
+                    ),
+                },
+            ],
             condition=IfCondition(LaunchConfiguration('start_gripper')),
         ),
     ])
