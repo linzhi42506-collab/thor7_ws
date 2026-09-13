@@ -17,6 +17,7 @@
 #include <thread>
 
 #include "thor7_hardware/ag145_modbus_client.hpp"
+#include "thor7_hardware/ag145_goal_state.hpp"
 #include "thor7_hardware/modbus_utils.hpp"
 
 using namespace std::chrono_literals;
@@ -483,6 +484,8 @@ private:
         static_cast<int>(
           motion_timeout_sec_ * 1000.0));
 
+    bool seen_running = false;
+
     while (
       rclcpp::ok() &&
       std::chrono::steady_clock::now() <
@@ -514,6 +517,8 @@ private:
       const double joint =
         thor7_hardware::
           devicePositionToJointRad(pos);
+
+      seen_running = seen_running || s == 0;
 
       auto feedback =
         std::make_shared<
@@ -551,7 +556,11 @@ private:
         return;
       }
 
-      if (s == 4) {
+      const auto progress = thor7_hardware::classifyAg145GoalProgress(
+        static_cast<int>(start_pos), target_device, static_cast<int>(pos),
+        static_cast<unsigned int>(s), tolerance_counts_, seen_running);
+
+      if (progress == thor7_hardware::Ag145GoalProgress::kError) {
         RCLCPP_ERROR(
           get_logger(),
           "AG145 reports ERROR");
@@ -565,10 +574,10 @@ private:
         return;
       }
 
-      if (s == 3) {
+      if (progress == thor7_hardware::Ag145GoalProgress::kDropped) {
         RCLCPP_ERROR(
           get_logger(),
-          "AG145 reports DROPPED");
+          "AG145 reports DROPPED after close motion started");
 
         result->position = joint;
         result->effort = 0.0;
@@ -579,18 +588,8 @@ private:
         return;
       }
 
-      const int error =
-        std::abs(
-          static_cast<int>(pos) -
-          target_device);
-
-      //
-      // Normal reached position.
-      //
-      if (
-        error <= tolerance_counts_ &&
-        s != 0)
-      {
+      if (progress == thor7_hardware::Ag145GoalProgress::kReached) {
+        const int error = std::abs(static_cast<int>(pos) - target_device);
         result->position = joint;
         result->effort = 0.0;
         result->stalled = false;
@@ -611,11 +610,7 @@ private:
         return;
       }
 
-      //
-      // Future real grasp case:
-      // status=2 means holding an object.
-      //
-      if (s == 2) {
+      if (progress == thor7_hardware::Ag145GoalProgress::kHolding) {
         result->position = joint;
         result->effort = 0.0;
         result->stalled = true;

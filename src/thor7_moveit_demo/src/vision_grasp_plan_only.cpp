@@ -89,7 +89,7 @@ private:
       arm.setPoseReferenceFrame(get_parameter("base_frame").as_string());
       arm.setEndEffectorLink(get_parameter("eef_link").as_string());
       arm.setPlanningTime(5.0); arm.setNumPlanningAttempts(5);
-      arm.setMaxVelocityScalingFactor(0.10); arm.setMaxAccelerationScalingFactor(0.10);
+      arm.setMaxVelocityScalingFactor(0.15); arm.setMaxAccelerationScalingFactor(0.15);
       arm.setStartStateToCurrentState();
       const auto orientation = arm.getCurrentPose().pose.orientation;
       const double pre = get_parameter("pregrasp_clearance").as_double();
@@ -268,7 +268,7 @@ private:
       timed_cartesian.setRobotTrajectoryMsg(
         *cartesian_start, cartesian_trajectory.joint_trajectory);
       trajectory_processing::IterativeParabolicTimeParameterization time_parameterizer;
-      if (!time_parameterizer.computeTimeStamps(timed_cartesian, 0.10, 0.10)) {
+      if (!time_parameterizer.computeTimeStamps(timed_cartesian, 0.15, 0.15)) {
         RCLCPP_ERROR(get_logger(), "Could not time-parameterize the Cartesian descent");
         return;
       }

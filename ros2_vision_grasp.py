@@ -9,12 +9,13 @@ detected point from ``camera_color_optical_frame`` into ``base_link``.
 """
 
 from pathlib import Path
+import math
 
 import cv2
 import message_filters
 import numpy as np
 import rclpy
-from geometry_msgs.msg import PointStamped
+from geometry_msgs.msg import Point, PointStamped, PoseStamped
 from rclpy.duration import Duration
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
@@ -25,6 +26,8 @@ from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
 from ultralytics import YOLO
 from visualization_msgs.msg import Marker
+
+from grasp_orientation import AxialAngleFilter, estimate_planar_axis, normalize_axial
 
 
 def image_to_bgr(msg: Image) -> np.ndarray:
@@ -129,6 +132,23 @@ class VisionGraspNode(Node):
         self.declare_parameter("min_depth_samples", 5)
         self.declare_parameter("filter_alpha", 0.30)
         self.declare_parameter("show_window", True)
+        self.declare_parameter("enable_orientation_estimation", True)
+        self.declare_parameter("grasp_pose_topic", "/yolo_grasp_pose")
+        self.declare_parameter("orientation_pixel_stride", 3)
+        self.declare_parameter("orientation_height_tolerance", 0.012)
+        self.declare_parameter("orientation_max_xy_radius", 0.18)
+        self.declare_parameter("orientation_min_points", 80)
+        self.declare_parameter("orientation_min_aspect_ratio", 1.30)
+        self.declare_parameter("orientation_max_grasp_width", 0.145)
+        self.declare_parameter("orientation_expected_length", 0.0)
+        self.declare_parameter("orientation_expected_width", 0.0)
+        self.declare_parameter("orientation_length_tolerance", 0.015)
+        self.declare_parameter("orientation_width_tolerance", 0.010)
+        self.declare_parameter("orientation_window_size", 8)
+        self.declare_parameter("orientation_min_stable_samples", 5)
+        self.declare_parameter("orientation_max_std_deg", 5.0)
+        self.declare_parameter("orientation_reset_angle_deg", 25.0)
+        self.declare_parameter("orientation_reset_distance", 0.030)
 
         self.color_image_topic = str(self.get_parameter("color_image_topic").value)
         self.depth_image_topic = str(self.get_parameter("depth_image_topic").value)
@@ -147,6 +167,46 @@ class VisionGraspNode(Node):
         self.min_depth_samples = int(self.get_parameter("min_depth_samples").value)
         self.filter_alpha = float(self.get_parameter("filter_alpha").value)
         self.show_window = bool(self.get_parameter("show_window").value)
+        self.enable_orientation_estimation = bool(
+            self.get_parameter("enable_orientation_estimation").value
+        )
+        self.grasp_pose_topic = str(self.get_parameter("grasp_pose_topic").value)
+        self.orientation_pixel_stride = int(
+            self.get_parameter("orientation_pixel_stride").value
+        )
+        self.orientation_height_tolerance = float(
+            self.get_parameter("orientation_height_tolerance").value
+        )
+        self.orientation_max_xy_radius = float(
+            self.get_parameter("orientation_max_xy_radius").value
+        )
+        self.orientation_min_points = int(
+            self.get_parameter("orientation_min_points").value
+        )
+        self.orientation_min_aspect_ratio = float(
+            self.get_parameter("orientation_min_aspect_ratio").value
+        )
+        self.orientation_max_grasp_width = float(
+            self.get_parameter("orientation_max_grasp_width").value
+        )
+        self.orientation_expected_length = float(
+            self.get_parameter("orientation_expected_length").value
+        )
+        self.orientation_expected_width = float(
+            self.get_parameter("orientation_expected_width").value
+        )
+        self.orientation_length_tolerance = float(
+            self.get_parameter("orientation_length_tolerance").value
+        )
+        self.orientation_width_tolerance = float(
+            self.get_parameter("orientation_width_tolerance").value
+        )
+        self.orientation_min_stable_samples = int(
+            self.get_parameter("orientation_min_stable_samples").value
+        )
+        self.orientation_max_std = math.radians(
+            float(self.get_parameter("orientation_max_std_deg").value)
+        )
 
         if self.depth_scale <= 0.0:
             raise ValueError("depth_scale must be positive")
@@ -160,6 +220,23 @@ class VisionGraspNode(Node):
             raise ValueError("depth range is invalid")
         if self.min_depth_samples < 1:
             raise ValueError("min_depth_samples must be positive")
+        if self.orientation_pixel_stride < 1 or self.orientation_min_points < 3:
+            raise ValueError("orientation stride/minimum point count is invalid")
+        if self.orientation_height_tolerance <= 0.0 or self.orientation_max_xy_radius <= 0.0:
+            raise ValueError("orientation spatial limits must be positive")
+        if self.orientation_min_aspect_ratio <= 1.0:
+            raise ValueError("orientation_min_aspect_ratio must be greater than one")
+        if self.orientation_max_grasp_width <= 0.0:
+            raise ValueError("orientation_max_grasp_width must be positive")
+        if self.orientation_expected_length < 0.0 or self.orientation_expected_width < 0.0:
+            raise ValueError("expected object dimensions must not be negative")
+        if self.orientation_length_tolerance <= 0.0 or self.orientation_width_tolerance <= 0.0:
+            raise ValueError("object dimension tolerances must be positive")
+        orientation_window_size = int(self.get_parameter("orientation_window_size").value)
+        if not 1 <= self.orientation_min_stable_samples <= orientation_window_size:
+            raise ValueError("orientation stable sample count must fit inside the window")
+        if self.orientation_max_std <= 0.0:
+            raise ValueError("orientation_max_std_deg must be positive")
 
         requested_model_path = Path(
             str(self.get_parameter("model_path").value)
@@ -187,12 +264,20 @@ class VisionGraspNode(Node):
         self.last_sync_warning_ns = 0
         self.processing = False
         self.window_disabled = False
+        self.orientation_filter = AxialAngleFilter(
+            orientation_window_size,
+            math.radians(float(self.get_parameter("orientation_reset_angle_deg").value)),
+            float(self.get_parameter("orientation_reset_distance").value),
+        )
 
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
 
         self.marker_pub = self.create_publisher(Marker, "yolo_target_marker", 10)
         self.target_pub = self.create_publisher(PointStamped, "yolo_target_point", 10)
+        self.grasp_pose_pub = self.create_publisher(
+            PoseStamped, self.grasp_pose_topic, 10
+        )
 
         self.get_logger().info(f"loading YOLO model: {self.model_path}")
         self.model = YOLO(self.model_path)
@@ -237,6 +322,13 @@ class VisionGraspNode(Node):
             f"TF lookup: {self.base_frame} <- {self.camera_frame}; "
             "the camera is opened by realsense2_camera, not this node"
         )
+        self.get_logger().info(
+            "planar orientation estimator: "
+            f"enabled={self.enable_orientation_estimation} "
+            f"pose_topic={self.grasp_pose_topic} "
+            f"min_aspect={self.orientation_min_aspect_ratio:.2f} "
+            f"max_width={self.orientation_max_grasp_width * 1000.0:.1f}mm"
+        )
 
     def _warn_throttled(
         self,
@@ -255,8 +347,8 @@ class VisionGraspNode(Node):
     def _stamp_ns(stamp) -> int:
         return int(stamp.sec) * 1_000_000_000 + int(stamp.nanosec)
 
-    def camera_to_base(self, point_camera: np.ndarray, stamp) -> np.ndarray | None:
-        """Transform a point using the calibrated base-to-camera TF."""
+    def lookup_camera_transform(self, stamp) -> tuple[np.ndarray, np.ndarray] | None:
+        """Return calibrated base-from-camera rotation and translation."""
 
         query_time = Time.from_msg(stamp)
         try:
@@ -320,9 +412,84 @@ class VisionGraspNode(Node):
             [float(translation.x), float(translation.y), float(translation.z)],
             dtype=np.float64,
         )
+        return rotation, translation_vector
+
+    def camera_to_base(
+        self,
+        point_camera: np.ndarray,
+        stamp,
+        camera_transform: tuple[np.ndarray, np.ndarray] | None = None,
+    ) -> np.ndarray | None:
+        """Transform a point using the calibrated base-to-camera TF."""
+
+        transform = camera_transform or self.lookup_camera_transform(stamp)
+        if transform is None:
+            return None
+        rotation, translation_vector = transform
         point_camera = np.asarray(point_camera, dtype=np.float64).reshape(3)
         point_base = rotation @ point_camera + translation_vector
         return point_base if np.all(np.isfinite(point_base)) else None
+
+    def orientation_points_in_base(
+        self,
+        depth_meters: np.ndarray,
+        camera_info: CameraInfo,
+        bounds: tuple[int, int, int, int],
+        point_base: np.ndarray,
+        camera_transform: tuple[np.ndarray, np.ndarray],
+    ) -> np.ndarray:
+        """Back-project likely top-surface pixels and return their base XY coordinates."""
+
+        x1, y1, x2, y2 = bounds
+        stride = self.orientation_pixel_stride
+        xs = np.arange(x1, x2 + 1, stride, dtype=np.int32)
+        ys = np.arange(y1, y2 + 1, stride, dtype=np.int32)
+        if xs.size == 0 or ys.size == 0:
+            return np.empty((0, 2), dtype=np.float64)
+        grid_x, grid_y = np.meshgrid(xs, ys)
+        depths = depth_meters[grid_y, grid_x].reshape(-1)
+        pixels = np.column_stack((grid_x.reshape(-1), grid_y.reshape(-1))).astype(
+            np.float64
+        )
+        valid = (
+            np.isfinite(depths)
+            & (depths > self.min_depth)
+            & (depths < self.max_depth)
+        )
+        depths = depths[valid]
+        pixels = pixels[valid]
+        if depths.size < self.orientation_min_points:
+            return np.empty((0, 2), dtype=np.float64)
+
+        intrinsic = np.asarray(camera_info.k, dtype=np.float64).reshape(3, 3)
+        distortion = np.asarray(camera_info.d, dtype=np.float64)
+        image_points = pixels.reshape(-1, 1, 2)
+        try:
+            if camera_info.distortion_model == "equidistant" and distortion.size >= 4:
+                normalized = cv2.fisheye.undistortPoints(
+                    image_points, intrinsic, distortion[:4].reshape(4, 1)
+                )
+            else:
+                normalized = cv2.undistortPoints(
+                    image_points, intrinsic, distortion if distortion.size else None
+                )
+        except cv2.error:
+            return np.empty((0, 2), dtype=np.float64)
+
+        normalized = normalized.reshape(-1, 2)
+        camera_points = np.column_stack(
+            (normalized[:, 0] * depths, normalized[:, 1] * depths, depths)
+        )
+        rotation, translation = camera_transform
+        base_points = camera_points @ rotation.T + translation
+        spatial_mask = (
+            (np.abs(base_points[:, 2] - point_base[2]) <= self.orientation_height_tolerance)
+            & (
+                np.linalg.norm(base_points[:, :2] - point_base[:2], axis=1)
+                <= self.orientation_max_xy_radius
+            )
+        )
+        return base_points[spatial_mask, :2]
 
     def get_stable_depth(
         self,
@@ -476,6 +643,149 @@ class VisionGraspNode(Node):
         marker.lifetime.nanosec = 300_000_000
         self.marker_pub.publish(marker)
 
+    def publish_axis_marker(
+        self,
+        point_base: np.ndarray,
+        yaw: float,
+        length: float,
+        namespace: str,
+        marker_id: int,
+        color: tuple[float, float, float],
+        stamp,
+    ) -> None:
+        marker = Marker()
+        marker.header.frame_id = self.base_frame
+        marker.header.stamp = stamp
+        marker.ns = namespace
+        marker.id = marker_id
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        marker.pose.orientation.w = 1.0
+        direction = np.array([math.cos(yaw), math.sin(yaw), 0.0])
+        half = max(0.04, float(length) / 2.0)
+        start = np.asarray(point_base, dtype=np.float64) - half * direction
+        end = np.asarray(point_base, dtype=np.float64) + half * direction
+        start[2] += 0.012
+        end[2] += 0.012
+        marker.points = [
+            Point(x=float(start[0]), y=float(start[1]), z=float(start[2])),
+            Point(x=float(end[0]), y=float(end[1]), z=float(end[2])),
+        ]
+        marker.scale.x = 0.006
+        marker.scale.y = 0.014
+        marker.scale.z = 0.020
+        marker.color.r, marker.color.g, marker.color.b = color
+        marker.color.a = 0.95
+        marker.lifetime.nanosec = 400_000_000
+        self.marker_pub.publish(marker)
+
+    def publish_grasp_pose(
+        self, point_base: np.ndarray, gripper_yaw: float, stamp
+    ) -> None:
+        pose = PoseStamped()
+        pose.header.frame_id = self.base_frame
+        pose.header.stamp = stamp
+        pose.pose.position.x = float(point_base[0])
+        pose.pose.position.y = float(point_base[1])
+        pose.pose.position.z = float(point_base[2])
+        # Rz(yaw) * Rx(pi): tool0 +Z down and tool0 +X along the opening axis.
+        pose.pose.orientation.x = math.cos(gripper_yaw / 2.0)
+        pose.pose.orientation.y = math.sin(gripper_yaw / 2.0)
+        pose.pose.orientation.z = 0.0
+        pose.pose.orientation.w = 0.0
+        self.grasp_pose_pub.publish(pose)
+
+    def estimate_and_publish_orientation(
+        self,
+        depth_meters: np.ndarray,
+        camera_info: CameraInfo,
+        bounds: tuple[int, int, int, int],
+        raw_point_base: np.ndarray,
+        filtered_point_base: np.ndarray,
+        camera_transform: tuple[np.ndarray, np.ndarray],
+        stamp,
+    ) -> dict | None:
+        if not self.enable_orientation_estimation:
+            return None
+        xy_points = self.orientation_points_in_base(
+            depth_meters, camera_info, bounds, raw_point_base, camera_transform
+        )
+        estimate = estimate_planar_axis(
+            xy_points,
+            min_points=self.orientation_min_points,
+            min_aspect_ratio=self.orientation_min_aspect_ratio,
+        )
+        if estimate is None:
+            self.orientation_filter.clear()
+            self._warn_throttled(
+                "orientation",
+                "no reliable rectangular top-surface axis; publishing XYZ only",
+            )
+            return None
+
+        long_yaw, standard_deviation, sample_count = self.orientation_filter.update(
+            estimate.yaw, filtered_point_base[:2]
+        )
+        gripper_yaw = normalize_axial(long_yaw + math.pi / 2.0)
+        stable = (
+            sample_count >= self.orientation_min_stable_samples
+            and standard_deviation <= self.orientation_max_std
+        )
+        width_ok = estimate.width <= self.orientation_max_grasp_width
+        dimensions_ok = (
+            (
+                self.orientation_expected_length <= 0.0
+                or abs(estimate.length - self.orientation_expected_length)
+                <= self.orientation_length_tolerance
+            )
+            and (
+                self.orientation_expected_width <= 0.0
+                or abs(estimate.width - self.orientation_expected_width)
+                <= self.orientation_width_tolerance
+            )
+        )
+        self.publish_axis_marker(
+            filtered_point_base,
+            long_yaw,
+            estimate.length,
+            "block_long_axis",
+            1,
+            (0.1, 0.9, 0.1),
+            stamp,
+        )
+        self.publish_axis_marker(
+            filtered_point_base,
+            gripper_yaw,
+            estimate.width,
+            "gripper_opening_axis",
+            2,
+            (0.1, 0.3, 1.0),
+            stamp,
+        )
+        if stable and width_ok and dimensions_ok:
+            self.publish_grasp_pose(filtered_point_base, gripper_yaw, stamp)
+
+        status = "VALID" if stable and width_ok and dimensions_ok else "WAIT"
+        self._warn_throttled(
+            "orientation",
+            f"orientation {status}: long={math.degrees(long_yaw):.1f}deg "
+            f"opening={math.degrees(gripper_yaw):.1f}deg "
+            f"size={estimate.length * 1000.0:.0f}x{estimate.width * 1000.0:.0f}mm "
+            f"aspect={estimate.aspect_ratio:.2f} "
+            f"std={math.degrees(standard_deviation):.1f}deg "
+            f"samples={sample_count} width_ok={width_ok} dimensions_ok={dimensions_ok}",
+        )
+        return {
+            "long_yaw": long_yaw,
+            "gripper_yaw": gripper_yaw,
+            "length": estimate.length,
+            "width": estimate.width,
+            "std": standard_deviation,
+            "stable": stable,
+            "width_ok": width_ok,
+            "dimensions_ok": dimensions_ok,
+        }
+
     def handle_target(
         self,
         color_image: np.ndarray,
@@ -525,8 +835,8 @@ class VisionGraspNode(Node):
             )
             return
 
-        point_base = self.camera_to_base(point_camera, stamp)
-        if point_base is None:
+        camera_transform = self.lookup_camera_transform(stamp)
+        if camera_transform is None:
             cv2.putText(
                 color_image,
                 "Waiting for TF",
@@ -537,10 +847,23 @@ class VisionGraspNode(Node):
                 2,
             )
             return
+        point_base = self.camera_to_base(point_camera, stamp, camera_transform)
+        if point_base is None:
+            return
 
-        point_base = self.smooth_point(point_base, stamp)
+        raw_point_base = point_base
+        point_base = self.smooth_point(raw_point_base, stamp)
         self.publish_target(point_base, stamp)
         self.publish_marker(point_base, stamp)
+        orientation = self.estimate_and_publish_orientation(
+            depth_meters,
+            camera_info,
+            (x1, y1, x2, y2),
+            raw_point_base,
+            point_base,
+            camera_transform,
+            stamp,
+        )
 
         confidence = float(target["confidence"])
         cv2.putText(
@@ -563,6 +886,23 @@ class VisionGraspNode(Node):
             (255, 255, 0),
             1,
         )
+        if orientation is not None:
+            status = "OK" if (
+                orientation["stable"]
+                and orientation["width_ok"]
+                and orientation["dimensions_ok"]
+            ) else "WAIT"
+            cv2.putText(
+                color_image,
+                f"Axis:{math.degrees(orientation['long_yaw']):.1f}deg "
+                f"Grip:{math.degrees(orientation['gripper_yaw']):.1f}deg "
+                f"Std:{math.degrees(orientation['std']):.1f}deg {status}",
+                (x1, min(image_height - 10, y2 + 40)),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.45,
+                (0, 180, 255) if status == "WAIT" else (0, 255, 0),
+                1,
+            )
 
     def _show_image(self, image: np.ndarray) -> None:
         if not self.show_window or self.window_disabled:

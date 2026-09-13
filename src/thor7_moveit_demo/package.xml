@@ -10,18 +10,32 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <depend>rclcpp</depend>
+  <depend>rclcpp_action</depend>
+  <depend>control_msgs</depend>
   <depend>std_srvs</depend>
   <depend>moveit_ros_planning_interface</depend>
   <depend>geometry_msgs</depend>
   <depend>moveit_core</depend>
   <depend>moveit_msgs</depend>
   <depend>shape_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>eigen</depend>
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_ros</exec_depend>
   <exec_depend>moveit_configs_utils</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>thor7v3_moveit_config</exec_depend>
+  <exec_depend>thor7_hardware</exec_depend>
+  <exec_depend>realsense2_camera</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
+  <test_depend>urdf</test_depend>
+  <test_depend>srdfdom</test_depend>
+  <test_depend>pluginlib</test_depend>
+  <test_depend>moveit_kinematics</test_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

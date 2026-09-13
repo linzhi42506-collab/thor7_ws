@@ -24,11 +24,22 @@ def generate_launch_description():
     arguments = [
         DeclareLaunchArgument("enable_execution", default_value="false"),
         DeclareLaunchArgument("operator_confirmation", default_value="DENIED"),
-        DeclareLaunchArgument("pregrasp_clearance", default_value="0.050"),
-        DeclareLaunchArgument("near_clearance", default_value="0.005"),
+        DeclareLaunchArgument("grasp_yaw", default_value="0.0",
+                              description="Opening axis yaw in base_link, radians; tool0 +Z points down"),
+        DeclareLaunchArgument("use_vision_yaw", default_value="false",
+                              description="Use stable /yolo_grasp_pose orientation instead of grasp_yaw"),
+        DeclareLaunchArgument("target_yaw_tolerance", default_value="0.08726646260"),
+        DeclareLaunchArgument("target_motion_confirmations", default_value="3"),
+        DeclareLaunchArgument("orientation_tolerance", default_value="0.05235987756"),
+        DeclareLaunchArgument("endpoint_position_tolerance", default_value="0.003"),
+        DeclareLaunchArgument("pregrasp_clearance", default_value="0.070"),
+        DeclareLaunchArgument("near_clearance", default_value="0.020"),
+        DeclareLaunchArgument("pregrasp_candidate_planning_time", default_value="8.0"),
+        DeclareLaunchArgument("pregrasp_total_planning_time", default_value="40.0"),
         DeclareLaunchArgument("plan_max_age_sec", default_value="60.0"),
-        DeclareLaunchArgument("velocity_scaling", default_value="0.05"),
-        DeclareLaunchArgument("acceleration_scaling", default_value="0.05"),
+        DeclareLaunchArgument("target_lock_sec", default_value="60.0"),
+        DeclareLaunchArgument("velocity_scaling", default_value="0.15"),
+        DeclareLaunchArgument("acceleration_scaling", default_value="0.10"),
         DeclareLaunchArgument("descent_velocity_scaling", default_value="0.03"),
         DeclareLaunchArgument("descent_acceleration_scaling", default_value="0.03"),
         DeclareLaunchArgument("target_x_min", default_value="-0.70"),
@@ -36,7 +47,7 @@ def generate_launch_description():
         DeclareLaunchArgument("target_y_min", default_value="0.30"),
         DeclareLaunchArgument("target_y_max", default_value="0.75"),
         DeclareLaunchArgument("target_z_min", default_value="-0.05"),
-        DeclareLaunchArgument("target_z_max", default_value="0.08"),
+        DeclareLaunchArgument("target_z_max", default_value="0.12"),
     ]
 
     node = Node(
@@ -53,9 +64,22 @@ def generate_launch_description():
             {
                 "enable_execution": LaunchConfiguration("enable_execution"),
                 "operator_confirmation": LaunchConfiguration("operator_confirmation"),
+                "grasp_yaw": LaunchConfiguration("grasp_yaw"),
+                "use_vision_yaw": LaunchConfiguration("use_vision_yaw"),
+                "target_yaw_tolerance": LaunchConfiguration("target_yaw_tolerance"),
+                "target_motion_confirmations": LaunchConfiguration("target_motion_confirmations"),
+                "orientation_tolerance": LaunchConfiguration("orientation_tolerance"),
+                "endpoint_position_tolerance": LaunchConfiguration("endpoint_position_tolerance"),
                 "pregrasp_clearance": LaunchConfiguration("pregrasp_clearance"),
                 "near_clearance": LaunchConfiguration("near_clearance"),
+                "pregrasp_candidate_planning_time": LaunchConfiguration(
+                    "pregrasp_candidate_planning_time"
+                ),
+                "pregrasp_total_planning_time": LaunchConfiguration(
+                    "pregrasp_total_planning_time"
+                ),
                 "plan_max_age_sec": LaunchConfiguration("plan_max_age_sec"),
+                "target_lock_sec": LaunchConfiguration("target_lock_sec"),
                 "velocity_scaling": LaunchConfiguration("velocity_scaling"),
                 "acceleration_scaling": LaunchConfiguration("acceleration_scaling"),
                 "descent_velocity_scaling": LaunchConfiguration(

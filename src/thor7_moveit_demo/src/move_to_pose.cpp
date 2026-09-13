@@ -26,8 +26,8 @@ int main(int argc, char* argv[])
 
   move_group.setPlanningTime(10.0);
   move_group.setNumPlanningAttempts(10);
-  move_group.setMaxVelocityScalingFactor(0.1);
-  move_group.setMaxAccelerationScalingFactor(0.1);
+  move_group.setMaxVelocityScalingFactor(0.15);
+  move_group.setMaxAccelerationScalingFactor(0.15);
   move_group.setStartStateToCurrentState();
 
   std::vector<double> target_joints =

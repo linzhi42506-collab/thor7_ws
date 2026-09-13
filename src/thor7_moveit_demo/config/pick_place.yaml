@@ -1,0 +1,18 @@
+vision_grasp_auto_sequence:
+  ros__parameters:
+    # Order is joint1..joint6, radians, NOT the order of /joint_states arrays.
+    # Source: 2026-09-12 user feedback, attachment 8f16de91.
+    home_joints: [2.0158478661325105, -0.26195045458069116, 2.1521946480498233, 0.000035578169808401495, 1.2515935749852884, 3.318715575924515]
+    place_joints: [1.4140899372047258, 0.5663726302504496, 1.414792512431679, 0.00007153084666741775, 1.1602741502704377, 2.7171044537605717]
+    # At placement J6 is replaced by its value at successful grasp, not zero.
+    pick_lift: 0.080
+    place_approach: 0.080
+    place_retreat: 0.080
+    # Approximate wood, tool0 X = jaw opening (width), Y = long axis.
+    carried_size: [0.050, 0.100, 0.025]
+    carried_padding: 0.003
+    transfer_velocity_scaling: 0.15
+    transfer_acceleration_scaling: 0.15
+    vertical_velocity_scaling: 0.15
+    vertical_acceleration_scaling: 0.15
+    retain_placed_objects: true

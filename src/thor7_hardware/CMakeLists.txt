@@ -330,6 +330,18 @@ if(BUILD_TESTING)
       test_ag145_frame
       PRIVATE
         include
+      )
+  endif()
+
+  ament_add_gtest(
+    test_ag145_goal_state
+    test/test_ag145_goal_state.cpp
+  )
+  if(TARGET test_ag145_goal_state)
+    target_include_directories(
+      test_ag145_goal_state
+      PRIVATE
+        include
     )
   endif()
 endif()
@@ -447,4 +459,3 @@ install(
 )
 
 ament_package()
-
