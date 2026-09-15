@@ -373,7 +373,17 @@ private:
     if (!above.setFromIK(group, above_pose, "tool0", 1.0)) { throw std::runtime_error("no IK above place"); }
     above.update();
     std::vector<Plan> route;
-    route.push_back(cartesian(start, raised(pose(start), number("pick_lift"))));
+    // The held object starts supported by the pick table. Perception height can
+    // be a few millimetres off, so allow this one pair while planning the
+    // upward separation. Every later segment restores normal collision checks.
+    allowObjectTableContact(true);
+    try {
+      route.push_back(cartesian(start, raised(pose(start), number("pick_lift"))));
+    } catch (...) {
+      allowObjectTableContact(false);
+      throw;
+    }
+    allowObjectTableContact(false);
     const auto lifted = endState(start, route.back());
     // The transfer keeps tool0 downward while translating horizontally. OMPL
     // was unnecessarily sampling a six-joint manifold here and frequently
@@ -452,6 +462,26 @@ private:
     moveit_msgs::msg::PlanningScene diff; diff.is_diff = true; diff.robot_state.is_diff = true;
     acm.getMessage(diff.allowed_collision_matrix);
     if (!scene_->applyPlanningScene(diff)) { throw std::runtime_error("released wood collision update failed"); }
+  }
+  void allowObjectTableContact(bool allow)
+  {
+    auto client = node_.create_client<moveit_msgs::srv::GetPlanningScene>("/get_planning_scene");
+    if (!client->wait_for_service(std::chrono::seconds(5))) {
+      throw std::runtime_error("planning scene service unavailable");
+    }
+    auto req = std::make_shared<moveit_msgs::srv::GetPlanningScene::Request>();
+    req->components.components = moveit_msgs::msg::PlanningSceneComponents::ALLOWED_COLLISION_MATRIX;
+    auto future = client->async_send_request(req);
+    if (future.wait_for(std::chrono::seconds(5)) != std::future_status::ready) {
+      throw std::runtime_error("planning scene ACM read timed out");
+    }
+    collision_detection::AllowedCollisionMatrix acm(future.get()->scene.allowed_collision_matrix);
+    acm.setEntry(objectId(), "thor7_pick_table", allow);
+    moveit_msgs::msg::PlanningScene diff; diff.is_diff = true; diff.robot_state.is_diff = true;
+    acm.getMessage(diff.allowed_collision_matrix);
+    if (!scene_->applyPlanningScene(diff)) {
+      throw std::runtime_error("pick-table collision update failed");
+    }
   }
   void publish(const std::vector<Plan> & plans)
   {

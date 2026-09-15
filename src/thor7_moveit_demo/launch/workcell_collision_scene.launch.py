@@ -8,7 +8,7 @@ def generate_launch_description():
     arguments = [
         DeclareLaunchArgument("table_center_x", default_value="-0.473"),
         DeclareLaunchArgument("table_center_y", default_value="0.502"),
-        DeclareLaunchArgument("table_top_z", default_value="-0.023"),
+        DeclareLaunchArgument("table_top_z", default_value="-0.028433"),
         DeclareLaunchArgument("table_size_x", default_value="0.600"),
         DeclareLaunchArgument("table_size_y", default_value="0.600"),
         DeclareLaunchArgument("table_thickness", default_value="0.050"),

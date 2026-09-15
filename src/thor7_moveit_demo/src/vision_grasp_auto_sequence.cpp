@@ -186,35 +186,55 @@ private:
 
   void updateVisionTarget(double x, double y, double z)
   {
-    if (!std::isfinite(x) || !std::isfinite(y) || !std::isfinite(z) ||
-        x < get_parameter("target_x_min").as_double() || x > get_parameter("target_x_max").as_double() ||
-        y < get_parameter("target_y_min").as_double() || y > get_parameter("target_y_max").as_double() ||
-        z < get_parameter("target_z_min").as_double() || z > get_parameter("target_z_max").as_double()) {
+    if (!std::isfinite(x) || !std::isfinite(y) || !std::isfinite(z)) { return; }
+    const double x_min = get_parameter("target_x_min").as_double();
+    const double x_max = get_parameter("target_x_max").as_double();
+    const double y_min = get_parameter("target_y_min").as_double();
+    const double y_max = get_parameter("target_y_max").as_double();
+    const double z_min = get_parameter("target_z_min").as_double();
+    const double z_max = get_parameter("target_z_max").as_double();
+    if (x < x_min || x > x_max || y < y_min || y > y_max || z < z_min || z > z_max) {
+      std::ostringstream reason;
+      reason << "latest vision target xyz=(" << x << ", " << y << ", " << z
+             << ") is outside configured pick workspace: x=[" << x_min << ", " << x_max
+             << "] y=[" << y_min << ", " << y_max << "] z=[" << z_min << ", " << z_max << ']';
+      {
+        std::lock_guard<std::mutex> lock(target_mutex_);
+        latest_rejection_ = reason.str();
+        latest_rejection_received_ = std::chrono::steady_clock::now();
+        have_latest_rejection_ = true;
+      }
       RCLCPP_WARN_THROTTLE(
         get_logger(), *get_clock(), 2000,
         "Ignoring vision target outside pick workspace: xyz=(%.3f, %.3f, %.3f), "
         "allowed x=[%.3f, %.3f] y=[%.3f, %.3f] z=[%.3f, %.3f]",
-        x, y, z,
-        get_parameter("target_x_min").as_double(), get_parameter("target_x_max").as_double(),
-        get_parameter("target_y_min").as_double(), get_parameter("target_y_max").as_double(),
-        get_parameter("target_z_min").as_double(), get_parameter("target_z_max").as_double());
+        x, y, z, x_min, x_max, y_min, y_max, z_min, z_max);
       return;
     }
     std::lock_guard<std::mutex> lock(target_mutex_);
     latest_target_ = Eigen::Vector3d(x, y, z);
     latest_target_received_ = std::chrono::steady_clock::now();
     have_latest_target_ = true;
+    have_latest_rejection_ = false;
     ++latest_target_sequence_;
   }
 
-  bool latestTarget(Eigen::Vector3d & target) const
+  bool latestTarget(Eigen::Vector3d & target, std::string & unavailable_reason) const
   {
     std::lock_guard<std::mutex> lock(target_mutex_);
     if (!have_latest_target_ ||
         std::chrono::steady_clock::now() - latest_target_received_ > std::chrono::seconds(1)) {
+      if (have_latest_rejection_ &&
+          std::chrono::steady_clock::now() - latest_rejection_received_ <=
+          std::chrono::seconds(2)) {
+        unavailable_reason = latest_rejection_;
+      } else {
+        unavailable_reason = "no fresh in-workspace vision target received";
+      }
       return false;
     }
     target = latest_target_;
+    unavailable_reason.clear();
     return true;
   }
 
@@ -295,13 +315,14 @@ private:
     const auto deadline = std::chrono::steady_clock::now() +
       std::chrono::duration<double>(
       get_parameter("target_acquire_timeout_sec").as_double());
+    std::string latest_unavailable_reason = "no vision target received";
     do {
       // Capture the accepted pose before the potentially long MoveIt plan.
       // /yolo_grasp_pose is intentionally published only while its orientation
       // estimate is valid, so requiring another one after planning rejects a
       // valid plan solely because the camera has stopped publishing it.
       Eigen::Vector3d requested_target;
-      if (!latestTarget(requested_target)) {
+      if (!latestTarget(requested_target, latest_unavailable_reason)) {
         std::this_thread::sleep_for(std::chrono::duration<double>(
           get_parameter("target_retry_sec").as_double()));
         continue;
@@ -326,7 +347,8 @@ private:
       std::this_thread::sleep_for(std::chrono::duration<double>(
         get_parameter("target_retry_sec").as_double()));
     } while (std::chrono::steady_clock::now() < deadline && rclcpp::ok());
-    detail = "prepare_pregrasp: no fresh vision target within acquisition timeout";
+    detail = "prepare_pregrasp: no acceptable fresh vision target within acquisition timeout; " +
+      latest_unavailable_reason;
     return false;
   }
 
@@ -626,7 +648,10 @@ private:
   Eigen::Vector3d latest_target_{Eigen::Vector3d::Zero()};
   Eigen::Vector3d planned_pick_target_{Eigen::Vector3d::Zero()};
   std::chrono::steady_clock::time_point latest_target_received_{};
+  std::chrono::steady_clock::time_point latest_rejection_received_{};
+  std::string latest_rejection_;
   bool have_latest_target_{false};
+  bool have_latest_rejection_{false};
   std::uint64_t latest_target_sequence_{0};
   std::atomic_bool stop_requested_{false};
   std::atomic_bool busy_{false};

@@ -184,7 +184,7 @@ def generate_launch_description():
         'target_motion_confirmations': '3',
         'plan_max_age_sec': '60.0', 'target_lock_sec': '120.0', 'velocity_scaling': '0.15', 'acceleration_scaling': '0.10',
         'descent_velocity_scaling': '0.03', 'descent_acceleration_scaling': '0.03',
-        'table_center_x': '-0.473', 'table_center_y': '0.502', 'table_top_z': '-0.023',
+        'table_center_x': '-0.473', 'table_center_y': '0.502', 'table_top_z': '-0.028433',
         'table_size_x': '0.600', 'table_size_y': '0.600', 'table_thickness': '0.050',
         'target_x_min': '-0.70', 'target_x_max': '-0.25',
         'target_y_min': '0.30', 'target_y_max': '0.75',

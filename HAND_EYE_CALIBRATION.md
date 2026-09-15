@@ -17,7 +17,7 @@
 板高 =  8 * square_size
 ```
 
-`square_size` 是完整黑白方格的边长，`marker_size` 是 ArUco 黑色 marker 的边长，单位必须是米。你发来的 RViz 参数对应 `longest board side = 0.165 m`、横向 11 个方格，因此完整方格边长是 `0.165 / 11 = 0.015 m`，黑色 marker 是 `0.011 m`。如果打印文件确实就是这组参数生成的，采集器必须使用 `0.015/0.011`，不能继续使用之前示例中的 `0.013/0.009`。若用尺子量出的打印尺寸不同，以实测尺寸为准，并同步修改 RViz 和命令行。
+`square_size` 是完整黑白方格的边长，`marker_size` 是 ArUco 黑色 marker 的边长，单位是米。本次 `v2` 数据使用 `0.017/0.0125`，以下命令沿用本次参数。旧记录中的 `0.015/0.011` 不属于本次数据；尺寸应以实际打印板为准。
 
 ## 2. 启动采集器
 
@@ -31,8 +31,8 @@ source install/setup.bash 2>/dev/null || true
 /usr/bin/python3 src/thor7v3_moveit_config/scripts/collect_handeye_charuco.py \
   --overwrite \
   --output handeye_samples.yaml \
-  --square-size 0.015 \
-  --marker-size 0.011 \
+  --square-size 0.017 \
+  --marker-size 0.0125 \
   --squares-x 11 --squares-y 8 \
   --dictionary DICT_4X4_250 \
   --image-topic /camera/camera/color/image_raw \
@@ -81,14 +81,16 @@ ros2 run tf2_ros tf2_echo base_link camera_color_optical_frame
 
 ## 当前新外参
 
-`234.launch.py` 的新结果为：
+默认文件 `handeye_calibration_result.yaml` 已采用本次 `handeye_samples_v2.yaml` 的 34 组数据结果，与 `handeye_calibration_v2_result.yaml` 一致。最终内点 30 组，异常样本为 10、12、13、14；内点 RMS 为 5.373 mm、1.5899°。标定架移动后，用户明确选择使用本次结果；该选择不表示已达到上述精度目标。
 
 ```text
-T_base_camera = [-0.426692, 0.961884, 0.711320]
-quaternion_xyzw = [-0.304199, 0.888102, -0.326487, 0.110199]
+T_base_camera = [-0.683044049351, 0.426621493607, 0.820005187608]
+quaternion_xyzw = [0.737250949834, -0.598898824844, 0.189981059466, -0.248371559592]
 ```
 
-已同步到包内的 `thor7_calibrated_camera.launch.py`。安装/编译后启动：
+一键入口 `start_vision_grasp.sh` 与包内独立入口 `thor7_calibrated_camera.launch.py` 每次启动都读取默认 YAML，可用 `calibration_file:=绝对路径` 指定其他结果。历史入口 `234.launch.py`、`moveit_pose1.launch.py`、`movelt pose1.launch.py`、`static_camera_tf_tool0.launch.py` 均转发到包内独立入口，不再发布历史数值。`handeye_tool0_result.yaml` 仅保留为历史数据，不是当前外参来源。
+
+根目录 `static_camera_tf.launch.py` 和 `static_camera_tf_v2.launch.py` 是本次求解生成的数值快照；重新求解时应同步生成对应 launch。以上发布入口只启动一个，一键入口已包含 TF 发布器。独立发布可运行：
 
 ```bash
 cd /home/landau/Documents/thor7_ws

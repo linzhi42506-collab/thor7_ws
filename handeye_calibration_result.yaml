@@ -10,180 +10,237 @@ parent_frame: base_link
 child_frame: camera_color_optical_frame
 transform:
   translation:
-    x: -0.6923733700564938
-    y: 0.44115548730448356
-    z: 0.804274846865816
+    x: -0.6830440493509445
+    y: 0.42662149360732216
+    z: 0.8200051876077618
   rotation_quaternion_xyzw:
-  - 0.6923652910766418
-  - -0.6319375736236725
-  - 0.21837725313950856
-  - -0.27128689991635374
+  - 0.7372509498340274
+  - -0.5988988248436292
+  - 0.18998105946576854
+  - -0.2483715595916901
   rotation_rpy_rad:
-  - -2.431115701721651
-  - 0.04049017243189178
-  - -1.464577251618551
+  - -2.5057287275906135
+  - 0.017372311050787546
+  - -1.3587236929515447
   matrix:
-  - - 0.1059325567077373
-    - -0.7565775081755094
-    - 0.645266431446964
-    - -0.6923733700564938
-  - - -0.9935490602413738
-    - -0.05411664195279983
-    - 0.09965768388456507
-    - 0.44115548730448356
-  - - -0.04047910970915069
-    - -0.651660849818899
-    - -0.7574295864900346
-    - 0.804274846865816
+  - - 0.21045478929036807
+    - -0.7887056708761078
+    - 0.5776263034113106
+    - -0.6830440493509445
+  - - -0.9774492390056858
+    - -0.15926353197382298
+    - 0.13866546992827164
+    - 0.42662149360732216
+  - - -0.01737143724485983
+    - -0.5937832029546574
+    - -0.8044375308605113
+    - 0.8200051876077618
   - - 0.0
     - 0.0
     - 0.0
     - 1.0
 diagnostics:
-  sample_count: 23
-  inlier_count: 21
+  sample_count: 34
+  inlier_count: 30
   outlier_samples_1_based:
+  - 10
+  - 12
   - 13
-  - 15
-  translation_rms_m: 0.0034040180952074643
-  translation_mean_m: 0.0031472794573453376
-  rotation_rms_rad: 0.028301992425737058
-  rotation_mean_rad: 0.02613259040677241
+  - 14
+  translation_rms_m: 0.005372699039646279
+  translation_mean_m: 0.004862545196649895
+  rotation_rms_rad: 0.027748628560340736
+  rotation_mean_rad: 0.024893916222429688
   refinement: 'scipy least_squares: converged'
   per_sample:
   - index: 1
     inlier: true
-    translation_m: 0.0025436705062156276
-    rotation_rad: 0.03421952029720909
-    rotation_deg: 1.9606340899923371
+    translation_m: 0.004193561079739829
+    rotation_rad: 0.0218113510780315
+    rotation_deg: 1.2496983622493234
   - index: 2
     inlier: true
-    translation_m: 0.0017189240219650235
-    rotation_rad: 0.034393196903187526
-    rotation_deg: 1.9705850265150582
+    translation_m: 0.0028124340345943113
+    rotation_rad: 0.013004476413507894
+    rotation_deg: 0.7451016132714279
   - index: 3
     inlier: true
-    translation_m: 0.005791078088946919
-    rotation_rad: 0.024397964059538504
-    rotation_deg: 1.397900369323425
+    translation_m: 0.008544251793625742
+    rotation_rad: 0.029640536302174718
+    rotation_deg: 1.698277632618915
   - index: 4
     inlier: true
-    translation_m: 0.0031167022774776926
-    rotation_rad: 0.02986634952268551
-    rotation_deg: 1.7112157771124406
+    translation_m: 0.006785159198033035
+    rotation_rad: 0.059028915212142485
+    rotation_deg: 3.382107710891347
   - index: 5
     inlier: true
-    translation_m: 0.0040243479902629855
-    rotation_rad: 0.01669705191939537
-    rotation_deg: 0.9566706052921651
+    translation_m: 0.01252549129084988
+    rotation_rad: 0.04127380746018353
+    rotation_deg: 2.364814971904088
   - index: 6
     inlier: true
-    translation_m: 0.003261850781430713
-    rotation_rad: 0.009908523853275656
-    rotation_deg: 0.5677165979973988
+    translation_m: 0.0029449698122967533
+    rotation_rad: 0.013207211601362498
+    rotation_deg: 0.7567174838942886
   - index: 7
     inlier: true
-    translation_m: 0.0011805394332948973
-    rotation_rad: 0.02164798463596361
-    rotation_deg: 1.2403381546047647
+    translation_m: 0.006455469670244096
+    rotation_rad: 0.04069014141194418
+    rotation_deg: 2.331373370694894
   - index: 8
     inlier: true
-    translation_m: 0.006319292496627704
-    rotation_rad: 0.005548144453969499
-    rotation_deg: 0.3178852613413669
+    translation_m: 0.0030092902500672984
+    rotation_rad: 0.012862050351631972
+    rotation_deg: 0.7369412010332684
   - index: 9
     inlier: true
-    translation_m: 0.00301983908218111
-    rotation_rad: 0.023009767853505288
-    rotation_deg: 1.3183625855816485
+    translation_m: 0.00501885968591664
+    rotation_rad: 0.02095114485941197
+    rotation_deg: 1.2004121764115163
   - index: 10
-    inlier: true
-    translation_m: 0.005424553080763175
-    rotation_rad: 0.03748280780532953
-    rotation_deg: 2.147606691545402
+    inlier: false
+    translation_m: 0.005003318133835242
+    rotation_rad: 0.08324202210488726
+    rotation_deg: 4.769416544744746
   - index: 11
     inlier: true
-    translation_m: 0.003015176219593404
-    rotation_rad: 0.04198991760270748
-    rotation_deg: 2.405845060737222
+    translation_m: 0.0058752897615234395
+    rotation_rad: 0.029838868503852593
+    rotation_deg: 1.7096412307165947
   - index: 12
-    inlier: true
-    translation_m: 0.0025746968437559015
-    rotation_rad: 0.03635928464333799
-    rotation_deg: 2.0832335561780937
+    inlier: false
+    translation_m: 0.013805317086726852
+    rotation_rad: 0.034936264061274425
+    rotation_deg: 2.0017004826656013
   - index: 13
     inlier: false
-    translation_m: 0.009740002030760015
-    rotation_rad: 0.032912390115547564
-    rotation_deg: 1.8857410473089633
+    translation_m: 0.011013194517180271
+    rotation_rad: 0.12239457776438145
+    rotation_deg: 7.012692741184808
   - index: 14
-    inlier: true
-    translation_m: 0.0038570994311577073
-    rotation_rad: 0.047670267305018846
-    rotation_deg: 2.7313051248380567
-  - index: 15
     inlier: false
-    translation_m: 0.01716977070243343
-    rotation_rad: 0.02470215248175721
-    rotation_deg: 1.4153290820933004
+    translation_m: 0.0038883629364159923
+    rotation_rad: 0.09654863355363216
+    rotation_deg: 5.53182922037829
+  - index: 15
+    inlier: true
+    translation_m: 0.007167639735926613
+    rotation_rad: 0.049814629962473475
+    rotation_deg: 2.8541680548556645
   - index: 16
     inlier: true
-    translation_m: 0.0025797981937032964
-    rotation_rad: 0.032755085228968264
-    rotation_deg: 1.8767281412111854
+    translation_m: 0.005751930256053559
+    rotation_rad: 0.030758613408788823
+    rotation_deg: 1.7623387319981019
   - index: 17
     inlier: true
-    translation_m: 0.0030671384577122067
-    rotation_rad: 0.028174052796907528
-    rotation_deg: 1.614254317041554
+    translation_m: 0.007740194927026107
+    rotation_rad: 0.020737587308319875
+    rotation_deg: 1.1881762300507899
   - index: 18
     inlier: true
-    translation_m: 0.0016281992339988501
-    rotation_rad: 0.024864686920420525
-    rotation_deg: 1.4246416194542364
+    translation_m: 0.004408607283879017
+    rotation_rad: 0.01302786003273589
+    rotation_deg: 0.7464413959629329
   - index: 19
     inlier: true
-    translation_m: 0.002144461500273077
-    rotation_rad: 0.01093429987444577
-    rotation_deg: 0.6264892347361686
+    translation_m: 0.002200344490696364
+    rotation_rad: 0.016725525226191848
+    rotation_deg: 0.9583020056003845
   - index: 20
     inlier: true
-    translation_m: 0.0025942949495164004
-    rotation_rad: 0.02161466072925243
-    rotation_deg: 1.2384288353933264
+    translation_m: 0.003959300271307877
+    rotation_rad: 0.027019055116908462
+    rotation_deg: 1.548077824630206
   - index: 21
     inlier: true
-    translation_m: 0.0024168895953808572
-    rotation_rad: 0.01788277597813639
-    rotation_deg: 1.0246075895251479
+    translation_m: 0.0032605197716504305
+    rotation_rad: 0.017542691001254142
+    rotation_deg: 1.0051221556739907
   - index: 22
     inlier: true
-    translation_m: 0.003439366288271941
-    rotation_rad: 0.01464774117792163
-    rotation_deg: 0.8392537488948945
+    translation_m: 0.0013699103321962107
+    rotation_rad: 0.01929474602298928
+    rotation_deg: 1.1055075138941157
   - index: 23
     inlier: true
-    translation_m: 0.0023749501317226044
-    rotation_rad: 0.03472031498104414
-    rotation_deg: 1.989327511778674
+    translation_m: 0.0042392652034139
+    rotation_rad: 0.021668996333659096
+    rotation_deg: 1.2415420362031209
+  - index: 24
+    inlier: true
+    translation_m: 0.005866102526641957
+    rotation_rad: 0.007588265296228108
+    rotation_deg: 0.43477557529946004
+  - index: 25
+    inlier: true
+    translation_m: 0.0036321823124864272
+    rotation_rad: 0.01729050058622531
+    rotation_deg: 0.9906727092591862
+  - index: 26
+    inlier: true
+    translation_m: 0.0016339847421023125
+    rotation_rad: 0.017434863727666578
+    rotation_deg: 0.9989441079810208
+  - index: 27
+    inlier: true
+    translation_m: 0.005925137717632166
+    rotation_rad: 0.03772045256949928
+    rotation_deg: 2.1612227335557104
+  - index: 28
+    inlier: true
+    translation_m: 0.0026376376277955985
+    rotation_rad: 0.01043192510383508
+    rotation_deg: 0.5977052806463231
+  - index: 29
+    inlier: true
+    translation_m: 0.003992214412594265
+    rotation_rad: 0.02051736730105386
+    rotation_deg: 1.175558553070107
+  - index: 30
+    inlier: true
+    translation_m: 0.005755768540388951
+    rotation_rad: 0.03067957350829325
+    rotation_deg: 1.7578100792865716
+  - index: 31
+    inlier: true
+    translation_m: 0.003960774149730652
+    rotation_rad: 0.02295630944055751
+    rotation_deg: 1.3152996441402731
+  - index: 32
+    inlier: true
+    translation_m: 0.0027027623595237875
+    rotation_rad: 0.023818540382572004
+    rotation_deg: 1.3647018380832932
+  - index: 33
+    inlier: true
+    translation_m: 0.0058791693520366395
+    rotation_rad: 0.014592239259249283
+    rotation_deg: 0.8360737232000907
+  - index: 34
+    inlier: true
+    translation_m: 0.005628133309523004
+    rotation_rad: 0.04488924189014613
+    rotation_deg: 2.5719641058472313
 static_transform_publisher:
   package: tf2_ros
   executable: static_transform_publisher
   arguments:
   - --x
-  - '-0.692373370056'
+  - '-0.683044049351'
   - --y
-  - '0.441155487304'
+  - '0.426621493607'
   - --z
-  - '0.804274846866'
+  - '0.820005187608'
   - --qx
-  - '0.692365291077'
+  - '0.737250949834'
   - --qy
-  - '-0.631937573624'
+  - '-0.598898824844'
   - --qz
-  - '0.21837725314'
+  - '0.189981059466'
   - --qw
-  - '-0.271286899916'
+  - '-0.248371559592'
   - --frame-id
   - base_link
   - --child-frame-id

@@ -1,41 +1,16 @@
-""" Static transform publisher acquired via MoveIt 2 hand-eye calibration """
-""" EYE-TO-HAND: base_link -> camera_color_optical_frame """
+"""Compatibility entry point using the current workspace calibration."""
+
+from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch_ros.actions import Node
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from pathlib import Path
 
 
-def generate_launch_description() -> LaunchDescription:
-    nodes = [
-        Node(
-            package="tf2_ros",
-            executable="static_transform_publisher",
-            output="log",
-            arguments=[
-                "--frame-id",
-                "base_link",
-                "--child-frame-id",
-                "camera_color_optical_frame",
-                "--x",
-                "-0.426692",
-                "--y",
-                "0.961884",
-                "--z",
-                "0.71132",
-                "--qx",
-                "-0.304199",
-                "--qy",
-                "0.888102",
-                "--qz",
-                "-0.326487",
-                "--qw",
-                "0.110199",
-                # "--roll",
-                # "2.5495",
-                # "--pitch",
-                # "0.405382",
-                # "--yaw",
-                # "2.60679",
-            ],
-        ),
-    ]
-    return LaunchDescription(nodes)
+def generate_launch_description():
+    return LaunchDescription([
+        IncludeLaunchDescription(PythonLaunchDescriptionSource(str(
+            Path(get_package_share_directory("thor7v3_moveit_config"))
+            / "launch" / "thor7_calibrated_camera.launch.py"
+        ))),
+    ])

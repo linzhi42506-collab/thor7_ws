@@ -22,7 +22,7 @@ public:
     declare_parameter("table_id", "thor7_pick_table");
     declare_parameter("table_center_x", -0.473);
     declare_parameter("table_center_y", 0.502);
-    declare_parameter("table_top_z", -0.023);
+    declare_parameter("table_top_z", -0.028433);
     declare_parameter("table_size_x", 0.600);
     declare_parameter("table_size_y", 0.600);
     declare_parameter("table_thickness", 0.050);
